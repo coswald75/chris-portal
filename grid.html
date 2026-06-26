@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chris Oswald</title>
+  <meta name="description" content="Chris Oswald — pastor in the Kansas City area. A few of the things I'm working on." />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2" />
+  <link rel="apple-touch-icon" href="/favicon-180.png?v=2" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1c1c1a;
+      --muted: #6b6b63;
+      --accent-dark: #075c2e;
+      --line: #e2dfd8;
+      --paper: #ffffff;
+      --hover: #faf9f5;
+      --serif: 'Fraunces', Georgia, serif;
+      --sans: 'Inter', -apple-system, system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--paper); color: var(--ink);
+      font-family: var(--serif); -webkit-font-smoothing: antialiased;
+    }
+    .stage { max-width: 1040px; margin: 0 auto; padding: 6vh 24px 9vh; }
+
+    .bunch {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .tile {
+      aspect-ratio: 1 / 1;
+      background: var(--paper);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; gap: 0.55rem;
+      padding: 1.6rem 1.4rem;
+      text-decoration: none; color: var(--ink);
+      transition: background 0.15s ease;
+    }
+    .tile:hover { background: var(--hover); }
+
+    .tile h2 {
+      font-family: var(--serif); font-weight: 600;
+      font-size: clamp(1.05rem, 2vw, 1.32rem); line-height: 1.18;
+      margin: 0; letter-spacing: -0.005em;
+    }
+    .tile .tag {
+      font-family: var(--serif); font-size: clamp(0.9rem, 1.5vw, 1rem);
+      line-height: 1.4; color: var(--muted); margin: 0; max-width: 22ch;
+    }
+    .tile .domain {
+      font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.04em;
+      color: var(--muted); margin-top: 0.15rem; text-transform: lowercase;
+    }
+    .tile:hover h2 { color: var(--accent-dark); }
+
+    /* Center portrait cell */
+    .center { padding: 0; overflow: hidden; }
+    .center img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+    @media (max-width: 640px) {
+      .bunch { grid-template-columns: 1fr; }
+      .tile { aspect-ratio: auto; padding: 2.2rem 1.6rem; }
+      .center { aspect-ratio: 1 / 1; order: -1; }
+      .center img { object-fit: contain; max-width: 280px; margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+  <main class="stage">
+    <div class="bunch">
+
+      <a class="tile" href="https://sovgracekc.org">
+        <h2>Providence Community Church</h2>
+        <p class="tag">&ldquo;Truth and Beauty in Community.&rdquo;</p>
+        <span class="domain">sovgracekc.org</span>
+      </a>
+
+      <a class="tile" href="https://theshepherdsguild.com">
+        <h2>The Shepherds Guild</h2>
+        <p class="tag">The preaching craft, made visible.</p>
+        <span class="domain">theshepherdsguild.com</span>
+      </a>
+
+      <a class="tile" href="https://sermonsteward.com">
+        <h2>Sermon Steward</h2>
+        <p class="tag">Sunday's sermon, stewarded and shipped.</p>
+        <span class="domain">sermonsteward.com</span>
+      </a>
+
+      <a class="tile" href="https://mountainwestsg.org">
+        <h2>SG Church Planting</h2>
+        <p class="tag">Chair for the Midwest &amp; Northwest.</p>
+        <span class="domain">mountainwestsg.org</span>
+      </a>
+
+      <div class="tile center">
+        <img src="/images/chris-cartoon.png" alt="Cartoon portrait of Chris Oswald" />
+      </div>
+
+      <a class="tile" href="https://quietread.app">
+        <h2>The Quiet Read App</h2>
+        <p class="tag">Read anything, one sentence at a time.</p>
+        <span class="domain">quietread.app</span>
+      </a>
+
+      <a class="tile" href="https://uncletheology.com">
+        <h2>Uncle Theology</h2>
+        <p class="tag">Songs that teach.</p>
+        <span class="domain">uncletheology.com</span>
+      </a>
+
+      <a class="tile" href="https://sendjosh.org">
+        <h2>Sovereign Grace Philippines</h2>
+        <p class="tag">Training pastors in the Philippines.</p>
+        <span class="domain">sendjosh.org</span>
+      </a>
+
+      <a class="tile" href="https://pastorpolitics.com">
+        <h2>Pastor Politics</h2>
+        <p class="tag">Helping pastors process politics.</p>
+        <span class="domain">pastorpolitics.com</span>
+      </a>
+
+    </div>
+  </main>
+</body>
+</html>
