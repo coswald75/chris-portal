@@ -63,15 +63,28 @@
     }
     .tile:hover h2 { color: var(--accent-dark); }
 
-    /* Center portrait cell */
-    .center { padding: 0; overflow: hidden; }
-    .center img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    /* Center portrait cell — image breaks the frame, spilling over the side tiles */
+    .center { padding: 0; overflow: visible; position: relative; z-index: 3; pointer-events: none; }
+    .center img {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 124%;
+      max-width: none;
+      height: auto;
+      transform: translateX(-50%);
+      display: block;
+    }
 
     @media (max-width: 640px) {
       .bunch { grid-template-columns: 1fr; }
       .tile { aspect-ratio: auto; padding: 2.2rem 1.6rem; }
-      .center { aspect-ratio: 1 / 1; order: -1; }
-      .center img { object-fit: contain; max-width: 280px; margin: 0 auto; }
+      .center { aspect-ratio: 1 / 1; order: -1; overflow: hidden; z-index: auto; }
+      .center img {
+        position: static; transform: none; left: auto; bottom: auto;
+        width: auto; max-width: 280px; max-height: 100%; height: auto;
+        margin: 0 auto; object-fit: contain;
+      }
     }
   </style>
 </head>
@@ -104,7 +117,7 @@
       </a>
 
       <div class="tile center">
-        <img src="/images/chris-cartoon.png" alt="Cartoon portrait of Chris Oswald" />
+        <img src="/images/chris-cartoon-cut.png" alt="Cartoon portrait of Chris Oswald" />
       </div>
 
       <a class="tile" href="https://quietread.app">
