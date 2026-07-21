@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Suffering Sheets — Chris Oswald</title>
+<meta name="description" content="Ten biblical counseling worksheets for walking through suffering. What you write stays on your device." />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink:#1c1c1a; --muted:#6b6b63; --accent:#075c2e; --accent-soft:#e8f2ec;
+    --line:#e2dfd8; --paper:#ffffff; --hover:#faf9f5; --bad:#9c2b21;
+    --serif:'Fraunces',Georgia,serif; --sans:'Inter',-apple-system,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:720px;margin:0 auto;padding:5vh 20px 12vh}
+  h1{font-weight:600;font-size:1.9rem;margin:.2em 0 .3em}
+  .sub{font-family:var(--sans);color:var(--muted);font-size:.95rem;line-height:1.55}
+  .sec-label{font-family:var(--sans);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  .subtitle{font-style:italic;color:var(--muted);font-size:1.05rem;margin:.1em 0 .8em}
+  .slist{list-style:none;padding:0;margin:24px 0 0}
+  .slist li{border:1px solid var(--line);border-radius:12px;margin-bottom:12px;cursor:pointer;transition:background .15s}
+  .slist li:hover{background:var(--hover)}
+  .slist .inner{display:flex;gap:16px;padding:16px 20px;align-items:baseline}
+  .slist .num{font-family:var(--sans);font-weight:600;color:var(--accent);font-size:1.05rem;min-width:26px}
+  .slist h3{margin:0 0 3px;font-weight:500;font-size:1.12rem;color:var(--accent)}
+  .slist p{margin:0;font-family:var(--sans);font-size:.84rem;color:var(--muted);line-height:1.5}
+  .slist .chip{font-family:var(--sans);font-size:.74rem;font-weight:600;color:var(--muted);white-space:nowrap;margin-left:auto}
+  .slist .chip.some{color:var(--accent)}
+  .privacy{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;padding:12px 16px;margin-top:24px;font-family:var(--sans);font-size:.84rem;line-height:1.55}
+  .gentle{border:1px solid var(--line);border-radius:10px;background:var(--hover);padding:16px 20px;margin:18px 0;font-family:var(--sans);font-size:.9rem;line-height:1.6}
+  .gentle .gt{font-size:.72rem;letter-spacing:.1em;font-weight:600;color:var(--accent);display:block;margin-bottom:6px}
+  .intro p{font-size:1.02rem;line-height:1.65;margin:0 0 14px}
+  .scripture{border-left:3px solid var(--accent);padding:6px 18px;margin:20px 0;font-style:italic;font-size:1.05rem;line-height:1.6}
+  .scripture .ref{display:block;font-style:normal;font-family:var(--sans);font-size:.8rem;color:var(--muted);margin-top:6px}
+  .bh{font-family:var(--sans);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:30px 0 6px}
+  .bp{line-height:1.65;margin:10px 0;font-family:var(--sans);color:#3a3a36;font-size:.93rem}
+  .prompt{font-size:1.02rem;line-height:1.55;margin:16px 0 8px;white-space:pre-line}
+  textarea{width:100%;min-height:110px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;font-family:var(--sans);font-size:.95rem;background:var(--hover);resize:vertical;line-height:1.6}
+  input[type=text],input[type=email]{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-family:var(--sans);font-size:.95rem;background:var(--hover)}
+  input.short{min-width:110px;width:auto;display:inline-block;padding:6px 10px;margin:0 4px}
+  textarea:focus,input:focus{outline:2px solid var(--accent);outline-offset:1px}
+  .fillline{font-size:1.05rem;line-height:2.2;margin:14px 0}
+  .choice-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+  .choice-row label{display:flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:8px;padding:8px 14px;background:var(--hover);cursor:pointer;font-family:var(--sans);font-size:.9rem}
+  .choice-row label.sel{border-color:var(--accent);background:var(--accent-soft)}
+  .tag-item{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:8px;padding:9px 14px;margin:6px 0;font-family:var(--sans);font-size:.92rem}
+  .tag-item select{padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--paper);font-family:var(--sans)}
+  .remember{border:1px solid var(--line);border-radius:10px;background:var(--accent-soft);padding:18px 22px;margin:34px 0 0;line-height:1.65}
+  .remember .gt{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;font-weight:600;color:var(--accent);display:block;margin-bottom:6px}
+  .attrib{font-family:var(--sans);font-size:.75rem;color:var(--muted);margin-top:26px;line-height:1.5}
+  button{font-family:var(--sans);font-weight:600;font-size:.95rem;border-radius:8px;padding:11px 20px;cursor:pointer;border:1px solid var(--line);background:var(--paper);color:var(--ink)}
+  button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  button:disabled{opacity:.5;cursor:default}
+  .topbar{display:flex;justify-content:space-between;align-items:center;font-family:var(--sans);font-size:.82rem;color:var(--muted);margin-bottom:14px}
+  .topbar a{cursor:pointer;color:var(--accent)}
+  .actions{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+  .sendcard{border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin-top:18px}
+  .sendcard label{font-family:var(--sans);font-size:.84rem;font-weight:600;display:block;margin:12px 0 5px}
+  .note{font-family:var(--sans);font-size:.82rem;color:var(--muted);line-height:1.55}
+  .err{color:var(--bad);font-family:var(--sans);font-size:.88rem;margin-top:10px}
+  .ok{color:var(--accent);font-family:var(--sans);font-size:.95rem;font-weight:600;margin-top:10px}
+  .savestate{font-family:var(--sans);font-size:.78rem;color:var(--muted)}
+  .navrow{display:flex;justify-content:space-between;margin-top:30px}
+  .hidden{display:none}
+  @media print {
+    .topbar,.actions,.sendcard,.navrow,button{display:none !important}
+    textarea,input{border:none;background:#fff;padding:2px 0}
+    body{font-size:12px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HUB -->
+  <div id="view-hub">
+    <span class="sec-label">Biblical counseling homework</span>
+    <h1>Suffering Sheets</h1>
+    <p class="sub">Ten short worksheets for walking with God through suffering — honest writing, one sheet at a time, in order. There's no score and no grade. Work at whatever pace your circumstances allow; a sheet can take a day or a week.</p>
+    <ul class="slist" id="sheetlist"></ul>
+    <div class="privacy"><b>What you write stays on this device.</b> Nothing is stored online and nothing is sent anywhere — unless you choose to share a finished sheet with Pastor Chris, which emails it to him directly and still stores nothing.</div>
+  </div>
+
+  <!-- SHEET -->
+  <div id="view-sheet" class="hidden">
+    <div class="topbar">
+      <a id="back-hub">← All sheets</a>
+      <span class="savestate" id="savestate">saved on this device</span>
+    </div>
+    <span class="sec-label">Sheet <span id="s-num"></span> of 10</span>
+    <h1 id="s-title" style="font-size:1.7rem"></h1>
+    <p class="subtitle" id="s-subtitle"></p>
+    <div class="gentle" id="s-gentle"></div>
+    <div class="intro" id="s-intro"></div>
+    <div id="s-scripture"></div>
+    <div id="s-blocks"></div>
+    <div class="remember" id="s-remember"></div>
+    <p class="attrib" id="s-attrib"></p>
+
+    <div class="actions">
+      <button onclick="window.print()">Print this sheet</button>
+      <button id="btn-show-send">Share with Pastor Chris…</button>
+    </div>
+    <div class="sendcard hidden" id="sendcard">
+      <p class="note">This emails your completed sheet directly — and only — to Pastor Chris. Nothing is stored online; the email is the only copy. He'll know it's from you and can follow up.</p>
+      <label for="send-name">Your name</label>
+      <input id="send-name" type="text" autocomplete="name" />
+      <label for="send-email">Your email</label>
+      <input id="send-email" type="email" autocomplete="email" />
+      <button class="primary" id="btn-send" style="margin-top:14px">Send to Pastor Chris</button>
+      <div id="send-err" class="err hidden"></div>
+      <div id="send-ok" class="ok hidden"></div>
+    </div>
+    <div class="navrow">
+      <button id="btn-prev-sheet">← Previous sheet</button>
+      <button class="primary" id="btn-next-sheet">Next sheet →</button>
+    </div>
+  </div>
+
+</div>
+<script src="sheets.js"></script>
+<script>
+const API = "https://twbunmbzyqcqzgffdrib.supabase.co/functions/v1/suffering-sheets";
+
+let cur = null, answers = {}, saveTimer = null;
+const $ = (x) => document.getElementById(x);
+function esc(s){ return String(s ?? "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+const LS = {
+  get(k){ try{ return JSON.parse(localStorage.getItem(k) || "null"); }catch(e){ return null; } },
+  set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} },
+};
+
+/* ---------- hub ---------- */
+function answeredCount(sheet){
+  const a = LS.get("sfs_" + sheet.slug) || {};
+  let n = 0;
+  for(const v of Object.values(a)){
+    if(Array.isArray(v) ? v.some(x=>String(x).trim()) : String(v ?? "").trim()) n++;
+  }
+  return n;
+}
+function totalAnswerable(sheet){
+  return sheet.blocks.filter(b => ["q","fill","choice","tag"].includes(b.t)).length;
+}
+function renderHub(){
+  const ul = $("sheetlist"); ul.innerHTML = "";
+  for(const s of SHEETS){
+    const n = answeredCount(s), t = totalAnswerable(s);
+    const chip = n === 0 ? "Not started" : (n >= t ? "Complete ✓" : `${n} of ${t} written`);
+    const li = document.createElement("li");
+    li.innerHTML = `<div class="inner"><span class="num">${s.num}.</span><div><h3>${esc(s.title)}</h3><p>${esc(s.subtitle || "")}</p></div><span class="chip${n>0?" some":""}">${chip}</span></div>`;
+    li.onclick = () => openSheet(s.slug);
+    ul.appendChild(li);
+  }
+  document.getElementById("view-hub").classList.remove("hidden");
+  document.getElementById("view-sheet").classList.add("hidden");
+  window.scrollTo(0,0);
+}
+
+/* ---------- sheet ---------- */
+function openSheet(slug){
+  cur = SHEETS.find(s => s.slug === slug);
+  answers = LS.get("sfs_" + slug) || {};
+  location.hash = slug;
+  $("s-num").textContent = cur.num;
+  $("s-title").textContent = cur.title;
+  $("s-subtitle").textContent = cur.subtitle || "";
+  $("s-gentle").innerHTML = `<span class="gt">A GENTLE NOTE BEFORE YOU BEGIN</span>` + esc(cur.gentleNote);
+  $("s-intro").innerHTML = (cur.intro || []).map(p => `<p>${esc(p)}</p>`).join("");
+  $("s-scripture").innerHTML = cur.scripture
+    ? `<div class="scripture">${esc(cur.scripture.text)}<span class="ref">${esc(cur.scripture.ref)}</span></div>` : "";
+  const box = $("s-blocks"); box.innerHTML = "";
+  for(const b of cur.blocks){
+    const div = document.createElement("div");
+    if(b.t === "h") div.innerHTML = `<div class="bh">${esc(b.text)}</div>`;
+    else if(b.t === "p") div.innerHTML = `<p class="bp">${esc(b.text)}</p>`;
+    else if(b.t === "scripture") div.innerHTML = `<div class="scripture">${esc(b.text)}${b.ref?`<span class="ref">${esc(b.ref)}</span>`:""}</div>`;
+    else if(b.t === "q"){
+      div.innerHTML = (b.prompt ? `<p class="prompt">${esc(b.prompt)}</p>` : "") +
+        (b.kind === "short"
+          ? `<input type="text" data-q="${b.id}" value="${esc(answers[b.id] || "")}"/>`
+          : `<textarea data-q="${b.id}">${esc(answers[b.id] || "")}</textarea>`);
+    }
+    else if(b.t === "fill"){
+      const vals = Array.isArray(answers[b.id]) ? answers[b.id] : [];
+      const parts = b.template.split("___");
+      let h = `<p class="fillline">`;
+      parts.forEach((p, i) => {
+        h += esc(p);
+        if(i < parts.length - 1) h += `<input class="short" type="text" data-fill="${b.id}" data-i="${i}" value="${esc(vals[i] || "")}"/>`;
+      });
+      div.innerHTML = h + `</p>`;
+    }
+    else if(b.t === "choice"){
+      div.innerHTML = (b.prompt ? `<p class="prompt">${esc(b.prompt)}</p>` : "") + `<div class="choice-row">` +
+        b.options.map(o => `<label class="${answers[b.id]===o?"sel":""}"><input type="radio" name="c_${b.id}" value="${esc(o)}"${answers[b.id]===o?" checked":""}/>${esc(o)}</label>`).join("") + `</div>`;
+    }
+    else if(b.t === "tag"){
+      const vals = Array.isArray(answers[b.id]) ? answers[b.id] : [];
+      div.innerHTML = (b.prompt ? `<p class="prompt">${esc(b.prompt)}</p>` : "") +
+        b.items.map((it, i) =>
+          `<div class="tag-item"><select data-tag="${b.id}" data-i="${i}"><option value=""></option>` +
+          b.options.map(o=>`<option${vals[i]===o?" selected":""}>${esc(o)}</option>`).join("") +
+          `</select><span>${esc(it)}</span></div>`).join("");
+    }
+    box.appendChild(div);
+  }
+  $("s-remember").innerHTML = `<span class="gt">${esc(cur.rememberLabel || "REMEMBER")}</span>` + esc(cur.remember);
+  $("s-attrib").textContent = cur.attribution || "";
+  // wire inputs
+  box.querySelectorAll("[data-q]").forEach(el => { el.oninput = () => { answers[el.dataset.q] = el.value; saved(); }; });
+  box.querySelectorAll("[data-fill]").forEach(el => { el.oninput = () => {
+    const arr = Array.isArray(answers[el.dataset.fill]) ? answers[el.dataset.fill] : [];
+    arr[Number(el.dataset.i)] = el.value; answers[el.dataset.fill] = arr; saved();
+  }; });
+  box.querySelectorAll("input[type=radio]").forEach(el => { el.onchange = () => {
+    const id = el.name.slice(2); answers[id] = el.value; saved();
+    el.closest(".choice-row").querySelectorAll("label").forEach(l => l.classList.toggle("sel", l.contains(el) && el.checked));
+  }; });
+  box.querySelectorAll("[data-tag]").forEach(el => { el.onchange = () => {
+    const arr = Array.isArray(answers[el.dataset.tag]) ? answers[el.dataset.tag] : [];
+    arr[Number(el.dataset.i)] = el.value; answers[el.dataset.tag] = arr; saved();
+  }; });
+  // nav
+  $("btn-prev-sheet").style.visibility = cur.num === 1 ? "hidden" : "visible";
+  $("btn-next-sheet").style.display = cur.num === 10 ? "none" : "";
+  $("btn-prev-sheet").onclick = () => openSheet(SHEETS[cur.num - 2].slug);
+  $("btn-next-sheet").onclick = () => openSheet(SHEETS[cur.num].slug);
+  // send card reset
+  $("sendcard").classList.add("hidden");
+  $("send-err").classList.add("hidden");
+  $("send-ok").classList.add("hidden");
+  const prev = LS.get("sfs_id") || {};
+  $("send-name").value = prev.name || ""; $("send-email").value = prev.email || "";
+  document.getElementById("view-hub").classList.add("hidden");
+  document.getElementById("view-sheet").classList.remove("hidden");
+  window.scrollTo(0,0);
+}
+function saved(){
+  clearTimeout(saveTimer);
+  $("savestate").textContent = "…";
+  saveTimer = setTimeout(() => { LS.set("sfs_" + cur.slug, answers); $("savestate").textContent = "saved on this device"; }, 400);
+}
+$("back-hub").onclick = () => { location.hash = ""; renderHub(); };
+
+/* ---------- send ---------- */
+$("btn-show-send").onclick = () => $("sendcard").classList.toggle("hidden");
+$("btn-send").onclick = async () => {
+  const name = $("send-name").value.trim(), email = $("send-email").value.trim();
+  const err = $("send-err"), ok = $("send-ok");
+  err.classList.add("hidden"); ok.classList.add("hidden");
+  if(!name || !/^\S+@\S+\.\S+$/.test(email)){ err.textContent = "Enter your name and a valid email."; err.classList.remove("hidden"); return; }
+  $("btn-send").disabled = true; $("btn-send").textContent = "Sending…";
+  try{
+    const r = await fetch(API, { method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({ action:"send", name, email, sheet: cur.slug, answers }) });
+    const j = await r.json().catch(()=>({error:"Bad response"}));
+    if(!r.ok) throw new Error(j.error || ("HTTP " + r.status));
+    LS.set("sfs_id", { name, email });
+    ok.textContent = "Sent. Pastor Chris has it — nothing was stored online.";
+    ok.classList.remove("hidden");
+  }catch(e){ err.textContent = "Sending failed: " + e.message; err.classList.remove("hidden"); }
+  $("btn-send").disabled = false; $("btn-send").textContent = "Send to Pastor Chris";
+};
+
+/* ---------- boot ---------- */
+(function(){
+  const slug = location.hash.replace("#","");
+  if(slug && SHEETS.some(s => s.slug === slug)) openSheet(slug);
+  else renderHub();
+})();
+</script>
+</body>
+</html>
