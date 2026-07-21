@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>When Silence is Sin — Chris Oswald</title>
+<meta name="description" content="A biblical counseling worksheet on speaking the truth in love — discerning when we should speak up. What you write stays on your device." />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2" />
+<link rel="apple-touch-icon" href="/favicon-180.png?v=2" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink:#1c1c1a; --muted:#6b6b63; --accent:#075c2e; --accent-soft:#e8f2ec;
+    --line:#e2dfd8; --paper:#ffffff; --hover:#faf9f5; --bad:#9c2b21;
+    --serif:'Fraunces',Georgia,serif; --sans:'Inter',-apple-system,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:720px;margin:0 auto;padding:5vh 20px 12vh}
+  h1{font-weight:600;font-size:1.9rem;margin:.2em 0 .3em}
+  .sub{font-family:var(--sans);color:var(--muted);font-size:.95rem;line-height:1.55}
+  .sec-label{font-family:var(--sans);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  .subtitle{font-style:italic;color:var(--muted);font-size:1.05rem;margin:.1em 0 .8em}
+  .privacy{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;padding:12px 16px;margin-top:24px;font-family:var(--sans);font-size:.84rem;line-height:1.55}
+  .intro p{font-size:1.02rem;line-height:1.65;margin:0 0 14px}
+  .scripture{border-left:3px solid var(--accent);padding:6px 18px;margin:20px 0;font-style:italic;font-size:1.05rem;line-height:1.6}
+  .scripture .ref{display:block;font-style:normal;font-family:var(--sans);font-size:.8rem;color:var(--muted);margin-top:6px}
+  .secnum{font-family:var(--sans);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:44px 0 4px;border-top:1px solid var(--line);padding-top:26px}
+  .bh{font-family:var(--sans);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:30px 0 6px}
+  .bp{line-height:1.65;margin:10px 0;font-family:var(--sans);color:#3a3a36;font-size:.93rem}
+  .bp b{color:var(--ink)}
+  .instr{font-family:var(--sans);color:var(--muted);font-size:.92rem;line-height:1.6;margin:6px 0 14px}
+  .prompt{font-size:1.02rem;line-height:1.55;margin:18px 0 8px}
+  .plabel{font-family:var(--sans);font-weight:600;font-size:.9rem;color:var(--accent);margin:18px 0 6px}
+  textarea{width:100%;min-height:100px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;font-family:var(--sans);font-size:.95rem;background:var(--hover);resize:vertical;line-height:1.6}
+  input[type=text],input[type=email]{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-family:var(--sans);font-size:.95rem;background:var(--hover)}
+  textarea:focus,input:focus{outline:2px solid var(--accent);outline-offset:1px}
+  .gentle{border:1px solid var(--line);border-radius:10px;background:var(--hover);padding:16px 20px;margin:18px 0;font-family:var(--sans);font-size:.9rem;line-height:1.6}
+  .gentle .gt{font-size:.72rem;letter-spacing:.1em;font-weight:600;color:var(--accent);display:block;margin-bottom:6px}
+  .remember{border:1px solid var(--line);border-radius:10px;background:var(--accent-soft);padding:18px 22px;margin:34px 0 0;line-height:1.65}
+  .remember .gt{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;font-weight:600;color:var(--accent);display:block;margin-bottom:6px}
+  .attrib{font-family:var(--sans);font-size:.75rem;color:var(--muted);margin-top:26px;line-height:1.5}
+  button{font-family:var(--sans);font-weight:600;font-size:.95rem;border-radius:8px;padding:11px 20px;cursor:pointer;border:1px solid var(--line);background:var(--paper);color:var(--ink)}
+  button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  button:disabled{opacity:.5;cursor:default}
+  .topbar{display:flex;justify-content:space-between;align-items:center;font-family:var(--sans);font-size:.82rem;color:var(--muted);margin-bottom:14px}
+  .topbar a{cursor:pointer;color:var(--accent);text-decoration:none}
+  .actions{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+  .sendcard{border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin-top:18px}
+  .sendcard label{font-family:var(--sans);font-size:.84rem;font-weight:600;display:block;margin:12px 0 5px}
+  .note{font-family:var(--sans);font-size:.82rem;color:var(--muted);line-height:1.55}
+  .err{color:var(--bad);font-family:var(--sans);font-size:.88rem;margin-top:10px}
+  .ok{color:var(--accent);font-family:var(--sans);font-size:.95rem;font-weight:600;margin-top:10px}
+  .savestate{font-family:var(--sans);font-size:.78rem;color:var(--muted)}
+  .hidden{display:none}
+  @media print {
+    .topbar,.actions,.sendcard,button{display:none !important}
+    textarea,input{border:none;background:#fff;padding:2px 0}
+    body{font-size:12px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a href="/quizzes/">← All quizzes &amp; worksheets</a>
+    <span class="savestate" id="savestate">saved on this device</span>
+  </div>
+
+  <span class="sec-label">Biblical counseling homework</span>
+  <h1>When Silence is Sin</h1>
+  <p class="subtitle">Discerning When We Should Speak Up and &ldquo;Say the Thing&rdquo;</p>
+  <p class="sub">A self-examination worksheet on speaking the truth in love — for those moments when the fear of another person's pain or reaction tempts us to withhold what should be said. Write honestly and specifically; there is no score and no grade.</p>
+
+  <div class="intro" style="margin-top:26px">
+    <div class="bh">Before you begin</div>
+    <p>Edwin Friedman, in his family-systems thinking (<i>A Failure of Nerve</i>), observed that people often withhold truth or avoid necessary confrontation not primarily because the other person &ldquo;couldn't handle it,&rdquo; but because the withholder has a low tolerance for the other person's emotional pain, distress, or reactive response. This leads to secrecy, enabling, triangulation, and emotional fusion that ultimately harms the relationship and prevents growth. The secret-keeper prioritizes short-term relational &ldquo;peace&rdquo; — or their own comfort — over long-term health.</p>
+    <p>In biblical categories, this maps powerfully onto <b>truth and love</b>, <b>walking in the light</b>, <b>integrity vs. deception</b>, and <b>the fear of man vs. the fear of God</b>:</p>
+    <p class="bp"><b>Speaking the truth in love</b> (Ephesians 4:15) — Biblical love is not sentimental avoidance of discomfort. It is courageous, others-oriented honesty that builds up the body of Christ toward maturity. Withholding truth out of a low &ldquo;pain tolerance&rdquo; is often a failure to love well.</p>
+    <p class="bp"><b>Walking in the light</b> (1 John 1:5-7) — God is light, and in Him is no darkness. Fellowship and cleansing happen in the light; hiding truth to spare someone (or oneself) pain is walking in darkness.</p>
+    <p class="bp"><b>Integrity and the fear of the Lord</b> (Proverbs 12:22; 29:25) — &ldquo;The fear of man lays a snare.&rdquo; Rationalizing secrecy as &ldquo;protecting&rdquo; someone is often idolatry of human approval over obedience to God.</p>
+    <p class="bp"><b>Confrontation and restoration</b> (Matthew 18:15-17; Galatians 6:1-2) — Direct, private confrontation first, not avoidance; restoring the sinning brother gently while bearing burdens, entering the pain rather than shielding from it.</p>
+    <p class="bp"><b>Maturity through suffering</b> (Romans 5:3-5; James 1:2-4) — Trials and facing consequences produce perseverance, character, and hope. Shielding people chronically from truth stunts this.</p>
+    <p>In short, the secret-keeper's low pain tolerance is a form of <b>selfish fear masquerading as love</b>. Biblical love and truth-telling require dying to self, trusting God with the outcomes, and believing the Spirit can use truth to bring repentance, healing, and deeper fellowship.</p>
+  </div>
+
+  <div class="gentle">
+    <span class="gt">Purpose &amp; Instructions</span>
+    This worksheet is meant to help you examine ways you may be withholding truth due to a low tolerance for others' pain (or your own discomfort), repent, and practice gospel-motivated honesty that builds biblical love and fellowship. Work through it daily or as your counselor specifies. Be specific and concrete. Everything you write is saved on this device; when you're ready you can print it or share a finished copy with Pastor Chris.
+  </div>
+
+  <div id="worksheet">
+
+    <!-- SECTION 1 -->
+    <div class="secnum email-sec" data-sec="1. Scripture Study and Meditation">1. Scripture Study and Meditation</div>
+    <p class="instr">Read and meditate on the following passages (15–20 minutes daily). For each one, answer in your own words: <b>What does this teach about truth, honesty, love, or walking in the light? How does it expose any &ldquo;pain tolerance&rdquo; issues in my life?</b></p>
+
+    <p class="plabel">Ephesians 4:15, 25-32 — Speak the truth in love; put away falsehood</p>
+    <textarea id="q1a" data-q="Ephesians 4:15, 25-32 (speak truth in love; put away falsehood)"></textarea>
+
+    <p class="plabel">1 John 1:5-10 — Walk in the light; confession and cleansing</p>
+    <textarea id="q1b" data-q="1 John 1:5-10 (walk in the light; confession and cleansing)"></textarea>
+
+    <p class="plabel">Proverbs 27:5-6 &amp; 29:25 — &ldquo;Faithful are the wounds of a friend&rdquo;; the fear of man</p>
+    <textarea id="q1c" data-q="Proverbs 27:5-6 & 29:25 (faithful wounds of a friend; fear of man)"></textarea>
+
+    <p class="plabel">Galatians 6:1-2 &amp; Matthew 18:15-17 — Restoring others</p>
+    <textarea id="q1d" data-q="Galatians 6:1-2 & Matthew 18:15-17 (restoring others)"></textarea>
+
+    <p class="plabel">Colossians 3:9-10 &amp; Ephesians 4:22-24 — Put off the old self; speak truth</p>
+    <textarea id="q1e" data-q="Colossians 3:9-10 & Ephesians 4:22-24 (put off the old self; speak truth)"></textarea>
+
+    <div class="gentle" style="margin-top:20px"><span class="gt">Memorize this week</span>Ephesians 4:15 and 1 John 1:7.</div>
+
+    <!-- SECTION 2 -->
+    <div class="secnum email-sec" data-sec="2. Self-Examination">2. Self-Examination</div>
+    <p class="instr">Prayerfully answer these questions. Complete once, then review daily.</p>
+
+    <p class="prompt">In what current relationship(s) am I tempted to keep a secret, withhold important information, or avoid a hard conversation because I fear the other person's pain, anger, disappointment, or rejection? Be specific (e.g., a family secret, a financial issue, an observed sin).</p>
+    <textarea id="q2a" data-q="Where am I withholding truth or avoiding a hard conversation out of fear? (Be specific.)"></textarea>
+
+    <p class="prompt">What am I telling myself to rationalize this? (&ldquo;It would destroy them&rdquo;; &ldquo;They couldn't handle it&rdquo;; &ldquo;It's kinder this way&rdquo;; &ldquo;I'll lose access to them or their kids.&rdquo;) How does this compare to Scripture? With this approach, am I trusting myself or God?</p>
+    <textarea id="q2b" data-q="What rationalizations am I telling myself, and how do they compare to Scripture?"></textarea>
+
+    <p class="prompt">How is this rooted in my own fear, selfishness, or desire for comfort rather than love for God and neighbor?</p>
+    <textarea id="q2c" data-q="How is this rooted in my own fear, selfishness, or comfort rather than love?"></textarea>
+
+    <p class="prompt">What potential good (repentance, growth, deeper trust) might come if truth is brought into the light? What risks am I trusting God with?</p>
+    <textarea id="q2d" data-q="What good might come if truth comes to light, and what risks am I trusting God with?"></textarea>
+
+    <!-- SECTION 3 -->
+    <div class="secnum email-sec" data-sec="3. Repentance and Prayer">3. Repentance and Prayer</div>
+    <p class="instr">Pray through these daily.</p>
+
+    <p class="prompt">Confess specific instances of deceit or avoidance to God. Ask for forgiveness through Christ's blood (1 John 1:9).</p>
+    <textarea id="q3a" data-q="Confession of specific deceit or avoidance (1 John 1:9)"></textarea>
+
+    <p class="prompt">Pray for courage, wisdom, and a higher &ldquo;pain threshold&rdquo; to love others biblically. Write your prayer. <span style="color:var(--muted)">(e.g., &ldquo;Lord, help me walk in the light as You are in the light. Give me grace to speak truth in love, trusting You with the results.&rdquo;)</span></p>
+    <textarea id="q3b" data-q="My prayer for courage, wisdom, and a higher 'pain threshold'"></textarea>
+
+    <p class="prompt">Pray for the person(s) involved — for their heart to receive truth, and for your relationship to reflect gospel fellowship.</p>
+    <textarea id="q3c" data-q="My prayer for the person(s) involved"></textarea>
+
+    <!-- SECTION 4 -->
+    <div class="secnum email-sec" data-sec="4. Practical Application Steps (This Week)">4. Practical Application Steps</div>
+    <p class="instr">Choose <b>one</b> situation to address this week (start small if needed; you can build). Plan it and carry it out.</p>
+
+    <p class="plabel">Prepare</p>
+    <p class="instr" style="margin-top:0">Write out, in your own words, what truth needs to be spoken, how it connects to Scripture, and how you will aim for restoration and love (tone, timing, setting).</p>
+    <textarea id="q4a" data-q="Prepare: the truth to speak, its Scripture connection, and my plan for tone/timing/setting"></textarea>
+
+    <p class="plabel">Do it</p>
+    <p class="instr" style="margin-top:0">Have the conversation privately and gently. Focus on facts, your own heart, and the other's good. Note what you will do — or what happened when you did.</p>
+    <textarea id="q4b" data-q="Do it: the conversation, kept private and gentle"></textarea>
+
+    <p class="plabel">Follow up</p>
+    <p class="instr" style="margin-top:0">Journal what happened, how you handled their reaction (or the anticipated pain), and what God taught you. If appropriate, involve a wise third party for accountability.</p>
+    <textarea id="q4c" data-q="Follow up: what happened, how I handled their reaction, and what God taught me"></textarea>
+
+    <div class="gentle" style="margin-top:20px"><span class="gt">A word of caution</span>If the situation feels too complex or dangerous, discuss alternatives with Pastor Chris or church leadership first (e.g., involving church leadership per Matthew 18).</div>
+
+    <!-- SECTION 5 -->
+    <div class="secnum email-sec" data-sec="5. Accountability and Reflection">5. Accountability and Reflection</div>
+
+    <p class="prompt">Who is a trusted fellow believer you will share this assignment with for prayer and accountability this week?</p>
+    <input type="text" id="q5a" data-q="Accountability partner" placeholder="Name" />
+
+    <p class="prompt" style="margin-top:18px">Report back to them on your progress. Notes on those conversations:</p>
+    <textarea id="q5b" data-q="Accountability notes / progress reported"></textarea>
+
+    <p class="prompt">At the end of the week, write a one-page summary: What did I learn about my heart? How has walking in the light changed my view of love? What will I continue doing?</p>
+    <textarea id="q5c" data-q="End-of-week one-page summary" style="min-height:150px"></textarea>
+
+  </div>
+
+  <div class="remember">
+    <span class="gt">Expected outcome</span>
+    Greater freedom in Christ, deeper relationships marked by truth and love, and growth in Christlike courage. This assignment puts feet on the theology: truth in love isn't optional; it's the path to real fellowship and sanctification. If you're struggling, remember the cross — Jesus endured ultimate pain to bring us into the light. He gives grace to follow Him.
+  </div>
+
+  <p class="attrib">Adapted from a biblical counseling homework assignment by Pastor Chris Oswald. The diagnostic framework draws on Edwin Friedman, <i>A Failure of Nerve</i>.</p>
+
+  <div class="actions">
+    <button onclick="window.print()">Print this worksheet</button>
+    <button id="btn-show-send">Share with Pastor Chris…</button>
+  </div>
+  <div class="sendcard hidden" id="sendcard">
+    <p class="note">This emails your completed worksheet directly — and only — to Pastor Chris. Nothing is stored online; the email is the only copy. He'll know it's from you and can follow up.</p>
+    <label for="send-name">Your name</label>
+    <input id="send-name" type="text" autocomplete="name" />
+    <label for="send-email">Your email</label>
+    <input id="send-email" type="email" autocomplete="email" />
+    <button class="primary" id="btn-send" style="margin-top:14px">Send to Pastor Chris</button>
+    <div id="send-err" class="err hidden"></div>
+    <div id="send-ok" class="ok hidden"></div>
+  </div>
+
+</div>
+
+<script>
+const API = "https://twbunmbzyqcqzgffdrib.supabase.co/functions/v1/worksheet-share";
+const FORM_TITLE = "When Silence is Sin";
+const FORM_SLUG = "when-silence-is-sin";
+const LSKEY = "wss_answers";
+const $ = (x) => document.getElementById(x);
+const LS = {
+  get(k){ try{ return JSON.parse(localStorage.getItem(k) || "null"); }catch(e){ return null; } },
+  set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} },
+};
+let saveTimer = null;
+
+const fields = Array.from(document.querySelectorAll("#worksheet [data-q]"));
+
+// restore
+(function(){
+  const saved = LS.get(LSKEY) || {};
+  fields.forEach(el => { if(saved[el.id] != null) el.value = saved[el.id]; });
+  const id = LS.get("wss_id") || {};
+  $("send-name").value = id.name || ""; $("send-email").value = id.email || "";
+})();
+
+// autosave
+function persist(){
+  const data = {};
+  fields.forEach(el => { data[el.id] = el.value; });
+  LS.set(LSKEY, data);
+  $("savestate").textContent = "saved on this device";
+}
+fields.forEach(el => el.addEventListener("input", () => {
+  clearTimeout(saveTimer);
+  $("savestate").textContent = "…";
+  saveTimer = setTimeout(persist, 400);
+}));
+
+// collect items (section markers + q/a) in document order
+function collectItems(){
+  const items = [];
+  document.querySelectorAll("#worksheet .email-sec, #worksheet [data-q]").forEach(el => {
+    if(el.classList.contains("email-sec")) items.push({ section: el.dataset.sec });
+    else items.push({ q: el.dataset.q, a: (el.value || "").trim() });
+  });
+  return items;
+}
+
+// share
+$("btn-show-send").onclick = () => $("sendcard").classList.toggle("hidden");
+$("btn-send").onclick = async () => {
+  const name = $("send-name").value.trim(), email = $("send-email").value.trim();
+  const err = $("send-err"), ok = $("send-ok");
+  err.classList.add("hidden"); ok.classList.add("hidden");
+  if(!name || !/^\S+@\S+\.\S+$/.test(email)){ err.textContent = "Enter your name and a valid email."; err.classList.remove("hidden"); return; }
+  const items = collectItems();
+  if(!items.some(it => it.a && it.a.length)){ err.textContent = "Write something on the worksheet before sending it."; err.classList.remove("hidden"); return; }
+  $("btn-send").disabled = true; $("btn-send").textContent = "Sending…";
+  try{
+    const r = await fetch(API, { method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({ action:"send", form: FORM_TITLE, slug: FORM_SLUG, name, email, items }) });
+    const j = await r.json().catch(()=>({error:"Bad response"}));
+    if(!r.ok) throw new Error(j.error || ("HTTP " + r.status));
+    LS.set("wss_id", { name, email });
+    ok.textContent = "Sent. Pastor Chris has it — nothing was stored online.";
+    ok.classList.remove("hidden");
+  }catch(e){ err.textContent = "Sending failed: " + e.message; err.classList.remove("hidden"); }
+  $("btn-send").disabled = false; $("btn-send").textContent = "Send to Pastor Chris";
+};
+</script>
+</body>
+</html>
