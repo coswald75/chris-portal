@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Marriage Counseling Intake — Providence Community Church</title>
+<meta name="description" content="Confidential marital counseling intake form." />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink:#1c1c1a; --muted:#6b6b63; --accent:#075c2e; --accent-soft:#e8f2ec;
+    --line:#e2dfd8; --paper:#ffffff; --hover:#faf9f5; --bad:#9c2b21;
+    --serif:'Fraunces',Georgia,serif; --sans:'Inter',-apple-system,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:5vh 20px 12vh}
+  h1{font-weight:600;font-size:1.9rem;margin:.2em 0 .3em}
+  h2{font-weight:500;font-size:1.4rem;margin:.25em 0 .6em}
+  .sub{font-family:var(--sans);color:var(--muted);font-size:.95rem;line-height:1.55}
+  .sec-label{font-family:var(--sans);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  .card{border:1px solid var(--line);border-radius:12px;padding:28px;margin-top:24px;background:var(--paper)}
+  label.f{font-family:var(--sans);font-size:.86rem;font-weight:600;display:block;margin:16px 0 6px;line-height:1.45}
+  label.f .req{color:var(--bad)}
+  .hint{font-family:var(--sans);font-size:.78rem;color:var(--muted);margin:2px 0 6px}
+  input[type=text],input[type=email],input[type=password],input[type=date],input[type=number],textarea,select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-family:var(--sans);font-size:.95rem;background:var(--hover)}
+  textarea{min-height:84px;resize:vertical}
+  input:focus,textarea:focus,select:focus{outline:2px solid var(--accent);outline-offset:1px}
+  button{font-family:var(--sans);font-weight:600;font-size:.95rem;border-radius:8px;padding:11px 20px;cursor:pointer;border:1px solid var(--line);background:var(--paper);color:var(--ink)}
+  button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  button.small{padding:6px 12px;font-size:.82rem}
+  button:disabled{opacity:.5;cursor:default}
+  .radio-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+  .radio-row label{display:flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:8px;padding:8px 14px;background:var(--hover);cursor:pointer;font-family:var(--sans);font-size:.9rem}
+  .radio-row label.sel{border-color:var(--accent);background:var(--accent-soft)}
+  .radio-row input{accent-color:var(--accent)}
+  .checks{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:6px;margin-top:6px}
+  .checks label{display:flex;align-items:center;gap:7px;font-family:var(--sans);font-size:.88rem;padding:6px 8px;border-radius:6px;cursor:pointer}
+  .checks label:hover{background:var(--hover)}
+  .checks input{accent-color:var(--accent)}
+  table.tbl{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:.85rem;margin-top:8px}
+  table.tbl th{background:var(--accent-soft);text-align:left;padding:6px 8px;font-size:.78rem}
+  table.tbl td{padding:3px}
+  table.tbl input,table.tbl select{padding:7px 8px;font-size:.85rem}
+  .rank-row{display:flex;gap:10px;align-items:center;margin-top:6px;font-family:var(--sans)}
+  .rank-row .n{color:var(--accent);font-weight:600;width:20px;text-align:right}
+  .topbar{display:flex;justify-content:space-between;align-items:center;font-family:var(--sans);font-size:.82rem;color:var(--muted);margin-bottom:8px}
+  .progressbar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin:6px 0 24px}
+  .progressbar>div{height:100%;background:var(--accent);transition:width .3s}
+  .nav{display:flex;justify-content:space-between;align-items:center;margin-top:28px;gap:12px}
+  .savestate{font-family:var(--sans);font-size:.8rem;color:var(--muted);min-width:70px;text-align:center}
+  .consent-text{font-family:var(--sans);font-size:.88rem;line-height:1.65;color:var(--ink)}
+  .consent-text p{margin:0 0 14px}
+  .err{color:var(--bad);font-family:var(--sans);font-size:.88rem;margin-top:10px;line-height:1.5}
+  .missing{border:1px solid var(--bad);border-radius:8px;padding:14px 18px;margin-top:16px;font-family:var(--sans);font-size:.86rem;line-height:1.6}
+  .missing ul{margin:6px 0 0;padding-left:18px}
+  .spin{display:inline-block;width:16px;height:16px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:sp 1s linear infinite;vertical-align:-3px;margin-right:8px}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  .hidden{display:none}
+  .note{font-family:var(--sans);font-size:.82rem;color:var(--muted);line-height:1.55}
+  .big-ok{font-size:3rem;text-align:center;color:var(--accent);margin:20px 0 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- LOGIN -->
+  <div id="view-login">
+    <span class="sec-label">Providence Community Church, Lenexa · Counseling</span>
+    <h1>Marriage Counseling Intake</h1>
+    <p class="sub">This is the personal history and problem evaluation form for marital counseling. It takes 20–40 minutes; your progress saves automatically, and you can log back in from any device to continue. Each spouse fills out their own form. When you submit, your completed form goes directly and only to Pastor Chris, and your online draft is deleted.</p>
+    <div class="card">
+      <label class="f" for="email">Email</label>
+      <input id="email" type="email" autocomplete="email" placeholder="you@example.com" />
+      <label class="f" for="password">Password</label>
+      <input id="password" type="password" autocomplete="current-password" placeholder="At least 6 characters" />
+      <p class="hint">First time? Your password is created now — remember it to resume later.</p>
+      <div id="name-row">
+        <label class="f" for="fullname">Your name <span class="note">(first visit only)</span></label>
+        <input id="fullname" type="text" autocomplete="name" placeholder="Full name" />
+      </div>
+      <button class="primary" id="btn-login" style="margin-top:14px">Open my form</button>
+      <div id="login-err" class="err hidden"></div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div id="view-form" class="hidden">
+    <div class="topbar">
+      <span id="who"></span>
+      <span class="savestate" id="savestate"></span>
+    </div>
+    <div class="progressbar"><div id="pbar" style="width:0%"></div></div>
+    <span class="sec-label">Part <span id="sec-pos"></span> of <span id="sec-total"></span></span>
+    <h2 id="sec-title"></h2>
+    <div id="consent-block" class="consent-text hidden"></div>
+    <div id="fields"></div>
+    <div class="nav">
+      <button id="btn-prev">← Back</button>
+      <span class="note" id="req-note">Fields marked <span style="color:var(--bad)">*</span> are required.</span>
+      <button class="primary" id="btn-next">Next →</button>
+    </div>
+    <div id="missing-box" class="missing hidden"></div>
+    <div id="submit-err" class="err hidden"></div>
+  </div>
+
+  <!-- SENDING -->
+  <div id="view-sending" class="hidden">
+    <div class="card" style="text-align:center;padding:60px 28px">
+      <h2><span class="spin"></span>Sending your form…</h2>
+      <p class="sub">Delivering it to Pastor Chris and deleting your online draft.</p>
+    </div>
+  </div>
+
+  <!-- DONE -->
+  <div id="view-done" class="hidden">
+    <div class="card" style="text-align:center;padding:50px 28px">
+      <div class="big-ok">✓</div>
+      <h2>Your form has been sent</h2>
+      <p class="sub" id="done-msg">It went directly to Pastor Chris at Providence Community Church. Your online draft has been deleted — the email is the only copy. He'll be in touch about next steps before your first appointment.</p>
+    </div>
+  </div>
+
+</div>
+<script>
+const API = "https://twbunmbzyqcqzgffdrib.supabase.co/functions/v1/marriage-intake";
+const FORM = {"title": "Marital Counseling Intake Form", "subtitle": "Personal History / Problem Evaluation", "sections": [{"id": "ident", "title": "Identification Data", "fields": [{"id": "name", "label": "Name", "type": "text", "req": true}, {"id": "phone", "label": "Phone", "type": "text", "req": true}, {"id": "form_date", "label": "Date", "type": "date", "req": true}, {"id": "address", "label": "Address", "type": "text", "req": true}, {"id": "occupation", "label": "Occupation", "type": "text", "req": true}, {"id": "business_phone", "label": "Business Phone", "type": "text"}, {"id": "gender", "label": "Gender", "type": "radio", "options": ["Male", "Female"], "req": true}, {"id": "dob", "label": "Date of Birth", "type": "date", "req": true}, {"id": "age", "label": "Age", "type": "number", "req": true}, {"id": "education_last_grade", "label": "Education: last grade completed (prior to college)", "type": "text", "req": true}, {"id": "education_other", "label": "Other education (list type and years)", "type": "text"}, {"id": "referred_by", "label": "Referred here by", "type": "text"}, {"id": "referred_address", "label": "Referrer's address", "type": "text"}]}, {"id": "family", "title": "Marriage and Family Information", "fields": [{"id": "spouse_name", "label": "Name of spouse", "type": "text", "req": true}, {"id": "spouse_address", "label": "Spouse's address", "type": "text"}, {"id": "spouse_phone", "label": "Spouse's phone", "type": "text"}, {"id": "spouse_business_phone", "label": "Spouse's business phone", "type": "text"}, {"id": "spouse_occupation", "label": "Spouse's occupation", "type": "text"}, {"id": "spouse_age", "label": "Spouse's age", "type": "number", "req": true}, {"id": "spouse_education_years", "label": "Spouse's education (in years)", "type": "text"}, {"id": "spouse_religion", "label": "Spouse's religion", "type": "text"}, {"id": "spouse_willing", "label": "If your spouse is not with you now, would he or she be willing to come in for counseling?", "type": "radio", "options": ["Yes", "No", "Uncertain"], "req": true}, {"id": "ever_separated", "label": "Have you ever been separated?", "type": "radio", "options": ["Yes", "No"], "req": true}, {"id": "separated_times", "label": "If yes, how many times?", "type": "text", "showIf": {"field": "ever_separated", "equals": "Yes"}}, {"id": "separated_now", "label": "Are you separated now?", "type": "radio", "options": ["Yes", "No"], "req": true}, {"id": "married_how_long", "label": "How long have you been married?", "type": "text", "req": true}, {"id": "knew_before_marriage", "label": "How long did you know your spouse before marriage?", "type": "text", "req": true}, {"id": "steady_dating", "label": "Length of steady dating with spouse", "type": "text", "req": true}, {"id": "engagement_length", "label": "How long was your engagement?", "type": "text", "req": true}, {"id": "prev_marriage_husband", "label": "Previous marriages — husband (brief information)", "type": "textarea", "hint": "Write N/A if none."}, {"id": "prev_marriage_wife", "label": "Previous marriages — wife (brief information)", "type": "textarea", "hint": "Write N/A if none."}, {"id": "children", "label": "Children", "type": "table", "addLabel": "Add child", "columns": [{"id": "cname", "label": "Name", "type": "text"}, {"id": "cage", "label": "Age", "type": "text"}, {"id": "cgender", "label": "Gender", "type": "select", "options": ["", "M", "F"]}, {"id": "cliving", "label": "Living?", "type": "select", "options": ["", "Yes", "No"]}, {"id": "ceducation", "label": "Education (yrs)", "type": "text"}, {"id": "cmarital", "label": "Marital status", "type": "text"}, {"id": "cpm", "label": "By previous marriage?", "type": "select", "options": ["", "Yes", "No"]}]}]}, {"id": "religion", "title": "Religious Background", "fields": [{"id": "church_current", "label": "Church currently attending", "type": "text", "req": true, "hint": "Write None if not attending."}, {"id": "church_address", "label": "Church address", "type": "text"}, {"id": "pastor_name", "label": "Pastor's name", "type": "text"}, {"id": "pastor_phone", "label": "Pastor's phone", "type": "text"}, {"id": "contact_pastor", "label": "May we contact your pastor for information and help?", "type": "radio", "options": ["Yes", "No", "Maybe"], "req": true}, {"id": "attendance_per_month", "label": "Church attendance per month", "type": "select", "options": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10+"], "req": true}, {"id": "church_childhood", "label": "Church attended in childhood", "type": "text"}, {"id": "baptized", "label": "Have you been baptized?", "type": "radio", "options": ["Yes", "No"], "req": true}, {"id": "baptized_when", "label": "When?", "type": "text", "showIf": {"field": "baptized", "equals": "Yes"}}, {"id": "spouse_religious_background", "label": "Religious background of spouse", "type": "text"}, {"id": "spouse_church", "label": "Spouse's church attendance — church", "type": "text"}, {"id": "spouse_church_frequency", "label": "Spouse's church attendance — frequency", "type": "text"}, {"id": "believe_god", "label": "Do you believe in God?", "type": "radio", "options": ["Yes", "No", "Uncertain"], "req": true}, {"id": "born_again", "label": "Do you consider yourself to be born again?", "type": "radio", "options": ["Yes", "No", "Uncertain"], "req": true}, {"id": "pray", "label": "Do you pray to God?", "type": "radio", "options": ["Never", "Occasionally", "Often"], "req": true}, {"id": "read_bible", "label": "Do you read the Bible?", "type": "radio", "options": ["Never", "Occasionally", "Often"], "req": true}, {"id": "family_devotions", "label": "Do you have family devotions?", "type": "radio", "options": ["Never", "Occasionally", "Regularly"], "req": true}, {"id": "heaven_certain", "label": "Do you know for certain that if you died tonight you would go to Heaven?", "type": "radio", "options": ["Yes", "No"], "req": true}, {"id": "heaven_basis", "label": "What is the basis for answering the above question as you did?", "type": "textarea", "req": true}, {"id": "received_christ", "label": "Have you received Jesus Christ personally as your Savior?", "type": "radio", "options": ["Yes", "No", "Don't know what you mean"], "req": true}, {"id": "how_know_savior", "label": "How do you know that Jesus Christ is your Savior?", "type": "textarea", "showIf": {"field": "received_christ", "equals": "Yes"}}, {"id": "changes_when_saved", "label": "If you have received Christ as Savior, what changes took place in your life when you became saved?", "type": "textarea", "showIf": {"field": "received_christ", "equals": "Yes"}}]}, {"id": "personality", "title": "Personality Information", "fields": [{"id": "prior_counseling", "label": "Have you had any psychotherapy or other counseling before?", "type": "radio", "options": ["Yes", "No"], "req": true}, {"id": "counseling_history", "label": "Counseling history", "type": "table", "addLabel": "Add counselor", "showIf": {"field": "prior_counseling", "equals": "Yes"}, "columns": [{"id": "hname", "label": "Counselor/Therapist name", "type": "text"}, {"id": "hdates", "label": "Dates (to/from)", "type": "text"}, {"id": "hmeds", "label": "Medication prescribed", "type": "text"}, {"id": "houtcome", "label": "Outcome and diagnosis", "type": "text"}]}, {"id": "personality_words", "label": "Check any of the following words that you believe best describe you", "type": "checks", "req": true, "options": ["Active", "Ambitious", "Self-confident", "Persistent", "Nervous", "Hardworking", "Impatient", "Impulsive", "Moody", "Often-blue", "Excitable", "Imaginative", "Calm", "Serious", "Easy-going", "Shy", "Good natured", "Introvert", "Extrovert", "Likable", "Quiet", "Leader", "Thick-skinned", "Submissive", "Sensitive", "Self-conscious", "Lonely"]}, {"id": "personality_other", "label": "Other words that describe you", "type": "text"}]}, {"id": "health", "title": "Health Information", "fields": [{"id": "health_rating", "label": "Rate your health", "type": "radio", "options": ["Very Good", "Good", "Average", "Declining", "Other"], "req": true}, {"id": "health_other", "label": "If Other, describe", "type": "text", "showIf": {"field": "health_rating", "equals": "Other"}}, {"id": "weight", "label": "Your approximate weight (lbs)", "type": "text", "req": true}, {"id": "weight_changes", "label": "Recent weight changes", "type": "text", "hint": "Write None if none."}, {"id": "illnesses", "label": "List all important present or past illnesses, injuries or handicaps", "type": "textarea", "req": true, "hint": "Write None if none."}, {"id": "illnesses_limit", "label": "Do any of the above illnesses or handicaps limit you in any way?", "type": "radio", "options": ["Yes", "No"], "req": true}, {"id": "limit_describe", "label": "Please describe", "type": "textarea", "showIf": {"field": "illnesses_limit", "equals": "Yes"}}, {"id": "last_exam_date", "label": "Date of last medical examination", "type": "text", "req": true}, {"id": "last_exam_results", "label": "Results", "type": "text"}, {"id": "physician", "label": "Your physician", "type": "text"}, {"id": "physician_address", "label": "Physician's address", "type": "text"}, {"id": "alcohol", "label": "Do you drink alcoholic beverages?", "type": "radio", "options": ["Yes", "No"], "req": true}, {"id": "alcohol_when", "label": "When?", "type": "text", "showIf": {"field": "alcohol", "equals": "Yes"}}, {"id": "alcohol_how_much", "label": "How much?", "type": "text", "showIf": {"field": "alcohol", "equals": "Yes"}}, {"id": "medication_now", "label": "Are you presently taking medication?", "type": "radio", "options": ["Yes", "No"], "req": true}, {"id": "medication_what", "label": "What?", "type": "text", "showIf": {"field": "medication_now", "equals": "Yes"}}, {"id": "medication_dosage", "label": "Dosage", "type": "text", "showIf": {"field": "medication_now", "equals": "Yes"}}, {"id": "drugs_nonmedical", "label": "Have you used drugs for other than medical purposes?", "type": "radio", "options": ["Yes", "No"], "req": true}, {"id": "drugs_when", "label": "When?", "type": "text", "showIf": {"field": "drugs_nonmedical", "equals": "Yes"}}, {"id": "drugs_what", "label": "What?", "type": "text", "showIf": {"field": "drugs_nonmedical", "equals": "Yes"}}, {"id": "drugs_amount", "label": "Amount / dosages", "type": "text", "showIf": {"field": "drugs_nonmedical", "equals": "Yes"}}, {"id": "emotional_upset", "label": "Have you ever had a severe emotional upset?", "type": "radio", "options": ["Yes", "No"], "req": true}, {"id": "upset_when", "label": "When?", "type": "text", "showIf": {"field": "emotional_upset", "equals": "Yes"}}, {"id": "upset_describe", "label": "If yes, please describe briefly", "type": "textarea", "showIf": {"field": "emotional_upset", "equals": "Yes"}}]}, {"id": "problems", "title": "Problem Areas in Your Marriage", "fields": [{"id": "problem_areas", "label": "Please check any of the following general problem areas in your marriage", "type": "checks", "req": true, "options": ["Not resolving conflicts", "Lack of communication", "Struggling in your Christian walk", "Conflicts over decision making", "Credit or debt problems", "Selfishness", "Interference from in-laws", "Unrealistic expectations", "Possessiveness or jealousy", "Drug or alcohol abuse", "Pornography or gambling abuse", "Sexual frustration", "Depression", "Unforgiveness", "Anger", "Adultery", "Lack of involvement or discipline problems with the children", "Overcommitment outside the home; job, sports, etc."], "hint": "Check all that apply. If none apply, say so in the ranked list below."}, {"id": "ranked_problems", "label": "Please specify, in order of severity, the specific problems that you are having in your marriage", "type": "rank", "rows": 8, "reqRows": 1}, {"id": "tried_resolve", "label": "What have you done to try to resolve these problems?", "type": "textarea", "req": true}, {"id": "prior_marriage_counseling", "label": "Have you ever had marriage counseling for these problems? If yes, please explain when, where, and how often you were counseled.", "type": "textarea", "req": true, "hint": "Write No if you haven't."}, {"id": "other_counselor_now", "label": "Are you going to any other counselor right now? If yes, please give their name and how often you see them.", "type": "textarea", "req": true, "hint": "Write No if you aren't."}]}, {"id": "basic", "title": "Basic Problem Identification", "fields": [{"id": "motivating_problem", "label": "Is there one problem which has motivated you to make this appointment today?", "type": "textarea", "req": true}, {"id": "expectations", "label": "What are you expecting to receive from this counseling?", "type": "textarea", "req": true}, {"id": "other_info", "label": "Is there any other information that you think we should know?", "type": "textarea"}, {"id": "marriage_rating", "label": "On a scale from 1 to 10, how would you rate your marriage? (Ten meaning you are very satisfied with your relationship)", "type": "select", "options": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], "req": true}]}, {"id": "consent", "title": "Consent to Counseling", "consentText": ["Our Goal — Our goal in providing Christian counseling is to help you meet the challenges of life in a way that will please and honor the Lord Jesus Christ and allow you to fully enjoy His love and plans for your life.", "Biblical Basis — We believe that the Bible provides thorough guidance and instruction for faith and life. Therefore, our counseling is based on scriptural principles rather than those of secular psychology or psychiatry. Neither the pastoral nor the lay counselors of this church are trained or licensed as psychotherapists or mental health professionals.", "Confidentiality — Confidentiality is an important aspect of the counseling process, and we will carefully guard the information you entrust to us. However, there are five situations when it may be necessary for us to share certain information with others: when a counselor is uncertain of how to address a particular problem and needs to seek advice from another pastor or elder in this church; when a counselee attends another church and it is necessary to talk with his or her pastor or elders; when there is a clear indication that someone may be harmed unless others intervene; when a person persistently refuses to renounce a particular sin and it becomes necessary to seek the assistance of others in the church to encourage repentance and reconciliation; or when a crime has been committed (see Proverbs 15:22; Proverbs 24:11; Matthew 18:15-20; Deut. 13:6-8). Please be assured that our counselors strongly prefer not to disclose personal information to others, and they will make every effort to help you find ways to resolve a problem as privately as possible.", "Resolution of Conflicts — On rare occasions a conflict may develop between a counselor and a counselee. In order to make sure that any such conflicts will be resolved in a biblical and faithful manner, we require all of our counselees to agree that any dispute that arises with a counselor or with this church as a result of counseling will be settled by mediation and, if necessary, legally binding arbitration."], "fields": [{"id": "consent_agree", "label": "I have read the principles and policies above and they are acceptable to me.", "type": "checkbox", "req": true}, {"id": "signature", "label": "Signed (type your full legal name)", "type": "text", "req": true}, {"id": "signature_date", "label": "Date", "type": "date", "req": true}]}]};
+
+let cred = null;        // {email, password, name}
+let answers = {};
+let secIdx = 0, saveTimer = null, dirty = false;
+
+const $ = (x) => document.getElementById(x);
+const views = ["login","form","sending","done"];
+function show(v){ views.forEach(x => $("view-"+x).classList.toggle("hidden", x!==v)); window.scrollTo(0,0); }
+function esc(s){ return String(s ?? "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+async function api(payload){
+  const r = await fetch(API, { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(payload) });
+  const j = await r.json().catch(()=>({error:"Bad response"}));
+  if(!r.ok){ const e = new Error(j.error || ("HTTP "+r.status)); e.missing = j.missing; throw e; }
+  return j;
+}
+
+/* ---------- login ---------- */
+$("btn-login").onclick = async () => {
+  const email = $("email").value.trim(), password = $("password").value, name = $("fullname").value.trim();
+  const err = $("login-err"); err.classList.add("hidden");
+  if(!/^\S+@\S+\.\S+$/.test(email) || password.length < 6){
+    err.textContent = "Enter a valid email and a password of at least 6 characters."; err.classList.remove("hidden"); return;
+  }
+  $("btn-login").disabled = true; $("btn-login").textContent = "Opening…";
+  try{
+    const res = await api({ action:"start", email, password, name });
+    cred = { email: email.toLowerCase(), password, name: res.name || name };
+    try{ localStorage.setItem("mi_email", cred.email); sessionStorage.setItem("mi_pw", password); }catch(e){}
+    if(res.status === "submitted"){
+      $("done-msg").textContent = "You already submitted this form" + (res.submitted_at ? " on " + new Date(res.submitted_at).toLocaleDateString() : "") + ". It went directly to Pastor Chris. If you need to change anything, contact him.";
+      show("done");
+    } else {
+      answers = res.answers || {};
+      secIdx = 0;
+      $("who").textContent = cred.name + " · " + cred.email;
+      renderSection(); show("form");
+    }
+  }catch(e){ err.textContent = e.message; err.classList.remove("hidden"); }
+  $("btn-login").disabled = false; $("btn-login").textContent = "Open my form";
+};
+try{ $("email").value = localStorage.getItem("mi_email") || ""; }catch(e){}
+
+/* ---------- visibility / progress ---------- */
+function fieldVisible(f){ return !f.showIf || answers[f.showIf.field] === f.showIf.equals; }
+function fieldEmpty(f){
+  const v = answers[f.id];
+  if(f.type === "checkbox") return v !== true;
+  if(f.type === "checks") return !Array.isArray(v) || v.length === 0;
+  if(f.type === "rank") return !Array.isArray(v) || !v.some(x => String(x||"").trim());
+  if(f.type === "table") return !Array.isArray(v) || v.length === 0;
+  return String(v ?? "").trim() === "";
+}
+function missingRequired(){
+  const out = [];
+  for(const s of FORM.sections)
+    for(const f of s.fields)
+      if(f.req && fieldVisible(f) && fieldEmpty(f)) out.push({ sec: s.title, label: f.label, secIdx: FORM.sections.indexOf(s) });
+  return out;
+}
+function updateProgress(){
+  let total = 0, done = 0;
+  for(const s of FORM.sections)
+    for(const f of s.fields){
+      if(!fieldVisible(f)) continue;
+      total++; if(!fieldEmpty(f)) done++;
+    }
+  $("pbar").style.width = (100*done/total) + "%";
+}
+
+/* ---------- rendering ---------- */
+function inputFor(f){
+  const v = answers[f.id];
+  if(f.type === "textarea") return `<textarea data-f="${f.id}">${esc(v)}</textarea>`;
+  if(f.type === "select") return `<select data-f="${f.id}"><option value="">— choose —</option>` + f.options.map(o=>`<option${v===o?" selected":""}>${esc(o)}</option>`).join("") + `</select>`;
+  if(f.type === "radio") return `<div class="radio-row">` + f.options.map(o=>`<label class="${v===o?"sel":""}"><input type="radio" name="r_${f.id}" value="${esc(o)}"${v===o?" checked":""}/>${esc(o)}</label>`).join("") + `</div>`;
+  if(f.type === "checks") return `<div class="checks">` + f.options.map(o=>{
+      const on = Array.isArray(v) && v.includes(o);
+      return `<label><input type="checkbox" data-chk="${f.id}" value="${esc(o)}"${on?" checked":""}/>${esc(o)}</label>`;
+    }).join("") + `</div>`;
+  if(f.type === "checkbox") return `<div class="radio-row"><label class="${v===true?"sel":""}"><input type="checkbox" data-agree="${f.id}"${v===true?" checked":""}/> I agree</label></div>`;
+  if(f.type === "rank"){
+    const rows = Array.isArray(v) ? v : [];
+    let h = "";
+    for(let i=0;i<f.rows;i++) h += `<div class="rank-row"><span class="n">${i+1}.</span><input type="text" data-rank="${f.id}" data-i="${i}" value="${esc(rows[i]||"")}"/></div>`;
+    return h;
+  }
+  if(f.type === "table"){
+    const rows = Array.isArray(v) ? v : [];
+    let h = `<table class="tbl"><tr>` + f.columns.map(c=>`<th>${esc(c.label)}</th>`).join("") + `<th></th></tr>`;
+    rows.forEach((row, ri) => {
+      h += `<tr>` + f.columns.map(c => {
+        if(c.type === "select") return `<td><select data-tbl="${f.id}" data-ri="${ri}" data-ci="${c.id}">` + c.options.map(o=>`<option${(row[c.id]||"")===o?" selected":""}>${esc(o)}</option>`).join("") + `</select></td>`;
+        return `<td><input type="text" data-tbl="${f.id}" data-ri="${ri}" data-ci="${c.id}" value="${esc(row[c.id]||"")}"/></td>`;
+      }).join("") + `<td><button class="small" data-delrow="${f.id}" data-ri="${ri}">✕</button></td></tr>`;
+    });
+    h += `</table><button class="small" data-addrow="${f.id}" style="margin-top:8px">+ ${esc(f.addLabel || "Add row")}</button>`;
+    return h;
+  }
+  const t = f.type === "date" ? "date" : f.type === "number" ? "number" : "text";
+  return `<input type="${t}" data-f="${f.id}" value="${esc(v)}"/>`;
+}
+
+function renderSection(){
+  const s = FORM.sections[secIdx];
+  $("sec-pos").textContent = secIdx + 1;
+  $("sec-total").textContent = FORM.sections.length;
+  $("sec-title").textContent = s.title;
+  const cb = $("consent-block");
+  if(s.consentText){ cb.innerHTML = s.consentText.map(p=>`<p>${esc(p)}</p>`).join(""); cb.classList.remove("hidden"); }
+  else cb.classList.add("hidden");
+  const box = $("fields"); box.innerHTML = "";
+  for(const f of s.fields){
+    if(!fieldVisible(f)) continue;
+    const div = document.createElement("div");
+    div.innerHTML = `<label class="f">${esc(f.label)}${f.req?' <span class="req">*</span>':""}</label>` +
+      (f.hint ? `<p class="hint">${esc(f.hint)}</p>` : "") + inputFor(f);
+    box.appendChild(div);
+  }
+  wireInputs(s);
+  $("btn-prev").style.visibility = secIdx === 0 ? "hidden" : "visible";
+  $("btn-next").textContent = secIdx === FORM.sections.length-1 ? "Review & send to Pastor Chris" : "Next →";
+  $("missing-box").classList.add("hidden");
+  updateProgress();
+}
+
+function wireInputs(s){
+  const box = $("fields");
+  box.querySelectorAll("[data-f]").forEach(el => {
+    el.oninput = () => { answers[el.dataset.f] = el.value; changed(false); };
+    el.onchange = () => { answers[el.dataset.f] = el.value; changed(hasCond(el.dataset.f)); };
+  });
+  box.querySelectorAll("input[type=radio]").forEach(el => {
+    el.onchange = () => { const id = el.name.slice(2); answers[id] = el.value; changed(true); };
+  });
+  box.querySelectorAll("[data-chk]").forEach(el => {
+    el.onchange = () => {
+      const id = el.dataset.chk;
+      let arr = Array.isArray(answers[id]) ? answers[id] : [];
+      arr = el.checked ? [...arr, el.value] : arr.filter(x => x !== el.value);
+      answers[id] = arr; changed(false);
+    };
+  });
+  box.querySelectorAll("[data-agree]").forEach(el => {
+    el.onchange = () => { answers[el.dataset.agree] = el.checked; changed(true); };
+  });
+  box.querySelectorAll("[data-rank]").forEach(el => {
+    el.oninput = () => {
+      const id = el.dataset.rank, i = Number(el.dataset.i);
+      const arr = Array.isArray(answers[id]) ? [...answers[id]] : [];
+      while(arr.length <= i) arr.push("");
+      arr[i] = el.value; answers[id] = arr; changed(false);
+    };
+  });
+  box.querySelectorAll("[data-tbl]").forEach(el => {
+    const set = () => {
+      const id = el.dataset.tbl, ri = Number(el.dataset.ri), ci = el.dataset.ci;
+      const arr = Array.isArray(answers[id]) ? answers[id] : [];
+      if(!arr[ri]) arr[ri] = {};
+      arr[ri][ci] = el.value; answers[id] = arr; changed(false);
+    };
+    el.oninput = set; el.onchange = set;
+  });
+  box.querySelectorAll("[data-addrow]").forEach(el => {
+    el.onclick = () => {
+      const id = el.dataset.addrow;
+      const arr = Array.isArray(answers[id]) ? answers[id] : [];
+      arr.push({}); answers[id] = arr; changed(true);
+    };
+  });
+  box.querySelectorAll("[data-delrow]").forEach(el => {
+    el.onclick = () => {
+      const id = el.dataset.delrow, ri = Number(el.dataset.ri);
+      const arr = Array.isArray(answers[id]) ? answers[id] : [];
+      arr.splice(ri, 1); answers[id] = arr; changed(true);
+    };
+  });
+}
+function hasCond(fid){
+  return FORM.sections.some(s => s.fields.some(f => f.showIf && f.showIf.field === fid));
+}
+function changed(rerender){
+  dirty = true; $("savestate").textContent = "…";
+  clearTimeout(saveTimer); saveTimer = setTimeout(saveNow, 1500);
+  if(rerender) renderSection(); else updateProgress();
+}
+
+/* ---------- autosave ---------- */
+async function saveNow(){
+  if(!cred || !dirty) return;
+  dirty = false; $("savestate").textContent = "Saving…";
+  try{
+    await api({ action:"save", email: cred.email, password: cred.password, answers });
+    $("savestate").textContent = "Saved ✓";
+  }catch(e){ $("savestate").textContent = "Save failed"; dirty = true; }
+}
+window.addEventListener("beforeunload", () => { if(dirty && cred && navigator.sendBeacon){
+  navigator.sendBeacon(API, new Blob([JSON.stringify({action:"save",email:cred.email,password:cred.password,answers})],{type:"application/json"}));
+}});
+
+/* ---------- nav / submit ---------- */
+$("btn-prev").onclick = () => { if(secIdx>0){ secIdx--; saveNow(); renderSection(); } };
+$("btn-next").onclick = async () => {
+  if(secIdx < FORM.sections.length-1){ secIdx++; saveNow(); renderSection(); return; }
+  const missing = missingRequired();
+  const mb = $("missing-box");
+  if(missing.length){
+    mb.innerHTML = `<b>Almost there — ${missing.length} required item${missing.length===1?" needs":"s need"} an answer before this can be sent:</b><ul>` +
+      missing.slice(0,20).map(m=>`<li>${esc(m.sec)} — ${esc(m.label)}</li>`).join("") +
+      (missing.length>20?`<li>…and ${missing.length-20} more</li>`:"") + `</ul>`;
+    mb.classList.remove("hidden");
+    secIdx = missing[0].secIdx; renderSection();
+    $("missing-box").classList.remove("hidden");
+    mb.scrollIntoView({behavior:"smooth"});
+    return;
+  }
+  if(!confirm("Send your completed form to Pastor Chris now? Your online draft will be deleted after sending, and you won't be able to edit it.")) return;
+  clearTimeout(saveTimer);
+  show("sending");
+  try{
+    await api({ action:"submit", email: cred.email, password: cred.password, answers });
+    show("done");
+  }catch(e){
+    show("form");
+    if(e.missing && e.missing.length){
+      const mb2 = $("missing-box");
+      mb2.innerHTML = `<b>Still needed:</b><ul>` + e.missing.map(m=>`<li>${esc(m)}</li>`).join("") + `</ul>`;
+      mb2.classList.remove("hidden");
+    } else {
+      const err = $("submit-err"); err.textContent = "Sending failed: " + e.message + " — your answers are saved; try again in a minute.";
+      err.classList.remove("hidden");
+    }
+  }
+};
+
+/* ---------- session restore ---------- */
+(async () => {
+  try{
+    const email = localStorage.getItem("mi_email"), pw = sessionStorage.getItem("mi_pw");
+    if(email && pw){
+      const res = await api({ action:"start", email, password: pw }).catch(()=>null);
+      if(res && res.existing && res.status === "draft"){
+        cred = { email, password: pw, name: res.name };
+        answers = res.answers || {};
+        $("who").textContent = cred.name + " · " + cred.email;
+        renderSection(); show("form");
+      }
+    }
+  }catch(e){}
+})();
+</script>
+</body>
+</html>

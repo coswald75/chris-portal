@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Integrity Tests — Chris Oswald</title>
+<meta name="description" content="Short, confidential integrity self-checks for pastors. Answers are scored and discarded — never stored." />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink:#1c1c1a; --muted:#6b6b63; --accent:#075c2e; --accent-soft:#e8f2ec;
+    --line:#e2dfd8; --paper:#ffffff; --hover:#faf9f5; --bad:#9c2b21;
+    --amber:#a37b1e; --orange:#b3541e;
+    --serif:'Fraunces',Georgia,serif; --sans:'Inter',-apple-system,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:5vh 20px 12vh}
+  a{color:var(--accent)}
+  h1{font-weight:600;font-size:2rem;margin:.2em 0 .3em}
+  .sub{font-family:var(--sans);color:var(--muted);font-size:.95rem;line-height:1.55}
+  .lede{font-size:1.08rem;line-height:1.6;margin:.4em 0 0}
+  .card{border:1px solid var(--line);border-radius:12px;padding:28px;margin-top:24px;background:var(--paper)}
+  label.f{font-family:var(--sans);font-size:.85rem;font-weight:600;display:block;margin:14px 0 6px}
+  input[type=text],input[type=email]{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:8px;font-family:var(--sans);font-size:1rem;background:var(--hover)}
+  input:focus{outline:2px solid var(--accent);outline-offset:1px}
+  button{font-family:var(--sans);font-weight:600;font-size:.95rem;border-radius:8px;padding:11px 20px;cursor:pointer;border:1px solid var(--line);background:var(--paper);color:var(--ink)}
+  button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  button:disabled{opacity:.5;cursor:default}
+  .sec-label{font-family:var(--sans);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  h2{font-weight:500;font-size:1.45rem;margin:.25em 0 .5em}
+  /* hub */
+  .tlist{list-style:none;padding:0;margin:22px 0 0}
+  .tlist li{border:1px solid var(--line);border-radius:12px;margin-bottom:12px;transition:background .15s;cursor:pointer}
+  .tlist li:hover{background:var(--hover)}
+  .tlist .inner{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px 20px}
+  .tlist h3{margin:0 0 4px;font-weight:500;font-size:1.15rem;color:var(--accent)}
+  .tlist p{margin:0;font-family:var(--sans);font-size:.85rem;color:var(--muted);line-height:1.5}
+  .chip{font-family:var(--sans);font-size:.76rem;font-weight:600;padding:4px 10px;border-radius:99px;white-space:nowrap;border:1px solid var(--line);color:var(--muted)}
+  .chip.progress{border-color:var(--amber);color:var(--amber)}
+  .chip.Low{border-color:var(--accent);color:var(--accent)}
+  .chip.Moderate{border-color:var(--amber);color:var(--amber)}
+  .chip.High{border-color:var(--orange);color:var(--orange)}
+  .chip.Critical{border-color:var(--bad);color:var(--bad)}
+  .privacy{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;padding:12px 16px;margin-top:22px;font-family:var(--sans);font-size:.84rem;line-height:1.55}
+  .whoami{font-family:var(--sans);font-size:.82rem;color:var(--muted);margin-top:14px}
+  .whoami a{cursor:pointer}
+  /* test */
+  .topbar{display:flex;justify-content:space-between;align-items:center;font-family:var(--sans);font-size:.82rem;color:var(--muted);margin-bottom:8px}
+  .progressbar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin:6px 0 22px}
+  .progressbar>div{height:100%;background:var(--accent);transition:width .3s}
+  .q{padding:18px 0;border-bottom:1px solid var(--line)}
+  .q:last-of-type{border-bottom:none}
+  .q .qt{margin:0 0 4px;font-size:1.06rem;line-height:1.5}
+  .q .help{font-family:var(--sans);font-size:.84rem;color:var(--muted);margin:0 0 4px;line-height:1.5}
+  .q .scrip{font-family:var(--sans);font-size:.8rem;color:var(--accent);margin:0 0 10px;line-height:1.5;font-style:italic}
+  .cat-head{font-family:var(--sans);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:22px 0 0}
+  .opts{display:flex;flex-direction:column;gap:7px;margin-top:10px}
+  .opt{display:flex;align-items:flex-start;gap:10px;border:1px solid var(--line);border-radius:8px;padding:10px 14px;background:var(--hover);cursor:pointer;font-family:var(--sans);font-size:.92rem;line-height:1.45}
+  .opt:hover{border-color:var(--accent)}
+  .opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+  .opt input{margin-top:3px;accent-color:var(--accent)}
+  .nav{display:flex;justify-content:space-between;align-items:center;margin-top:26px;gap:12px}
+  .savestate{font-family:var(--sans);font-size:.8rem;color:var(--muted)}
+  /* results */
+  .score-hero{text-align:center;padding:30px 0 6px}
+  .score-hero .big{font-size:4.2rem;font-weight:600;line-height:1}
+  .score-hero .bandlbl{font-family:var(--sans);font-weight:600;font-size:1.05rem;margin-top:6px}
+  .score-hero .expl{font-family:var(--sans);color:var(--muted);font-size:.86rem;margin-top:8px}
+  .risk-Low{color:var(--accent)} .risk-Moderate{color:var(--amber)} .risk-High{color:var(--orange)} .risk-Critical{color:var(--bad)}
+  .bg-Low{background:var(--accent)} .bg-Moderate{background:var(--amber)} .bg-High{background:var(--orange)} .bg-Critical{background:var(--bad)}
+  .secbars{margin:22px 0}
+  .secbar{display:grid;grid-template-columns:220px 1fr 90px;gap:12px;align-items:center;font-family:var(--sans);font-size:.83rem;padding:5px 0}
+  .secbar .bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden}
+  .secbar .bar>div{height:100%}
+  .secbar .bd{font-weight:600}
+  .plan{border:1px solid var(--line);border-radius:12px;padding:8px 28px 20px;margin-top:14px;background:var(--hover);line-height:1.65}
+  .plan h2{font-size:1.25rem;margin-top:1.2em}
+  .plan ul{padding-left:1.2em}
+  .spin{display:inline-block;width:16px;height:16px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:sp 1s linear infinite;vertical-align:-3px;margin-right:8px}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  .hidden{display:none}
+  .err{color:var(--bad);font-family:var(--sans);font-size:.88rem;margin-top:10px}
+  .note{font-family:var(--sans);font-size:.82rem;color:var(--muted);line-height:1.55}
+  @media(max-width:560px){.secbar{grid-template-columns:120px 1fr 84px}.tlist .inner{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- IDENTITY -->
+  <div id="view-id" class="hidden">
+    <span class="sec-label">Integrity tests for pastors</span>
+    <h1>Self-Sabotage Stopper</h1>
+    <p class="lede">Calamities, shipwrecked faith, and pastoral self-immolations feel like they're at an all-time high. There are warning signs. Take the test!</p>
+    <div class="card">
+      <label class="f" for="name">Name</label>
+      <input id="name" type="text" autocomplete="name" placeholder="Your name" />
+      <label class="f" for="email">Email</label>
+      <input id="email" type="email" autocomplete="email" placeholder="you@example.com" />
+      <p class="note" style="margin-top:12px"><b>Your answers are never stored.</b> Each test is scored in seconds and the answers discarded — only your category scores (bare numbers) are kept, so you can build a full picture over time.</p>
+      <button class="primary" id="btn-id" style="margin-top:10px">Continue</button>
+      <div id="id-err" class="err hidden"></div>
+    </div>
+  </div>
+
+  <!-- HUB -->
+  <div id="view-hub" class="hidden">
+    <span class="sec-label">Integrity tests for pastors</span>
+    <h1>Self-Sabotage Stopper</h1>
+    <p class="lede">Calamities, shipwrecked faith, and pastoral self-immolations feel like they're at an all-time high. There are warning signs. Take the test!</p>
+    <p class="sub">Eight short self-checks, 3–10 minutes each. Take one now, come back for the others. After two or more, get your full picture.</p>
+    <ul class="tlist" id="testlist"></ul>
+    <div class="card" id="combined-card" style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap">
+      <div>
+        <h3 style="margin:0 0 4px;font-weight:500">Your Full Picture</h3>
+        <p class="sub" style="margin:0;font-size:.85rem" id="combined-hint">Take at least two tests to unlock a combined analysis across areas.</p>
+      </div>
+      <button class="primary" id="btn-combined" disabled>See my full picture</button>
+    </div>
+    <div class="privacy">Answers are scored and immediately discarded — they are never written to a database, never shown to anyone. Only category score numbers are kept (tied to your email) so your full picture can build across tests. In-progress answers stay on this device only.</div>
+    <p class="whoami" id="whoami"></p>
+  </div>
+
+  <!-- TEST -->
+  <div id="view-test" class="hidden">
+    <div class="topbar">
+      <a style="cursor:pointer" id="back-hub">← All tests</a>
+      <span><span id="answered-count">0</span> of <span id="total-count">0</span> answered · <span class="savestate" id="savestate">saved on this device</span></span>
+    </div>
+    <div class="progressbar"><div id="pbar" style="width:0%"></div></div>
+    <span class="sec-label" id="t-label"></span>
+    <h2 id="t-title"></h2>
+    <p class="sub" id="t-blurb"></p>
+    <div id="questions"></div>
+    <div class="nav">
+      <span class="note">Unanswered questions simply don't count.</span>
+      <button class="primary" id="btn-submit">Score my answers</button>
+    </div>
+    <div id="submit-err" class="err hidden"></div>
+  </div>
+
+  <!-- GRADING -->
+  <div id="view-grading" class="hidden">
+    <div class="card" style="text-align:center;padding:60px 28px">
+      <h2><span class="spin"></span>Scoring…</h2>
+      <p class="sub">Scoring your answers and writing your guidance, then discarding the answers.<br/>About twenty seconds.</p>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="view-results" class="hidden">
+    <div class="topbar"><a style="cursor:pointer" id="back-hub2">← All tests</a></div>
+    <span class="sec-label" id="r-label"></span>
+    <h1 style="font-size:1.6rem" id="res-title"></h1>
+    <div class="score-hero">
+      <div class="big" id="res-score"></div>
+      <div class="bandlbl" id="res-band"></div>
+      <div class="expl">Risk score, 0–100. Lower is healthier.</div>
+    </div>
+    <div class="secbars" id="res-secbars"></div>
+    <h2 style="margin-top:26px">Your Guidance</h2>
+    <div class="plan" id="res-plan"></div>
+    <p class="note" style="margin-top:16px">This is a self-assessment and pastoral counsel, not a medical or psychological evaluation.</p>
+    <div style="margin-top:24px;display:flex;gap:12px">
+      <button class="primary" id="btn-next-test">Next test →</button>
+      <button onclick="window.print()">Print</button>
+      <button id="btn-retake">Retake</button>
+    </div>
+  </div>
+
+  <!-- COMBINED -->
+  <div id="view-combined" class="hidden">
+    <div class="topbar"><a style="cursor:pointer" id="back-hub3">← All tests</a></div>
+    <span class="sec-label">Full picture</span>
+    <h1 style="font-size:1.6rem" id="c-title"></h1>
+    <div class="secbars" id="c-secbars"></div>
+    <div class="plan" id="c-plan"></div>
+    <p class="note" style="margin-top:16px">Built only from your stored category scores — your answers were never kept.</p>
+    <div style="margin-top:24px"><button onclick="window.print()">Print</button></div>
+  </div>
+
+</div>
+<script>
+const API = "https://twbunmbzyqcqzgffdrib.supabase.co/functions/v1/self-sabotage";
+const DATA = {"tests": [{"slug": "sexual-integrity", "title": "Sexual Integrity", "cats": [{"id": 1, "name": "Sexual Integrity"}], "blurb": "The one nobody wants to take and everybody should. Eyes, screens, boundaries, and what happens on the road.", "n": 10}, {"slug": "marriage", "title": "Marriage", "cats": [{"id": 2, "name": "Marriage Neglect"}], "blurb": "Is the church getting your best while she gets your leftovers? Connection, presence, and intimacy.", "n": 7}, {"slug": "money-work", "title": "Money & Work", "cats": [{"id": 3, "name": "Financial Integrity"}, {"id": 8, "name": "Time Management And Workaholism"}], "blurb": "Debt, hidden accounts, Sabbath, and the calendar that never says no.", "n": 10}, {"slug": "pulpit", "title": "The Pulpit", "cats": [{"id": 4, "name": "Study And Preparation"}, {"id": 10, "name": "Theological Drift"}, {"id": 12, "name": "Intellectual Laziness"}], "blurb": "Preparation, plagiarism, doctrinal drift, and whether you're still reading — or just coasting.", "n": 16}, {"slug": "body-habits", "title": "Body & Habits", "cats": [{"id": 5, "name": "Alcohol And Substance Use"}, {"id": 11, "name": "Physical Health"}, {"id": 14, "name": "Technology And Screen Addiction"}], "blurb": "Alcohol, sleep, exercise, blood sugar, and the phone that owns your attention.", "n": 16}, {"slug": "pride-anger", "title": "Pride & Anger", "cats": [{"id": 6, "name": "Pride And Ego"}, {"id": 7, "name": "Anger And Conflict"}], "blurb": "Criticism, comparison, the need to win — and where your temper actually lands.", "n": 11}, {"slug": "fear-of-man", "title": "Grudges & the Fear of Man", "cats": [{"id": 9, "name": "People-Pleasing And Conflict Avoidance"}, {"id": 17, "name": "Bitterness And Unforgiveness"}], "blurb": "People-pleasing, avoided confrontations, softened sermons, and the resentment you're still carrying.", "n": 10}, {"slug": "soul", "title": "Soul", "cats": [{"id": 15, "name": "Pastoral Identity And Calling"}, {"id": 16, "name": "Intimacy With God"}, {"id": 18, "name": "Unresolved Or Chronic Grief"}, {"id": 19, "name": "Anxiety And Mental Health"}], "blurb": "Calling, communion with God, unprocessed grief, and the anxiety loops that won't shut off.", "n": 21}], "questions": [{"id": "1.1", "cat": 1, "q": "How often do you view pornography?", "multi": false, "options": [{"t": "Never / Not in past year"}, {"t": "Rarely (a few times/year)"}, {"t": "Occasionally (monthly)"}, {"t": "Regularly (weekly)"}, {"t": "Frequently (multiple times/week)"}, {"t": "Daily or more"}], "help": "Be honest. This includes any visual material consumed for sexual arousal.", "scripture": "Job 31:1 - 'I have made a covenant with my eyes; how then could I gaze at a virgin?'"}, {"id": "1.2", "cat": 1, "q": "Do you take 'second looks' at women (not your wife)?", "multi": false, "options": [{"t": "Never"}, {"t": "Rarely"}, {"t": "Sometimes"}, {"t": "Often"}, {"t": "Very often"}], "help": "The first look is involuntary. The second is a choice.", "scripture": "Matthew 5:28 - 'Everyone who looks at a woman with lustful intent has already committed adultery with her in his heart.'"}, {"id": "1.3", "cat": 1, "q": "Do you have accountability software on ALL your devices (phone, laptop, tablet)?", "multi": false, "options": [{"t": "Yes, on all devices with reports going to accountability partner"}, {"t": "Yes, but not all devices"}, {"t": "I have it but don't think it's necessary"}, {"t": "No, but I've considered it"}, {"t": "No, and I don't plan to"}], "scripture": "Proverbs 27:17 - 'Iron sharpens iron, and one man sharpens another.'"}, {"id": "1.4", "cat": 1, "q": "When traveling alone, how vulnerable are you to sexual temptation?", "multi": false, "options": [{"t": "Not vulnerable - I have strong systems in place"}, {"t": "Somewhat vulnerable, but I usually resist"}, {"t": "Very vulnerable - I often fail when traveling"}, {"t": "I would almost certainly view pornography"}], "help": "Hotel rooms, late nights, away from accountability."}, {"id": "1.5", "cat": 1, "q": "Do you meet alone with women (not your wife) behind closed doors?", "multi": false, "options": [{"t": "Never - I have a strict policy"}, {"t": "Rarely, only when unavoidable"}, {"t": "Sometimes"}, {"t": "Often"}, {"t": "Regularly without thinking about it"}], "help": "This includes counseling, meetings, mentoring."}, {"id": "1.6", "cat": 1, "q": "Do you have a relationship with a woman (not your wife) where you share things you don't share with your wife?", "multi": false, "options": [{"t": "No, never"}, {"t": "I'm not sure / Maybe"}, {"t": "Yes, but it's innocent"}, {"t": "Yes, and I know it's problematic"}], "help": "Emotional intimacy that excludes your spouse."}, {"id": "1.7", "cat": 1, "q": "Do you ever use massage (professional or otherwise) as a form of sexual stimulation or to create arousal?", "multi": false, "options": [{"t": "Never"}, {"t": "Rarely (1-2 times/year)"}, {"t": "Occasionally (monthly)"}, {"t": "Frequently (weekly or more)"}, {"t": "I'm not sure / This feels ambiguous"}], "help": "This includes therapeutic massage that becomes sexualized in your mind."}, {"id": "1.8", "cat": 1, "q": "How often do you masturbate?", "multi": false, "options": [{"t": "Never / Not in past year"}, {"t": "Rarely (a few times/year)"}, {"t": "Occasionally (monthly)"}, {"t": "Regularly (weekly)"}, {"t": "Frequently (multiple times/week)"}, {"t": "Daily or more"}], "help": "This is a diagnostic question, not a moral judgment."}, {"id": "1.9", "cat": 1, "q": "When you masturbate, what typically accompanies it?", "multi": true, "options": [{"t": "Pornography (visual)"}, {"t": "Erotic stories or text"}, {"t": "Fantasy about real people I know"}, {"t": "Fantasy about my wife"}, {"t": "Fantasy (generic/abstract, no specific person)"}, {"t": "No mental imagery, purely physical release"}, {"t": "I'd rather not answer"}], "help": "Select all that apply. Be specific.", "cond": {"all": [{"q": "1.8", "not": [0]}]}}, {"id": "1.10", "cat": 1, "q": "What typically triggers masturbation for you?", "multi": true, "options": [{"t": "Stress or anxiety"}, {"t": "Boredom or restlessness"}, {"t": "Loneliness"}, {"t": "After conflict with spouse"}, {"t": "Late at night when I can't sleep"}, {"t": "Travel (hotel rooms, alone)"}, {"t": "No clear pattern, feels random"}, {"t": "I'd rather not answer"}], "help": "Select all that apply. Understanding triggers helps identify patterns.", "cond": {"all": [{"q": "1.8", "not": [0]}]}}, {"id": "2.1", "cat": 2, "q": "How many hours per week do you spend in focused, undistracted conversation with your wife?", "multi": false, "options": [{"t": "5+ hours"}, {"t": "3-5 hours"}, {"t": "1-3 hours"}, {"t": "Less than 1 hour"}, {"t": "I can't remember the last real conversation"}, {"t": "Not applicable (not married)"}], "help": "Not logistics or kid-coordination. Actual connection.", "scripture": "Ephesians 5:25 - 'Husbands, love your wives, as Christ loved the church and gave himself up for her.'"}, {"id": "2.2", "cat": 2, "q": "Does your wife feel like a 'church widow'?", "multi": false, "options": [{"t": "No, she feels prioritized"}, {"t": "Occasionally she mentions it"}, {"t": "Yes, this is a recurring complaint"}, {"t": "Yes, and she's given up mentioning it"}, {"t": "Not applicable (not married)"}], "help": "Would she say the church gets your best and she gets your leftovers?"}, {"id": "2.3", "cat": 2, "q": "How often do you check your phone during conversations with your spouse?", "multi": false, "options": [{"t": "Never / Rarely"}, {"t": "Sometimes"}, {"t": "Often"}, {"t": "Very often"}, {"t": "Not applicable (not married)"}]}, {"id": "2.4", "cat": 2, "q": "How often do you and your wife go on intentional dates (not kid-related, not ministry-related)?", "multi": false, "options": [{"t": "Weekly or more"}, {"t": "2-3 times per month"}, {"t": "Once per month"}, {"t": "Once every few months"}, {"t": "Rarely / Can't remember last one"}, {"t": "Not applicable (not married)"}]}, {"id": "2.5", "cat": 2, "q": "How often do you and your wife have sexual intimacy?", "multi": false, "options": [{"t": "2+ times per week"}, {"t": "Once per week"}, {"t": "2-3 times per month"}, {"t": "Once per month or less"}, {"t": "Rarely / Almost never"}, {"t": "Not applicable (not married)"}], "help": "This is a health indicator, not a performance metric."}, {"id": "2.6", "cat": 2, "q": "How does your masturbation habit relate to your sexual intimacy with your wife?", "multi": false, "options": [{"t": "I masturbate instead of initiating with my wife"}, {"t": "I masturbate in addition to regular intimacy with my wife"}, {"t": "My wife and I have little to no sexual intimacy, so masturbation is my only outlet"}, {"t": "Masturbation has decreased my desire for my wife"}, {"t": "This is complicated / I'm not sure how to answer"}, {"t": "Not applicable (not married / doesn't apply to me)"}]}, {"id": "2.7", "cat": 2, "q": "When you're home, are you emotionally present with your wife, or are you still thinking about ministry?", "multi": false, "options": [{"t": "Fully present most of the time"}, {"t": "Present sometimes, distracted sometimes"}, {"t": "Physically present, mentally absent"}, {"t": "Rarely present even when home"}, {"t": "Not applicable (not married)"}]}, {"id": "3.1", "cat": 3, "q": "What is your current level of non-mortgage consumer debt (credit cards, personal loans, etc.)?", "multi": false, "options": [{"t": "None / Paid off monthly"}, {"t": "Under $5,000"}, {"t": "$5,000-$15,000"}, {"t": "$15,000-$30,000"}, {"t": "Over $30,000"}], "scripture": "Proverbs 22:7 - 'The borrower is slave to the lender.'"}, {"id": "3.2", "cat": 3, "q": "Does your wife have full access to all financial accounts and credit cards?", "multi": false, "options": [{"t": "Yes, complete transparency"}, {"t": "Mostly, but I have some accounts she doesn't know about"}, {"t": "No, I keep finances separate"}, {"t": "She has access but doesn't check"}, {"t": "Not applicable (not married)"}], "help": "No hidden accounts, no secret spending."}, {"id": "3.3", "cat": 3, "q": "Do you have proper financial accountability for church funds?", "multi": false, "options": [{"t": "Yes, rigorous systems in place"}, {"t": "Yes, but informal"}, {"t": "Somewhat / Could be better"}, {"t": "No real accountability"}], "help": "Counting team, dual signatures, elder oversight."}, {"id": "3.4", "cat": 3, "q": "How often do you experience anxiety about personal finances?", "multi": false, "options": [{"t": "Rarely / Never"}, {"t": "Occasionally"}, {"t": "Often"}, {"t": "Constantly / Daily"}]}, {"id": "3.5", "cat": 3, "q": "Do you make significant purchases ($100+) without consulting your wife or accountability?", "multi": false, "options": [{"t": "Never / Always discuss"}, {"t": "Rarely"}, {"t": "Sometimes"}, {"t": "Often"}, {"t": "Not applicable (not married)"}]}, {"id": "4.1", "cat": 4, "q": "How many hours per week do you spend in sermon preparation?", "multi": false, "options": [{"t": "15+ hours"}, {"t": "10-15 hours"}, {"t": "6-10 hours"}, {"t": "3-6 hours"}, {"t": "Less than 3 hours"}], "scripture": "2 Timothy 2:15 - 'Do your best to present yourself to God as one approved, a worker who has no need to be ashamed, rightly handling the word of truth.'"}, {"id": "4.2", "cat": 4, "q": "How often do you preach sermons you know are underprepared or shallow?", "multi": false, "options": [{"t": "Never / Rarely"}, {"t": "Occasionally (a few times/year)"}, {"t": "Regularly (monthly)"}, {"t": "Often (weekly or more)"}], "help": "Be honest. Not your best work."}, {"id": "4.3", "cat": 4, "q": "Do you ever use others' sermon content without attribution?", "multi": false, "options": [{"t": "Never"}, {"t": "Rarely, and I always attribute"}, {"t": "Sometimes, without attribution"}, {"t": "Often / Regularly"}], "help": "This includes outlines, illustrations, or entire sermons presented as your own."}, {"id": "4.4", "cat": 4, "q": "Do you engage with Greek/Hebrew in sermon preparation?", "multi": false, "options": [{"t": "Yes, regularly"}, {"t": "Sometimes"}, {"t": "Rarely"}, {"t": "Never / Don't know Greek or Hebrew"}], "help": "Even basic word studies count."}, {"id": "4.5", "cat": 4, "q": "How many commentaries do you typically consult per sermon?", "multi": false, "options": [{"t": "5+ commentaries"}, {"t": "3-4 commentaries"}, {"t": "1-2 commentaries"}, {"t": "Online summaries only"}, {"t": "None / Just wing it"}]}, {"id": "4.6", "cat": 4, "q": "Compared to two years ago, has the depth of your study and preparation:", "multi": false, "options": [{"t": "Increased significantly"}, {"t": "Increased somewhat"}, {"t": "Stayed about the same"}, {"t": "Decreased somewhat"}, {"t": "Decreased significantly"}]}, {"id": "5.1", "cat": 5, "q": "How often do you drink alcohol?", "multi": false, "options": [{"t": "Never / Not in past year"}, {"t": "Rarely (a few times/year)"}, {"t": "Occasionally (1-2 times/month)"}, {"t": "Regularly (weekly)"}, {"t": "Frequently (multiple times/week)"}, {"t": "Daily"}], "scripture": "Ephesians 5:18 - 'Do not get drunk with wine, for that is debauchery, but be filled with the Spirit.'"}, {"id": "5.2", "cat": 5, "q": "Do you drink to relieve stress, anxiety, or emotional pain?", "multi": false, "options": [{"t": "Never"}, {"t": "Rarely"}, {"t": "Sometimes"}, {"t": "Often"}, {"t": "Almost always when I drink"}, {"t": "Not applicable (don't drink)"}], "help": "Not just social drinking. Using alcohol as emotional regulation."}, {"id": "5.3", "cat": 5, "q": "When you drink, do you typically stop at one or two drinks, or continue beyond that?", "multi": false, "options": [{"t": "I stop at one or two"}, {"t": "I usually have 3-4"}, {"t": "I often drink until intoxicated"}, {"t": "I drink to get drunk"}, {"t": "Not applicable (don't drink)"}]}, {"id": "5.4", "cat": 5, "q": "Has anyone (spouse, friend, elder) expressed concern about your drinking?", "multi": false, "options": [{"t": "No, never"}, {"t": "Yes, once or twice"}, {"t": "Yes, multiple times"}, {"t": "Yes, it's an ongoing issue"}, {"t": "Not applicable (don't drink)"}]}, {"id": "6.1", "cat": 6, "q": "How do you typically respond when someone criticizes your preaching or leadership?", "multi": false, "options": [{"t": "I listen carefully and consider it"}, {"t": "I listen but usually dismiss it internally"}, {"t": "I become defensive"}, {"t": "I get angry or resentful"}], "scripture": "Proverbs 12:1 - 'Whoever loves discipline loves knowledge, but he who hates reproof is stupid.'"}, {"id": "6.2", "cat": 6, "q": "When was the last time you changed your mind about something significant in ministry because someone challenged you?", "multi": false, "options": [{"t": "Within the past month"}, {"t": "Within the past 6 months"}, {"t": "Within the past year"}, {"t": "More than a year ago"}, {"t": "I can't remember / This rarely happens"}]}, {"id": "6.3", "cat": 6, "q": "How often do you compare yourself to other pastors (attendance, preaching ability, influence)?", "multi": false, "options": [{"t": "Never / Rarely"}, {"t": "Sometimes"}, {"t": "Often"}, {"t": "Constantly"}]}, {"id": "6.4", "cat": 6, "q": "In disagreements with elders or staff, how important is it that you 'win' the argument?", "multi": false, "options": [{"t": "Not important - I care about truth, not winning"}, {"t": "Somewhat important"}, {"t": "Very important"}, {"t": "I have to win"}]}, {"id": "6.5", "cat": 6, "q": "How do you respond to compliments about your preaching or ministry?", "multi": false, "options": [{"t": "I deflect and give glory to God"}, {"t": "I thank them but feel uncomfortable"}, {"t": "I enjoy them and sometimes seek them"}, {"t": "I need them to feel validated"}]}, {"id": "6.6", "cat": 6, "q": "When your authority or decisions are questioned, how do you feel?", "multi": false, "options": [{"t": "Curious - I want to understand their perspective"}, {"t": "Uncomfortable, but I try to listen"}, {"t": "Defensive - I feel the need to justify myself"}, {"t": "Angry - how dare they question me"}]}, {"id": "7.1", "cat": 7, "q": "How often do you experience anger (internal or expressed)?", "multi": false, "options": [{"t": "Rarely"}, {"t": "Occasionally"}, {"t": "Often"}, {"t": "Daily"}], "scripture": "James 1:19-20 - 'Let every person be quick to hear, slow to speak, slow to anger; for the anger of man does not produce the righteousness of God.'"}, {"id": "7.2", "cat": 7, "q": "When angry, how do you typically express it?", "multi": false, "options": [{"t": "I process it calmly and address issues directly"}, {"t": "I suppress it but it leaks out in other ways"}, {"t": "I raise my voice or become aggressive"}, {"t": "I explode or lose control"}]}, {"id": "7.3", "cat": 7, "q": "Do you lose your temper with your wife or children?", "multi": false, "options": [{"t": "Never / Extremely rare"}, {"t": "Occasionally"}, {"t": "Regularly"}, {"t": "Frequently"}, {"t": "Not applicable (not married / no kids)"}]}, {"id": "7.4", "cat": 7, "q": "Do you avoid necessary confrontations to keep the peace?", "multi": false, "options": [{"t": "No, I address issues appropriately"}, {"t": "Sometimes"}, {"t": "Often"}, {"t": "Almost always"}]}, {"id": "7.5", "cat": 7, "q": "How long do you typically hold onto resentment after a conflict?", "multi": false, "options": [{"t": "I don't - I forgive and move on quickly"}, {"t": "A few days"}, {"t": "Weeks"}, {"t": "Months or years"}]}, {"id": "8.1", "cat": 8, "q": "Do you consistently take a full 24-hour Sabbath each week?", "multi": false, "options": [{"t": "Yes, every week without fail"}, {"t": "Most weeks"}, {"t": "Occasionally"}, {"t": "Rarely"}, {"t": "Never / Haven't in months"}], "scripture": "Exodus 20:8-10 - 'Remember the Sabbath day, to keep it holy. Six days you shall labor... but the seventh day is a Sabbath to the Lord your God.'"}, {"id": "8.2", "cat": 8, "q": "How many hours per week do you work (including sermon prep, meetings, counseling, admin)?", "multi": false, "options": [{"t": "40-50 hours"}, {"t": "50-60 hours"}, {"t": "60-70 hours"}, {"t": "70+ hours"}]}, {"id": "8.3", "cat": 8, "q": "How often do you say 'no' to ministry requests or opportunities?", "multi": false, "options": [{"t": "Regularly - I protect my calendar"}, {"t": "Sometimes"}, {"t": "Rarely"}, {"t": "Never - I can't say no"}]}, {"id": "8.4", "cat": 8, "q": "Do you take your full allotted vacation time each year?", "multi": false, "options": [{"t": "Yes, and I disconnect fully"}, {"t": "Yes, but I still check email/work"}, {"t": "Partially - I take some but not all"}, {"t": "No - I rarely take vacation"}]}, {"id": "8.5", "cat": 8, "q": "How often do you work on your designated day off or in the evenings when you should be with family?", "multi": false, "options": [{"t": "Never / Rarely"}, {"t": "Sometimes"}, {"t": "Often"}, {"t": "Almost always"}]}, {"id": "9.1", "cat": 9, "q": "How much does the fear of people's disapproval influence your decisions?", "multi": false, "options": [{"t": "Not at all - I lead based on conviction"}, {"t": "Somewhat - I consider it but don't let it control me"}, {"t": "Significantly - it often influences my choices"}, {"t": "Completely - I'm paralyzed by it"}], "scripture": "Proverbs 29:25 - 'The fear of man lays a snare, but whoever trusts in the Lord is safe.'"}, {"id": "9.2", "cat": 9, "q": "Do you avoid difficult conversations with church members, elders, or staff?", "multi": false, "options": [{"t": "No - I address issues promptly"}, {"t": "Sometimes - I delay but eventually address them"}, {"t": "Often - I avoid them unless forced"}, {"t": "Almost always - I can't bring myself to confront"}]}, {"id": "9.3", "cat": 9, "q": "Have you ever softened or avoided a biblical teaching because you feared negative reactions?", "multi": false, "options": [{"t": "Never"}, {"t": "Once or twice"}, {"t": "Several times"}, {"t": "Regularly"}]}, {"id": "9.4", "cat": 9, "q": "How important is it to you that people like you?", "multi": false, "options": [{"t": "Not very - I care about truth more than approval"}, {"t": "Somewhat important"}, {"t": "Very important"}, {"t": "Extremely important - I need it"}]}, {"id": "9.5", "cat": 9, "q": "When making leadership decisions, how much weight do you give to 'Will this upset people?'", "multi": false, "options": [{"t": "Very little - I lead based on what's right"}, {"t": "Some consideration, but not controlling"}, {"t": "Significant weight - it often determines my choice"}, {"t": "Primary consideration - I won't move if people will be upset"}]}, {"id": "10.1", "cat": 10, "q": "How often do you read theology or biblical scholarship (not just for sermon prep)?", "multi": false, "options": [{"t": "Regularly (weekly or more)"}, {"t": "Occasionally (monthly)"}, {"t": "Rarely (a few times/year)"}, {"t": "Never"}], "scripture": "2 Timothy 4:3-4 - 'The time is coming when people will not endure sound teaching, but having itching ears they will accumulate for themselves teachers to suit their own passions.'"}, {"id": "10.2", "cat": 10, "q": "Could you clearly explain and defend your church's doctrinal positions if challenged?", "multi": false, "options": [{"t": "Yes, confidently"}, {"t": "Mostly, but struggle with some areas"}, {"t": "Some positions, but not all"}, {"t": "No, I'm unclear on most"}]}, {"id": "10.3", "cat": 10, "q": "In the past year, have you been influenced by teachers or movements that contradict your church's confession?", "multi": false, "options": [{"t": "No"}, {"t": "Slightly - I've listened but remained grounded"}, {"t": "Somewhat - I'm questioning some positions"}, {"t": "Significantly - I'm drifting from our confession"}]}, {"id": "10.4", "cat": 10, "q": "How committed are you to your church's statement of faith or confession?", "multi": false, "options": [{"t": "Fully committed"}, {"t": "Mostly committed, with minor reservations"}, {"t": "Loosely committed"}, {"t": "Not really committed / It feels restrictive"}]}, {"id": "10.5", "cat": 10, "q": "How often do you preach on difficult doctrines (sovereignty, hell, sin, etc.)?", "multi": false, "options": [{"t": "Regularly - I don't avoid hard topics"}, {"t": "Occasionally"}, {"t": "Rarely"}, {"t": "Never - I avoid them"}]}, {"id": "11.1", "cat": 11, "q": "How many days per week do you exercise (20+ minutes)?", "multi": false, "options": [{"t": "5+ days"}, {"t": "3-4 days"}, {"t": "1-2 days"}, {"t": "Less than once per week"}, {"t": "I don't exercise"}], "scripture": "1 Corinthians 6:19-20 - 'Your body is a temple of the Holy Spirit... So glorify God in your body.'"}, {"id": "11.2", "cat": 11, "q": "How many hours of sleep do you average per night?", "multi": false, "options": [{"t": "7-9 hours consistently"}, {"t": "6-7 hours"}, {"t": "5-6 hours"}, {"t": "Less than 5 hours regularly"}]}, {"id": "11.3", "cat": 11, "q": "How many nights per week is your sleep disrupted (trouble falling asleep, waking during night, early waking)?", "multi": false, "options": [{"t": "Never / Rarely"}, {"t": "1-2 nights/week"}, {"t": "3-4 nights/week"}, {"t": "5+ nights/week"}], "help": "This may indicate anxiety or nervous system dysregulation."}, {"id": "11.4", "cat": 11, "q": "Have you been screened for Type 2 Diabetes or prediabetes in the past year?", "multi": false, "options": [{"t": "Yes, results were normal"}, {"t": "Yes, I'm prediabetic (HbA1c 5.7-6.4% or fasting glucose 100-125)"}, {"t": "Yes, I have Type 2 Diabetes"}, {"t": "No, but I know I should be screened"}, {"t": "No, and I haven't considered it"}, {"t": "I don't know what this means"}], "help": "Fasting blood glucose or HbA1c test. If you're over 35, sedentary, or overweight, this matters."}, {"id": "11.5", "cat": 11, "q": "Are you actively managing your blood sugar through diet, exercise, or medication?", "multi": false, "options": [{"t": "Yes, under medical supervision with improving numbers"}, {"t": "Yes, but numbers aren't improving"}, {"t": "Somewhat, inconsistently"}, {"t": "No, I'm not managing it"}], "cond": {"all": [{"q": "11.4", "in": [1, 2]}]}}, {"id": "11.6", "cat": 11, "q": "Do you know your approximate waist circumference?", "multi": false, "options": [{"t": "Yes, and it's under 40 inches"}, {"t": "Yes, it's 40-44 inches"}, {"t": "Yes, it's 45+ inches"}, {"t": "No, I haven't measured"}, {"t": "I'd rather not answer"}], "help": "Waist \\>40 inches (men) significantly increases metabolic disease risk."}, {"id": "11.7", "cat": 11, "q": "When was your last physical exam with a doctor?", "multi": false, "options": [{"t": "Within the past year"}, {"t": "1-2 years ago"}, {"t": "2-3 years ago"}, {"t": "More than 3 years ago"}, {"t": "I don't remember / Never"}]}, {"id": "12.1", "cat": 12, "q": "Compared to when you started ministry, how much are you reading now?", "multi": false, "options": [{"t": "Reading more than ever"}, {"t": "About the same"}, {"t": "Reading less"}, {"t": "Reading significantly less"}], "scripture": "2 Timothy 4:13 - 'When you come, bring... the books, and above all the parchments.'"}, {"id": "12.2", "cat": 12, "q": "How many books (not counting fiction or light reading) did you read in the past year?", "multi": false, "options": [{"t": "12+ books"}, {"t": "6-12 books"}, {"t": "3-6 books"}, {"t": "1-2 books"}, {"t": "None"}]}, {"id": "12.3", "cat": 12, "q": "Do you engage in continuing education (conferences, courses, training)?", "multi": false, "options": [{"t": "Yes, regularly"}, {"t": "Occasionally"}, {"t": "Rarely"}, {"t": "Never / Not in years"}]}, {"id": "12.4", "cat": 12, "q": "Do you still wrestle with theological questions or difficult texts, or have you stopped asking hard questions?", "multi": false, "options": [{"t": "I actively wrestle with questions"}, {"t": "Occasionally"}, {"t": "Rarely - I've settled most things"}, {"t": "I've stopped - I'm just coasting"}]}, {"id": "12.5", "cat": 12, "q": "How often do you re-preach old sermons without fresh study?", "multi": false, "options": [{"t": "Never - I always do fresh study"}, {"t": "Rarely"}, {"t": "Sometimes"}, {"t": "Often"}]}, {"id": "13.1", "cat": 13, "q": "How many close, non-ministry friendships do you have?", "multi": false, "options": [{"t": "3+ close friends"}, {"t": "1-2 close friends"}, {"t": "0 close friends"}], "help": "People you can call at 2am. Real friends, not just acquaintances.", "scripture": "Proverbs 18:24 - 'A man of many companions may come to ruin, but there is a friend who sticks closer than a brother.'"}, {"id": "13.2", "cat": 13, "q": "Do you have someone (other than your wife) who knows your struggles and holds you accountable?", "multi": false, "options": [{"t": "Yes, and I meet with them regularly"}, {"t": "Yes, but we don't meet regularly"}, {"t": "Sort of, but I'm not truly vulnerable"}, {"t": "No, no one really knows me"}]}, {"id": "13.3", "cat": 13, "q": "Do you feel isolated or alone in ministry?", "multi": false, "options": [{"t": "No, I feel supported and connected"}, {"t": "Sometimes"}, {"t": "Often"}, {"t": "Constantly"}]}, {"id": "13.4", "cat": 13, "q": "How often do you spend time with friends (not ministry-related)?", "multi": false, "options": [{"t": "Weekly or more"}, {"t": "Monthly"}, {"t": "Every few months"}, {"t": "Rarely / Almost never"}]}, {"id": "13.5", "cat": 13, "q": "When you're struggling, do you reach out for help?", "multi": false, "options": [{"t": "Yes, regularly"}, {"t": "Sometimes"}, {"t": "Rarely"}, {"t": "Never - I handle it alone"}]}, {"id": "13.6", "cat": 13, "q": "Do you have relationships with other pastors where you can be honest about struggles?", "multi": false, "options": [{"t": "Yes, several"}, {"t": "Yes, one or two"}, {"t": "Sort of, but not deeply"}, {"t": "No"}]}, {"id": "14.1", "cat": 14, "q": "Is your phone the first thing you check in the morning and the last thing at night?", "multi": false, "options": [{"t": "No, I have boundaries"}, {"t": "First thing, but not last"}, {"t": "Last thing, but not first"}, {"t": "Yes, both"}], "scripture": "1 Corinthians 6:12 - 'All things are lawful for me, but not all things are helpful. All things are lawful for me, but I will not be dominated by anything.'"}, {"id": "14.2", "cat": 14, "q": "In the past month, have you had any completely screen-free days?", "multi": false, "options": [{"t": "Yes, regularly (weekly Sabbath)"}, {"t": "Yes, occasionally"}, {"t": "Maybe one or two"}, {"t": "No, not a single one"}]}, {"id": "14.3", "cat": 14, "q": "How much time do you spend on social media per day?", "multi": false, "options": [{"t": "Less than 15 minutes"}, {"t": "15-30 minutes"}, {"t": "30-60 minutes"}, {"t": "1-2 hours"}, {"t": "2+ hours"}]}, {"id": "14.4", "cat": 14, "q": "Do you check your phone during personal prayer or Bible reading?", "multi": false, "options": [{"t": "Never"}, {"t": "Rarely"}, {"t": "Sometimes"}, {"t": "Often"}]}, {"id": "14.5", "cat": 14, "q": "Do you know your average daily screen time?", "multi": false, "options": [{"t": "Yes, and it's under 2 hours"}, {"t": "Yes, it's 2-3 hours"}, {"t": "Yes, it's 3-5 hours"}, {"t": "Yes, it's 5+ hours"}, {"t": "No, I've never checked"}]}, {"id": "15.1", "cat": 15, "q": "How confident are you in your calling to pastoral ministry?", "multi": false, "options": [{"t": "Very confident - no doubts"}, {"t": "Mostly confident, occasional questions"}, {"t": "Somewhat confident, frequent doubts"}, {"t": "Not confident - serious doubts"}], "scripture": "1 Timothy 3:1 - 'If anyone aspires to the office of overseer, he desires a noble task.'"}, {"id": "15.2", "cat": 15, "q": "Do you find joy and satisfaction in pastoral ministry?", "multi": false, "options": [{"t": "Yes, regularly"}, {"t": "Sometimes"}, {"t": "Rarely"}, {"t": "No, it feels like drudgery"}]}, {"id": "15.3", "cat": 15, "q": "How often do you fantasize about leaving ministry?", "multi": false, "options": [{"t": "Never"}, {"t": "Rarely"}, {"t": "Sometimes"}, {"t": "Often"}, {"t": "Constantly"}]}, {"id": "15.4", "cat": 15, "q": "Have you become cynical about the church or ministry?", "multi": false, "options": [{"t": "No, I still love the church"}, {"t": "Somewhat - I'm more jaded than I used to be"}, {"t": "Yes, significantly"}, {"t": "Yes, deeply cynical"}]}, {"id": "15.5", "cat": 15, "q": "Do you genuinely care about the people you shepherd, or has it become just a job?", "multi": false, "options": [{"t": "I genuinely care deeply"}, {"t": "I care, but not as much as I used to"}, {"t": "It feels more like a job now"}, {"t": "I don't really care anymore"}]}, {"id": "16.1", "cat": 16, "q": "How often do you pray (outside of sermon prep or public duties)?", "multi": false, "options": [{"t": "Daily, sustained times"}, {"t": "Most days, but rushed"}, {"t": "A few times per week"}, {"t": "Rarely"}, {"t": "Almost never (just sermon prep)"}], "scripture": "1 Thessalonians 5:17 - 'Pray without ceasing.'"}, {"id": "16.2", "cat": 16, "q": "When you pray, does it feel like genuine communion with God or task completion?", "multi": false, "options": [{"t": "Genuine communion most of the time"}, {"t": "Mix of both"}, {"t": "Mostly feels like task completion"}, {"t": "Always feels mechanical"}]}, {"id": "16.3", "cat": 16, "q": "How often do you read Scripture for personal devotion (not sermon prep)?", "multi": false, "options": [{"t": "Daily"}, {"t": "Most days"}, {"t": "A few times per week"}, {"t": "Rarely"}, {"t": "Never - only for sermon prep"}]}, {"id": "16.4", "cat": 16, "q": "Do you feel spiritually dry or distant from God?", "multi": false, "options": [{"t": "No, I feel close to God"}, {"t": "Sometimes"}, {"t": "Often"}, {"t": "Constantly / I feel numb"}]}, {"id": "16.5", "cat": 16, "q": "When you worship (singing, liturgy, etc.), is it genuine or performative?", "multi": false, "options": [{"t": "Genuine - I'm worshiping God"}, {"t": "Mostly genuine"}, {"t": "Mix of genuine and performative"}, {"t": "Mostly performative"}, {"t": "Always performative - just going through motions"}]}, {"id": "16.6", "cat": 16, "q": "Do you delight in God, or is He just a professional obligation?", "multi": false, "options": [{"t": "I genuinely delight in God"}, {"t": "Sometimes I delight, sometimes obligation"}, {"t": "Mostly obligation"}, {"t": "Completely obligation - no delight"}]}, {"id": "17.1", "cat": 17, "q": "Are there people you haven't forgiven?", "multi": false, "options": [{"t": "No, I've forgiven everyone"}, {"t": "One or two people"}, {"t": "Several people"}, {"t": "Many people - I carry a lot of unforgiveness"}], "scripture": "Ephesians 4:31-32 - 'Let all bitterness and wrath and anger... be put away from you... forgiving one another, as God in Christ forgave you.'"}, {"id": "17.2", "cat": 17, "q": "Do you mentally rehearse past hurts or offenses?", "multi": false, "options": [{"t": "Never / Rarely"}, {"t": "Sometimes"}, {"t": "Often"}, {"t": "Constantly"}], "help": "Replaying conversations, imagining what you should have said."}, {"id": "17.3", "cat": 17, "q": "Has your heart become hardened toward certain people or groups?", "multi": false, "options": [{"t": "No"}, {"t": "Somewhat"}, {"t": "Yes, significantly"}, {"t": "Yes, deeply hardened"}]}, {"id": "17.4", "cat": 17, "q": "How long do you typically hold onto resentment after being hurt?", "multi": false, "options": [{"t": "I don't - I forgive quickly"}, {"t": "A few days"}, {"t": "Weeks"}, {"t": "Months or years"}]}, {"id": "17.5", "cat": 17, "q": "Do you have a 'root of bitterness' that's affecting multiple relationships?", "multi": false, "options": [{"t": "No"}, {"t": "I'm not sure"}, {"t": "Yes, I think so"}, {"t": "Yes, definitely"}], "help": "One deep hurt that colors everything else."}, {"id": "18.1", "cat": 18, "q": "Have you experienced significant loss (death, betrayal, church split, etc.) that you haven't fully processed?", "multi": false, "options": [{"t": "No significant unprocessed loss"}, {"t": "Yes, one loss"}, {"t": "Yes, multiple losses"}, {"t": "Yes, and it's debilitating"}], "scripture": "Psalm 34:18 - 'The Lord is near to the brokenhearted and saves the crushed in spirit.'"}, {"id": "18.2", "cat": 18, "q": "When you experience grief, do you allow yourself to feel and process it?", "multi": false, "options": [{"t": "Yes, I grieve appropriately"}, {"t": "Somewhat - I try but struggle"}, {"t": "No - I suppress it"}, {"t": "No - I don't know how to grieve"}]}, {"id": "18.3", "cat": 18, "q": "Do you carry chronic sadness or a sense of loss that doesn't lift?", "multi": false, "options": [{"t": "No"}, {"t": "Sometimes"}, {"t": "Often"}, {"t": "Constantly"}]}, {"id": "18.4", "cat": 18, "q": "Does unresolved grief affect your ministry, relationships, or daily functioning?", "multi": false, "options": [{"t": "No / Not applicable"}, {"t": "Mildly"}, {"t": "Significantly"}, {"t": "Severely - it's debilitating"}]}, {"id": "19.1", "cat": 19, "q": "Do you experience rumination (mental loops replaying conversations, worrying about outcomes)?", "multi": false, "options": [{"t": "Never / Rarely"}, {"t": "Sometimes"}, {"t": "Often"}, {"t": "Very often / Daily"}], "help": "Rumination is repetitive negative thinking you can't seem to stop.", "scripture": "Philippians 4:6-7 - 'Do not be anxious about anything, but in everything by prayer... present your requests to God.'"}, {"id": "19.2", "cat": 19, "q": "When does rumination typically happen for you?", "multi": true, "options": [{"t": "Morning (upon waking)"}, {"t": "Afternoon (2-5pm)"}, {"t": "Evening (7-9pm)"}, {"t": "Late night (when trying to sleep)"}, {"t": "After stressful meetings or conflicts"}, {"t": "No clear pattern"}], "help": "Select all that apply. Understanding timing helps identify triggers.", "cond": {"all": [{"q": "19.1", "not": [0]}]}}, {"id": "19.3", "cat": 19, "q": "Do you experience physical symptoms during rumination or anxiety?", "multi": true, "options": [{"t": "Elevated heart rate (noticed 10-15 bpm increase)"}, {"t": "Tight shoulders or jaw tension"}, {"t": "Digestive issues"}, {"t": "Shallow breathing"}, {"t": "Restlessness / can't sit still"}, {"t": "None of the above"}], "help": "Select all that apply."}, {"id": "19.4", "cat": 19, "q": "How often do you experience anxiety that interferes with daily life?", "multi": false, "options": [{"t": "Never / Rarely"}, {"t": "Sometimes"}, {"t": "Often"}, {"t": "Daily / Constantly"}]}, {"id": "19.5", "cat": 19, "q": "Have you sought professional help (counselor, therapist, psychiatrist) for mental health?", "multi": false, "options": [{"t": "Yes, currently in care"}, {"t": "Yes, in the past"}, {"t": "No, but I've considered it"}, {"t": "No, and I don't think I need it"}, {"t": "No, but I know I should"}]}, {"id": "19.6", "cat": 19, "q": "Do you have tools or practices to regulate your nervous system when stressed?", "multi": false, "options": [{"t": "Yes, I use them regularly"}, {"t": "Yes, but I rarely use them"}, {"t": "I have some tools but don't know how to use them"}, {"t": "No, I don't have any tools"}], "help": "Examples: breathing exercises, cold exposure, prayer walks, etc."}]};
+
+let id = null;           // {name,email}
+let cur = null;          // current test slug
+let answers = {};        // current test answers (device-only)
+let serverTests = [];    // overview rows
+
+const $ = (x) => document.getElementById(x);
+const views = ["id","hub","test","grading","results","combined"];
+function show(v){ views.forEach(x => $("view-"+x).classList.toggle("hidden", x!==v)); window.scrollTo(0,0); }
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+async function api(payload){
+  const r = await fetch(API, { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(payload) });
+  const j = await r.json().catch(()=>({error:"Bad response"}));
+  if(!r.ok) throw new Error(j.error || ("HTTP "+r.status));
+  return j;
+}
+const LS = {
+  get(k){ try{ return JSON.parse(localStorage.getItem(k) || "null"); }catch(e){ return null; } },
+  set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} },
+  del(k){ try{ localStorage.removeItem(k); }catch(e){} },
+};
+
+/* ---------- identity ---------- */
+$("btn-id").onclick = () => {
+  const name = $("name").value.trim(), email = $("email").value.trim();
+  const err = $("id-err"); err.classList.add("hidden");
+  if(!name || !/^\S+@\S+\.\S+$/.test(email)){ err.textContent = "Please enter your name and a valid email."; err.classList.remove("hidden"); return; }
+  id = { name, email: email.toLowerCase() };
+  LS.set("ss_id", id);
+  openHub();
+};
+
+/* ---------- hub ---------- */
+async function openHub(){
+  show("hub");
+  $("whoami").innerHTML = `${esc(id.name)} · ${esc(id.email)} — <a id="switch-id">not you?</a>`;
+  $("switch-id").onclick = () => { LS.del("ss_id"); id = null; show("id"); };
+  renderHub();
+  try{
+    const res = await api({ action:"overview", email: id.email });
+    serverTests = res.tests || [];
+  }catch(e){ serverTests = []; }
+  renderHub();
+}
+function statusFor(slug){
+  const done = serverTests.find(t => t.test === slug);
+  if(done) return { chip: done.band, label: `${done.overall} · ${done.band}` };
+  const a = LS.get("ss_ans_" + slug);
+  if(a && Object.keys(a).length) return { chip: "progress", label: "In progress" };
+  return { chip: "", label: "Not taken" };
+}
+function renderHub(){
+  const ul = $("testlist"); ul.innerHTML = "";
+  for(const t of DATA.tests){
+    const st = statusFor(t.slug);
+    const li = document.createElement("li");
+    li.innerHTML = `<div class="inner"><div><h3>${esc(t.title)}</h3><p>${esc(t.blurb)} · ${t.n} questions</p></div><span class="chip ${st.chip}">${esc(st.label)}</span></div>`;
+    li.onclick = () => openTest(t.slug);
+    ul.appendChild(li);
+  }
+  const done = serverTests.length;
+  $("btn-combined").disabled = done < 2;
+  $("combined-hint").textContent = done < 2
+    ? `Take at least two tests to unlock a combined analysis across areas. (${done}/2)`
+    : `Based on the ${done} test${done>1?"s":""} you've taken.`;
+}
+$("btn-combined").onclick = async () => {
+  show("grading");
+  try{
+    const res = await api({ action:"combined", email: id.email, name: id.name });
+    renderCombined(res);
+  }catch(e){ openHub(); alert("Couldn't build your full picture: " + e.message); }
+};
+
+/* ---------- test taking ---------- */
+function testDef(slug){ return DATA.tests.find(t => t.slug === slug); }
+function testQs(slug){ const cats = testDef(slug).cats.map(c=>c.id); return DATA.questions.filter(q => cats.includes(q.cat)); }
+function isVisible(q){
+  if(!q.cond) return true;
+  return q.cond.all.every(c => {
+    const a = answers[c.q];
+    if(typeof a !== "number") return false;
+    if(c.not && c.not.includes(a)) return false;
+    if(c["in"] && !c["in"].includes(a)) return false;
+    return true;
+  });
+}
+function isAnswered(q){
+  const a = answers[q.id];
+  return q.multi ? (Array.isArray(a) && a.length > 0) : (typeof a === "number");
+}
+function openTest(slug){
+  cur = slug;
+  answers = LS.get("ss_ans_" + slug) || {};
+  const def = testDef(slug);
+  $("t-label").textContent = "Integrity test";
+  $("t-title").textContent = def.title;
+  $("t-blurb").textContent = def.blurb;
+  renderTest(); show("test");
+}
+function renderTest(){
+  const def = testDef(cur);
+  const box = $("questions"); box.innerHTML = "";
+  // prune hidden answers
+  for(const q of testQs(cur)) if(!isVisible(q) && (q.id in answers)) delete answers[q.id];
+  for(const cat of def.cats){
+    if(def.cats.length > 1){
+      const h = document.createElement("div"); h.className = "cat-head"; h.textContent = cat.name;
+      box.appendChild(h);
+    }
+    for(const q of testQs(cur).filter(x => x.cat === cat.id && isVisible(x))){
+      const div = document.createElement("div"); div.className = "q";
+      let html = `<p class="qt">${esc(q.q)}</p>`;
+      if(q.help) html += `<p class="help">${esc(q.help)}</p>`;
+      if(q.scripture) html += `<p class="scrip">${esc(q.scripture)}</p>`;
+      if(q.multi) html += `<p class="help">Select all that apply.</p>`;
+      html += `<div class="opts">`;
+      q.options.forEach((o, i) => {
+        const type = q.multi ? "checkbox" : "radio";
+        const a = answers[q.id];
+        const checked = q.multi ? (Array.isArray(a) && a.includes(i)) : a === i;
+        html += `<label class="opt${checked?" sel":""}"><input type="${type}" name="q${q.id.replace(".","_")}" value="${i}"${checked?" checked":""}/> <span>${esc(o.t)}</span></label>`;
+      });
+      html += `</div>`;
+      div.innerHTML = html;
+      div.querySelectorAll("input").forEach(inp => {
+        inp.onchange = () => {
+          const i = Number(inp.value);
+          if(q.multi){
+            let arr = Array.isArray(answers[q.id]) ? answers[q.id] : [];
+            arr = inp.checked ? [...arr, i] : arr.filter(x => x !== i);
+            if(arr.length) answers[q.id] = arr; else delete answers[q.id];
+          } else answers[q.id] = i;
+          LS.set("ss_ans_" + cur, answers);
+          renderTest();
+        };
+      });
+      box.appendChild(div);
+    }
+  }
+  const vis = testQs(cur).filter(isVisible);
+  const n = vis.filter(isAnswered).length;
+  $("answered-count").textContent = n;
+  $("total-count").textContent = vis.length;
+  $("pbar").style.width = (100*n/vis.length) + "%";
+}
+$("back-hub").onclick = () => openHub();
+$("back-hub2").onclick = () => openHub();
+$("back-hub3").onclick = () => openHub();
+
+$("btn-submit").onclick = async () => {
+  const vis = testQs(cur).filter(isVisible);
+  const missing = vis.length - vis.filter(isAnswered).length;
+  if(vis.filter(isAnswered).length === 0){ alert("Answer at least one question first."); return; }
+  if(missing > 0 && !confirm(`${missing} unanswered question${missing===1?"":"s"} won't count. Score anyway?`)) return;
+  show("grading");
+  try{
+    const res = await api({ action:"submit", name: id.name, email: id.email, test: cur, answers });
+    LS.del("ss_ans_" + cur);                       // discard local answers after scoring
+    LS.set("ss_res_" + cur, res);                  // keep result locally for redisplay
+    const i = serverTests.findIndex(t => t.test === cur);
+    const row = { test: cur, overall: res.score.overall, band: res.score.band, categories: res.score.byCategory };
+    if(i >= 0) serverTests[i] = row; else serverTests.push(row);
+    renderResults(res);
+  }catch(e){
+    show("test");
+    const err = $("submit-err"); err.textContent = "Scoring failed: " + e.message + " — your answers are still on this device; try again.";
+    err.classList.remove("hidden");
+  }
+};
+
+/* ---------- results ---------- */
+function bars(el, cats){
+  el.innerHTML = "";
+  for(const c of Object.values(cats).sort((a,b)=>b.risk-a.risk)){
+    el.insertAdjacentHTML("beforeend",
+      `<div class="secbar"><span>${esc(c.name)}</span><span class="bar"><div class="bg-${c.band}" style="width:${c.risk}%"></div></span><span class="bd risk-${c.band}">${c.risk} · ${c.band}</span></div>`);
+  }
+}
+function renderResults(res){
+  const s = res.score;
+  $("r-label").textContent = "Results · " + s.title;
+  $("res-title").textContent = s.title;
+  $("res-score").textContent = s.overall;
+  $("res-score").className = "big risk-" + s.band;
+  $("res-band").textContent = s.band + " risk";
+  $("res-band").className = "bandlbl risk-" + s.band;
+  bars($("res-secbars"), s.byCategory);
+  $("res-plan").innerHTML = md(res.guidance || "");
+  const next = DATA.tests.find(t => !serverTests.some(r => r.test === t.slug));
+  $("btn-next-test").style.display = next ? "" : "none";
+  $("btn-next-test").onclick = () => openTest(next.slug);
+  $("btn-retake").onclick = () => openTest(cur);
+  show("results");
+}
+function renderCombined(res){
+  $("c-title").textContent = id.name.split(" ")[0] + " — your full picture";
+  const all = {};
+  for(const t of res.tests) for(const [k,v] of Object.entries(t.categories)) all[t.test + k] = v;
+  bars($("c-secbars"), all);
+  $("c-plan").innerHTML = md(res.guidance || "");
+  show("combined");
+}
+
+/* ---------- markdown ---------- */
+function md(src){
+  const lines = String(src).split(/\r?\n/);
+  let html = "", inUl = false;
+  const inline = (s) => esc(s)
+    .replace(/\*\*(.+?)\*\*/g, "<b>$1</b>")
+    .replace(/(^|[^*])\*([^*\n]+)\*/g, "$1<i>$2</i>")
+    .replace(/_([^_\n]+)_/g, "<i>$1</i>");
+  const closeUl = () => { if(inUl){ html+="</ul>"; inUl=false; } };
+  for(const l of lines){
+    const h = l.match(/^(#{1,4})\s+(.*)/);
+    if(h){ closeUl(); const n=h[1].length; html += `<h${n+1}>`+inline(h[2])+`</h${n+1}>`; continue; }
+    const li = l.match(/^\s*[-*]\s+(.*)/) || l.match(/^\s*\d+\.\s+(.*)/);
+    if(li){ if(!inUl){ html+="<ul>"; inUl=true; } html += "<li>"+inline(li[1])+"</li>"; continue; }
+    if(!l.trim()){ closeUl(); continue; }
+    closeUl(); html += "<p>"+inline(l)+"</p>";
+  }
+  closeUl();
+  return html;
+}
+
+/* ---------- boot ---------- */
+(function(){
+  id = LS.get("ss_id");
+  const prev = id || {};
+  $("name").value = prev.name || ""; $("email").value = prev.email || "";
+  if(id) openHub(); else show("id");
+})();
+</script>
+</body>
+</html>

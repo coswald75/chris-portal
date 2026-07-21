@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bible Knowledge Exam — Chris Oswald</title>
+<meta name="description" content="A 100-question Bible knowledge exam with a personalized study plan." />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink:#1c1c1a; --muted:#6b6b63; --accent:#075c2e; --accent-soft:#e8f2ec;
+    --line:#e2dfd8; --paper:#ffffff; --hover:#faf9f5; --bad:#9c2b21; --bad-soft:#f9ecea;
+    --serif:'Fraunces',Georgia,serif; --sans:'Inter',-apple-system,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:5vh 20px 12vh}
+  a{color:var(--accent)}
+  h1{font-weight:600;font-size:2rem;margin:.2em 0 .3em}
+  .sub{font-family:var(--sans);color:var(--muted);font-size:.95rem;line-height:1.55}
+  .card{border:1px solid var(--line);border-radius:12px;padding:28px;margin-top:24px;background:var(--paper)}
+  label{font-family:var(--sans);font-size:.85rem;font-weight:600;display:block;margin:14px 0 6px}
+  input[type=text],input[type=email]{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:8px;font-family:var(--sans);font-size:1rem;background:var(--hover)}
+  input:focus,select:focus{outline:2px solid var(--accent);outline-offset:1px}
+  button{font-family:var(--sans);font-weight:600;font-size:.95rem;border-radius:8px;padding:11px 20px;cursor:pointer;border:1px solid var(--line);background:var(--paper);color:var(--ink)}
+  button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  button:disabled{opacity:.5;cursor:default}
+  .topbar{display:flex;justify-content:space-between;align-items:center;font-family:var(--sans);font-size:.82rem;color:var(--muted);margin-bottom:8px}
+  .progressbar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin:6px 0 26px}
+  .progressbar>div{height:100%;background:var(--accent);transition:width .3s}
+  .sec-label{font-family:var(--sans);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  h2{font-weight:500;font-size:1.45rem;margin:.25em 0 .2em}
+  .instr{font-family:var(--sans);color:var(--muted);font-size:.9rem;margin-bottom:18px;line-height:1.5}
+  .q{padding:16px 0;border-bottom:1px solid var(--line)}
+  .q:last-of-type{border-bottom:none}
+  .q p{margin:0 0 10px;font-size:1.05rem;line-height:1.5}
+  .q .num{color:var(--accent);font-family:var(--sans);font-weight:600;font-size:.85rem;margin-right:8px}
+  select{width:100%;max-width:340px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-family:var(--sans);font-size:.95rem;background:var(--hover)}
+  .nav{display:flex;justify-content:space-between;align-items:center;margin-top:26px;gap:12px}
+  .savestate{font-family:var(--sans);font-size:.8rem;color:var(--muted);min-width:70px;text-align:center}
+  .hlist{list-style:none;padding:0;margin:0}
+  .hlist li{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin-bottom:8px;background:var(--hover);font-size:1rem}
+  .hlist .pos{font-family:var(--sans);font-weight:600;color:var(--accent);width:26px;text-align:right}
+  .hlist .txt{flex:1}
+  .hlist button{padding:4px 10px;font-size:1rem;line-height:1}
+  .dup{color:var(--bad);font-family:var(--sans);font-size:.8rem;margin-top:6px}
+  /* results */
+  .score-hero{text-align:center;padding:34px 0 10px}
+  .score-hero .big{font-size:4.4rem;font-weight:600;line-height:1}
+  .score-hero .of{color:var(--muted);font-size:1.4rem}
+  .rw{font-family:var(--sans);color:var(--muted);margin-top:8px}
+  .rw b.g{color:var(--accent)} .rw b.r{color:var(--bad)}
+  .secbars{margin:26px 0}
+  .secbar{display:grid;grid-template-columns:200px 1fr 52px;gap:12px;align-items:center;font-family:var(--sans);font-size:.83rem;padding:5px 0}
+  .secbar .bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden}
+  .secbar .bar>div{height:100%;background:var(--accent)}
+  .miss{border:1px solid var(--line);border-left:3px solid var(--bad);border-radius:8px;padding:14px 16px;margin:10px 0;background:var(--hover)}
+  .miss .mp{margin:0 0 6px;font-size:1rem}
+  .miss .ma{font-family:var(--sans);font-size:.86rem;line-height:1.6}
+  .miss .ma .you{color:var(--bad)} .miss .ma .cor{color:var(--accent);font-weight:600}
+  .miss .rd{font-family:var(--sans);font-size:.82rem;color:var(--muted);margin-top:4px}
+  .plan{border:1px solid var(--line);border-radius:12px;padding:8px 28px 20px;margin-top:14px;background:var(--hover);line-height:1.65}
+  .plan h2{font-size:1.25rem;margin-top:1.2em}
+  .plan table{border-collapse:collapse;font-family:var(--sans);font-size:.86rem;margin:10px 0;width:100%}
+  .plan th,.plan td{border:1px solid var(--line);padding:6px 10px;text-align:left}
+  .plan th{background:var(--accent-soft)}
+  .spin{display:inline-block;width:16px;height:16px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:sp 1s linear infinite;vertical-align:-3px;margin-right:8px}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  .hidden{display:none}
+  .err{color:var(--bad);font-family:var(--sans);font-size:.88rem;margin-top:10px}
+  details{margin:14px 0}
+  summary{font-family:var(--sans);font-weight:600;cursor:pointer}
+  .ordercmp{font-family:var(--sans);font-size:.86rem;line-height:1.7}
+  @media(max-width:560px){.secbar{grid-template-columns:130px 1fr 46px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- START -->
+  <div id="view-start">
+    <span class="sec-label">Providence Community Church</span>
+    <h1>Bible Knowledge Exam</h1>
+    <p class="sub">100 questions across ten sections — people, places, books, chapters, sayings, doctrine, and the storyline of Scripture. Your progress saves automatically; you can leave and pick up where you stopped. When you finish you'll get your score, the answers you missed, and a personalized two-week study plan aimed at your weakest areas.</p>
+    <div class="card">
+      <label for="name">Name</label>
+      <input id="name" type="text" autocomplete="name" placeholder="Your name" />
+      <label for="email">Email</label>
+      <input id="email" type="email" autocomplete="email" placeholder="you@example.com" />
+      <p class="sub" style="font-size:.82rem">Use the same email to resume an unfinished exam.</p>
+      <button class="primary" id="btn-start" style="margin-top:8px">Begin the exam</button>
+      <div id="start-err" class="err hidden"></div>
+    </div>
+  </div>
+
+  <!-- EXAM -->
+  <div id="view-exam" class="hidden">
+    <div class="topbar">
+      <span id="who"></span>
+      <span><span id="answered-count">0</span> of 100 answered</span>
+    </div>
+    <div class="progressbar"><div id="pbar" style="width:0%"></div></div>
+    <span class="sec-label">Section <span id="sec-letter"></span> · <span id="sec-pos"></span> of 10</span>
+    <h2 id="sec-title"></h2>
+    <p class="instr" id="sec-instr"></p>
+    <div id="questions"></div>
+    <div class="nav">
+      <button id="btn-prev">← Back</button>
+      <span class="savestate" id="savestate"></span>
+      <button class="primary" id="btn-next">Next →</button>
+    </div>
+    <div id="submit-err" class="err hidden"></div>
+  </div>
+
+  <!-- GRADING -->
+  <div id="view-grading" class="hidden">
+    <div class="card" style="text-align:center;padding:60px 28px">
+      <h2><span class="spin"></span>Grading your exam…</h2>
+      <p class="sub">Scoring 100 questions and writing your personalized study plan.<br/>This usually takes about half a minute — don't close the page.</p>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="view-results" class="hidden">
+    <span class="sec-label">Results</span>
+    <h1 style="font-size:1.6rem" id="res-name"></h1>
+    <div class="score-hero">
+      <div class="big"><span id="res-score"></span><span class="of">/100</span></div>
+      <div class="rw"><b class="g" id="res-right"></b> right · <b class="r" id="res-wrong"></b> wrong</div>
+    </div>
+    <div class="secbars" id="res-secbars"></div>
+    <div id="res-plan-wrap">
+      <h2 style="margin-top:30px">Your Study Plan</h2>
+      <div class="plan" id="res-plan"></div>
+    </div>
+    <details id="res-missed-wrap">
+      <summary id="res-missed-summary"></summary>
+      <div id="res-missed"></div>
+    </details>
+    <div style="margin-top:30px;display:flex;gap:12px">
+      <button id="btn-retake">Take it again</button>
+      <button onclick="window.print()">Print results</button>
+    </div>
+  </div>
+
+</div>
+<script>
+const API = "https://twbunmbzyqcqzgffdrib.supabase.co/functions/v1/bible-exam";
+const DATA = {"sections": {"A": "Who did the following?", "B": "Where geographically did the following events take place?", "C": "In which book of the Bible do you find the following?", "D": "In which book and chapter(s) do you find the following?", "E": "Give the main topic or event of the following Bible chapters", "F": "Who said the following?", "G": "To which book would you turn for help with this error?", "H": "Arrange the events in chronological order", "I": "Match the verse with the doctrine it best supports", "J": "In which Old Testament book is this Messianic prophecy?"}, "gBooks": ["Genesis", "Job", "Song of Songs", "Amos", "John", "1 Corinthians", "Galatians", "1 Timothy", "James", "Revelation"], "iDoctrines": ["providence", "atonement", "election", "justification", "immutability", "sanctification", "inspiration", "deity of Christ", "Trinity", "total depravity"], "hEvents": {"a": "The giving of the Law", "b": "The atoning death of Christ", "c": "Malachi prophesies", "d": "The promise to Abraham", "e": "Creation and fall", "f": "Pentecost", "g": "Exile in Babylon", "h": "David is King over Israel", "i": "Paul is shipwrecked", "j": "The Judges rule over Israel"}, "questions": [{"id": 1, "s": "A", "p": "Wrote the book of Acts?"}, {"id": 2, "s": "A", "p": "Appeared with Jesus on the Mount of Transfiguration?"}, {"id": 3, "s": "A", "p": "Directed the rebuilding of the wall of Jerusalem?"}, {"id": 4, "s": "A", "p": "Killed a thousand Philistines with a donkey's jawbone?"}, {"id": 5, "s": "A", "p": "Led the Israelites into the promised land?"}, {"id": 6, "s": "A", "p": "Was exiled to the island of Patmos where he wrote Revelation?"}, {"id": 7, "s": "A", "p": "Was going to curse Israel, but had to bless them?"}, {"id": 8, "s": "A", "p": "Became the first King of the 10 tribes that broke away?"}, {"id": 9, "s": "A", "p": "Rescued David from her foolish husband Nabal?"}, {"id": 10, "s": "A", "p": "Was rebuked by Paul for refusing to eat with Gentiles?"}, {"id": 11, "s": "B", "p": "God gave Moses the Ten Commandments?"}, {"id": 12, "s": "B", "p": "A silversmith caused a riot?"}, {"id": 13, "s": "B", "p": "Elijah had a confrontation with the prophets of Baal?"}, {"id": 14, "s": "B", "p": "Believers were first called “Christians”?"}, {"id": 15, "s": "B", "p": "The river Jesus was baptized in?"}, {"id": 16, "s": "B", "p": "The walls of the city collapsed after the Israelites marched around it?"}, {"id": 17, "s": "B", "p": "Jesus walked on water?"}, {"id": 18, "s": "B", "p": "The place where Jonah was supposed to be going when he fled to Tarshish?"}, {"id": 19, "s": "B", "p": "The place where Paul was heading when he was blinded on the road?"}, {"id": 20, "s": "B", "p": "The river Ezekiel was at with the exiles when he received a vision from God?"}, {"id": 21, "s": "C", "p": "Peter visits Cornelius where he learns that God accepts Jews and Gentiles?"}, {"id": 22, "s": "C", "p": "Paul asks a runaway slave to be welcomed back?"}, {"id": 23, "s": "C", "p": "Israel worships a golden calf made by Aaron?"}, {"id": 24, "s": "C", "p": "The story of Joseph and the brothers?"}, {"id": 25, "s": "C", "p": "Twelve men explore the land of Canaan, but only two trust God to give it to them?"}, {"id": 26, "s": "C", "p": "God's judgment on Israel is pictured by a prophet as a horde of locusts?"}, {"id": 27, "s": "C", "p": "A description of the armor of God?"}, {"id": 28, "s": "C", "p": "The words “My God, my God, why have you forsaken me?” in the Old Testament?"}, {"id": 29, "s": "C", "p": "A prophet marries a prostitute?"}, {"id": 30, "s": "C", "p": "The Magi visiting the Christ child?"}, {"id": 31, "s": "D", "p": "God first speaks the Ten Commandments?"}, {"id": 32, "s": "D", "p": "The call of Abram?"}, {"id": 33, "s": "D", "p": "The Sermon on the Mount?"}, {"id": 34, "s": "D", "p": "The Great Commission?"}, {"id": 35, "s": "D", "p": "The Holy Spirit coming upon the disciples in wind, fire, and tongues?"}, {"id": 36, "s": "D", "p": "Adam the head of the old humanity, Christ the head of the new (“through the obedience of the one man the many will be made righteous”)?"}, {"id": 37, "s": "D", "p": "“But these three remain: faith, hope, and love. And the greatest of these is love”?"}, {"id": 38, "s": "D", "p": "A religious leader hears “Unless a man is born again he cannot enter the kingdom of heaven”?"}, {"id": 39, "s": "D", "p": "Satan bound for a thousand years?"}, {"id": 40, "s": "D", "p": "The three Hebrews saved from the fiery furnace?"}, {"id": 41, "s": "E", "p": "Genesis 3"}, {"id": 42, "s": "E", "p": "Isaiah 53"}, {"id": 43, "s": "E", "p": "Romans 4"}, {"id": 44, "s": "E", "p": "Psalm 119"}, {"id": 45, "s": "E", "p": "Hebrews 11"}, {"id": 46, "s": "E", "p": "Acts 15"}, {"id": 47, "s": "E", "p": "John 17"}, {"id": 48, "s": "E", "p": "Revelation 21–22"}, {"id": 49, "s": "E", "p": "Luke 15"}, {"id": 50, "s": "E", "p": "Exodus 3"}, {"id": 51, "s": "F", "p": "“If I perish, I perish.”"}, {"id": 52, "s": "F", "p": "“What is truth?”"}, {"id": 53, "s": "F", "p": "“After I am worn out and my master is old, will I now have this pleasure?…Will I really have a child, now that I am old?”"}, {"id": 54, "s": "F", "p": "“O Jerusalem, Jerusalem…how often I have longed to gather your children together, as a hen gathers her chicks under her wings…”"}, {"id": 55, "s": "F", "p": "“Grant that one of these two sons of mine may sit at your right and the other at your left in the kingdom.”"}, {"id": 56, "s": "F", "p": "“The fire and the wood are here, but where is the lamb for the burnt offering?”"}, {"id": 57, "s": "F", "p": "“He must increase; I must decrease.”"}, {"id": 58, "s": "F", "p": "“Am I a dog that you come at me with sticks?”"}, {"id": 59, "s": "F", "p": "“I know my Redeemer lives and that in the end he will stand upon the earth.”"}, {"id": 60, "s": "F", "p": "“Give your servant a discerning heart to govern your people and to distinguish between right and wrong.”"}, {"id": 61, "s": "G", "p": "“As long as you believe the right things, it doesn't matter how you live your life.”"}, {"id": 62, "s": "G", "p": "“I'm sure I don't have any spiritual gifts. Only special people do.”"}, {"id": 63, "s": "G", "p": "“We are saved by Jesus, but we also have to do our part by obeying the law of the Old Testament.”"}, {"id": 64, "s": "G", "p": "“If you are sick, you must have sin in your life. Good people don't suffer.”"}, {"id": 65, "s": "G", "p": "“God doesn't care about the poor and oppressed. That's the social gospel.”"}, {"id": 66, "s": "G", "p": "“I know God promises to bless me, but I can't really trust him through the hard things in life, like famine, barrenness, and imprisonment.”"}, {"id": 67, "s": "G", "p": "“In the end it won't make any difference who we followed or what we did with our lives. Jesus will treat everybody the same when he comes back.”"}, {"id": 68, "s": "G", "p": "“There's nothing special about Jesus. He's just one way among many, just another prophet or good moral teacher.”"}, {"id": 69, "s": "G", "p": "“The best way to pick your elders is by looking at how successful they are in the business world…degrees…popularity…good looks.”"}, {"id": 70, "s": "G", "p": "“The Bible doesn't say anything about intimacy between a man and a woman. That's too fleshly for God to care about.”"}, {"id": 81, "s": "I", "p": "“Just as he who called you is holy, so be holy in all you do.” 1 Peter 1:15"}, {"id": 82, "s": "I", "p": "“God demonstrated his love for us in this, while we were still sinners, Christ died for us.” Romans 5:8"}, {"id": 83, "s": "I", "p": "“What you meant for evil, God meant for good.” Genesis 50:20"}, {"id": 84, "s": "I", "p": "“He chose us in him before the foundation of the world.” Ephesians 1:4"}, {"id": 85, "s": "I", "p": "“I the Lord do not change.” Malachi 3:6"}, {"id": 86, "s": "I", "p": "“Blessed is the man whose sin the Lord will not count against him.” Romans 4:8"}, {"id": 87, "s": "I", "p": "“In the beginning was the Word, and the Word was with God, and the Word was God.” John 1:1"}, {"id": 88, "s": "I", "p": "“Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit.” Matthew 28:19"}, {"id": 89, "s": "I", "p": "“For prophecy never had its origin in the will of man, but men spoke from God as they were carried along by the Holy Spirit.” 2 Peter 1:21"}, {"id": 90, "s": "I", "p": "“There is no one righteous, not even one…” Romans 3:10–11"}, {"id": 91, "s": "J", "p": "The Messiah would be born in Bethlehem."}, {"id": 92, "s": "J", "p": "He would crush the head of the serpent."}, {"id": 93, "s": "J", "p": "He would come riding on a colt, the foal of a donkey."}, {"id": 94, "s": "J", "p": "Born of a virgin."}, {"id": 95, "s": "J", "p": "Came to preach good news to the poor, bind up the brokenhearted, proclaim freedom for the captives…"}, {"id": 96, "s": "J", "p": "Would be a priest forever in the order of Melchizedek."}, {"id": 97, "s": "J", "p": "Would be like a sun of righteousness rising with healing in its wings."}, {"id": 98, "s": "J", "p": "“They divided my garments among them and cast lots for my clothing.”"}, {"id": 99, "s": "J", "p": "Buried with the rich in his death."}, {"id": 100, "s": "J", "p": "Like a lion's cub of the tribe of Judah."}]};
+const SEC_ORDER = ["A","B","C","D","E","F","G","H","I","J"];
+const SEC_INSTR = {
+  A:"Type the person's name.", B:"Type the place.", C:"Type the book of the Bible.",
+  D:"Type the book and chapter — e.g. “John 3” or “Matthew 5-7”.",
+  E:"In a few words, give the main topic or event of each chapter.",
+  F:"Type who said it.", G:"Choose the book that best addresses the error. Each book is used only once.",
+  H:"Use the arrows to put the ten events in chronological order, earliest first.",
+  I:"Choose the doctrine each verse best supports. Each doctrine is used only once.",
+  J:"Type the Old Testament book. Books may be used more than once.",
+};
+
+let state = { attemptId:null, name:"", email:"", answers:{}, secIdx:0, saveTimer:null, dirty:false };
+
+const $ = (id) => document.getElementById(id);
+const views = ["start","exam","grading","results"];
+function show(v){ views.forEach(x => $("view-"+x).classList.toggle("hidden", x!==v)); window.scrollTo(0,0); }
+
+async function api(payload){
+  const r = await fetch(API, { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(payload) });
+  const j = await r.json().catch(()=>({error:"Bad response"}));
+  if(!r.ok) throw new Error(j.error || ("HTTP "+r.status));
+  return j;
+}
+
+/* ---------- start / resume ---------- */
+$("btn-start").onclick = async () => {
+  const name = $("name").value.trim(), email = $("email").value.trim();
+  const err = $("start-err"); err.classList.add("hidden");
+  if(!name || !/^\S+@\S+\.\S+$/.test(email)){ err.textContent="Please enter your name and a valid email."; err.classList.remove("hidden"); return; }
+  $("btn-start").disabled = true; $("btn-start").textContent = "Starting…";
+  try{
+    const res = await api({ action:"start", name, email });
+    state.attemptId = res.attempt_id; state.name = name; state.email = email;
+    state.answers = res.answers || {};
+    state.secIdx = Math.max(0, SEC_ORDER.indexOf(res.current_section || "A"));
+    try{ localStorage.setItem("bexam", JSON.stringify({ attemptId: state.attemptId, name, email })); }catch(e){}
+    $("who").textContent = name + (res.resumed ? " · resumed" : "");
+    renderSection(); show("exam");
+  }catch(e){ err.textContent = e.message; err.classList.remove("hidden"); }
+  $("btn-start").disabled = false; $("btn-start").textContent = "Begin the exam";
+};
+
+// prefill from a previous visit
+try{
+  const prev = JSON.parse(localStorage.getItem("bexam") || "null");
+  if(prev){ $("name").value = prev.name || ""; $("email").value = prev.email || ""; }
+}catch(e){}
+
+/* ---------- exam rendering ---------- */
+function answeredCount(){
+  let n = 0;
+  for(const q of DATA.questions) if(String(state.answers[q.id]||"").trim()) n++;
+  if(Array.isArray(state.answers.H) && state.answers.H.length === 10) n += 10;
+  return n;
+}
+function updateTop(){
+  const n = answeredCount();
+  $("answered-count").textContent = n;
+  $("pbar").style.width = n + "%";
+}
+
+function renderSection(){
+  const sec = SEC_ORDER[state.secIdx];
+  $("sec-letter").textContent = sec;
+  $("sec-pos").textContent = state.secIdx + 1;
+  $("sec-title").textContent = DATA.sections[sec];
+  $("sec-instr").textContent = SEC_INSTR[sec];
+  const box = $("questions"); box.innerHTML = "";
+  if(sec === "H"){ renderH(box); }
+  else {
+    const qs = DATA.questions.filter(q => q.s === sec);
+    for(const q of qs){
+      const div = document.createElement("div"); div.className = "q";
+      const p = document.createElement("p");
+      p.innerHTML = '<span class="num">' + q.id + '.</span>';
+      p.appendChild(document.createTextNode(q.p));
+      div.appendChild(p);
+      if(sec === "G" || sec === "I"){
+        const sel = document.createElement("select");
+        const opts = sec === "G" ? DATA.gBooks : DATA.iDoctrines;
+        sel.innerHTML = '<option value="">— choose —</option>' + opts.map(o=>`<option>${o}</option>`).join("");
+        sel.value = state.answers[q.id] || "";
+        sel.onchange = () => { setAnswer(q.id, sel.value); flagDupes(sec); };
+        sel.dataset.qid = q.id;
+        div.appendChild(sel);
+      } else {
+        const inp = document.createElement("input");
+        inp.type = "text"; inp.value = state.answers[q.id] || "";
+        inp.placeholder = sec==="D" ? "Book chapter" : "";
+        inp.autocomplete = "off";
+        inp.oninput = () => setAnswer(q.id, inp.value);
+        div.appendChild(inp);
+      }
+      box.appendChild(div);
+    }
+    if(sec === "G" || sec === "I"){
+      const d = document.createElement("div"); d.className="dup hidden"; d.id="dupwarn";
+      d.textContent = "Heads up: you've used the same option more than once — each is meant to be used only once.";
+      box.appendChild(d); flagDupes(sec);
+    }
+  }
+  $("btn-prev").style.visibility = state.secIdx === 0 ? "hidden" : "visible";
+  $("btn-next").textContent = state.secIdx === SEC_ORDER.length-1 ? "Finish & grade my exam" : "Next →";
+  updateTop();
+}
+
+function flagDupes(sec){
+  const vals = DATA.questions.filter(q=>q.s===sec).map(q=>state.answers[q.id]).filter(Boolean);
+  const dup = vals.length !== new Set(vals).size;
+  const w = $("dupwarn"); if(w) w.classList.toggle("hidden", !dup);
+}
+
+function renderH(box){
+  if(!Array.isArray(state.answers.H) || state.answers.H.length !== 10){
+    state.answers.H = Object.keys(DATA.hEvents); // a..j as listed
+  }
+  const ul = document.createElement("ul"); ul.className = "hlist";
+  state.answers.H.forEach((letter, i) => {
+    const li = document.createElement("li");
+    li.innerHTML = `<span class="pos">${i+1}.</span><span class="txt">${DATA.hEvents[letter]}</span>`;
+    const up = document.createElement("button"); up.textContent = "↑"; up.disabled = i===0;
+    const dn = document.createElement("button"); dn.textContent = "↓"; dn.disabled = i===9;
+    up.onclick = () => { swapH(i, i-1); }; dn.onclick = () => { swapH(i, i+1); };
+    li.appendChild(up); li.appendChild(dn); ul.appendChild(li);
+  });
+  box.appendChild(ul);
+}
+function swapH(i, j){
+  const a = state.answers.H;
+  [a[i], a[j]] = [a[j], a[i]];
+  markDirty(); renderSection();
+}
+
+function setAnswer(id, val){ state.answers[id] = val; markDirty(); updateTop(); }
+
+/* ---------- autosave ---------- */
+function markDirty(){
+  state.dirty = true; $("savestate").textContent = "…";
+  clearTimeout(state.saveTimer);
+  state.saveTimer = setTimeout(saveNow, 1200);
+}
+async function saveNow(){
+  if(!state.attemptId || !state.dirty) return;
+  state.dirty = false; $("savestate").textContent = "Saving…";
+  try{
+    await api({ action:"save", attempt_id: state.attemptId, answers: state.answers, current_section: SEC_ORDER[state.secIdx] });
+    $("savestate").textContent = "Saved ✓";
+  }catch(e){ $("savestate").textContent = "Save failed"; state.dirty = true; }
+}
+window.addEventListener("beforeunload", () => { if(state.dirty && navigator.sendBeacon){
+  navigator.sendBeacon(API, new Blob([JSON.stringify({action:"save",attempt_id:state.attemptId,answers:state.answers,current_section:SEC_ORDER[state.secIdx]})],{type:"application/json"}));
+}});
+
+/* ---------- navigation / submit ---------- */
+$("btn-prev").onclick = () => { if(state.secIdx>0){ state.secIdx--; saveNow(); renderSection(); } };
+$("btn-next").onclick = async () => {
+  if(state.secIdx < SEC_ORDER.length-1){ state.secIdx++; saveNow(); renderSection(); return; }
+  // submit
+  const missing = 100 - answeredCount();
+  if(missing > 0 && !confirm(`You have ${missing} unanswered question${missing===1?"":"s"}. Unanswered questions are counted wrong. Submit anyway?`)) return;
+  clearTimeout(state.saveTimer);
+  show("grading");
+  try{
+    const res = await api({ action:"submit", attempt_id: state.attemptId, answers: state.answers });
+    renderResults(state.name, res.score, res.study_plan);
+  }catch(e){
+    show("exam");
+    const err = $("submit-err"); err.textContent = "Grading failed: " + e.message + " — your answers are saved; try again in a minute.";
+    err.classList.remove("hidden");
+  }
+};
+
+/* ---------- results ---------- */
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+function renderResults(name, score, plan){
+  $("res-name").textContent = name ? name + " — here's how you did" : "Here's how you did";
+  $("res-score").textContent = score.correct;
+  $("res-right").textContent = score.correct;
+  $("res-wrong").textContent = score.incorrect;
+  // section bars
+  const sb = $("res-secbars"); sb.innerHTML = "";
+  for(const s of SEC_ORDER){
+    const v = score.bySection[s]; if(!v) continue;
+    sb.insertAdjacentHTML("beforeend",
+      `<div class="secbar"><span>${s}. ${esc(DATA.sections[s]).slice(0,40)}</span><span class="bar"><div style="width:${v.outOf? (100*v.correct/v.outOf) : 0}%"></div></span><span>${v.correct}/${v.outOf}</span></div>`);
+  }
+  // study plan
+  $("res-plan").innerHTML = md(plan || "");
+  // missed
+  const missed = (score.perQuestion||[]).filter(p=>!p.correct);
+  const mbox = $("res-missed"); mbox.innerHTML = "";
+  for(const m of missed){
+    mbox.insertAdjacentHTML("beforeend",
+      `<div class="miss"><p class="mp"><span class="num">${m.id}.</span>${esc(m.prompt)}</p>
+       <div class="ma">Your answer: <span class="you">${m.yourAnswer ? esc(m.yourAnswer) : "—"}</span><br/>Correct: <span class="cor">${esc(m.correctAnswer)}</span></div>
+       <div class="rd">Read: ${esc(m.reading)}</div></div>`);
+  }
+  const h = score.sectionH;
+  if(h && h.points < 10){
+    mbox.insertAdjacentHTML("beforeend",
+      `<div class="miss"><p class="mp"><span class="num">71–80.</span>Chronological order — ${h.points}/10 in the right place</p>
+       <div class="ordercmp"><b>Correct order:</b> ${h.correctOrder.map(esc).join(" → ")}</div>
+       <div class="rd">Read: ${esc(h.reading)}</div></div>`);
+  }
+  const missCount = missed.length + (h ? 10 - h.points : 0);
+  $("res-missed-summary").textContent = `Show the ${missCount} point${missCount===1?"":"s"} you missed (with answers & readings)`;
+  $("res-missed-wrap").classList.toggle("hidden", missCount === 0);
+  show("results");
+}
+
+$("btn-retake").onclick = () => {
+  try{ localStorage.removeItem("bexam"); }catch(e){}
+  state = { attemptId:null, name:state.name, email:state.email, answers:{}, secIdx:0, saveTimer:null, dirty:false };
+  show("start");
+};
+
+/* ---------- tiny markdown renderer (headers, bold, lists, tables) ---------- */
+function md(src){
+  const lines = String(src).split(/\r?\n/);
+  let html = "", inUl = false, inTable = false;
+  const inline = (s) => esc(s)
+    .replace(/\*\*(.+?)\*\*/g, "<b>$1</b>")
+    .replace(/(^|[^*])\*([^*\n]+)\*/g, "$1<i>$2</i>")
+    .replace(/_([^_\n]+)_/g, "<i>$1</i>");
+  const closeAll = () => { if(inUl){ html+="</ul>"; inUl=false; } if(inTable){ html+="</tbody></table>"; inTable=false; } };
+  for(let i=0;i<lines.length;i++){
+    const l = lines[i];
+    if(/^\s*\|/.test(l)){
+      const cells = l.trim().replace(/^\||\|$/g,"").split("|").map(c=>c.trim());
+      if(cells.every(c=>/^:?-{2,}:?$/.test(c))) continue; // separator row
+      if(!inTable){
+        closeAll(); inTable = true;
+        html += "<table><thead><tr>" + cells.map(c=>"<th>"+inline(c)+"</th>").join("") + "</tr></thead><tbody>";
+      } else {
+        html += "<tr>" + cells.map(c=>"<td>"+inline(c)+"</td>").join("") + "</tr>";
+      }
+      continue;
+    }
+    if(inTable && !/^\s*\|/.test(l)){ html+="</tbody></table>"; inTable=false; }
+    const h = l.match(/^(#{1,4})\s+(.*)/);
+    if(h){ closeAll(); const n=h[1].length; html += `<h${n+1}>`+inline(h[2])+`</h${n+1}>`; continue; }
+    const li = l.match(/^\s*[-*]\s+(.*)/);
+    if(li){ if(!inUl){ closeAll(); html+="<ul>"; inUl=true; } html += "<li>"+inline(li[1])+"</li>"; continue; }
+    const ol = l.match(/^\s*\d+\.\s+(.*)/);
+    if(ol){ if(!inUl){ closeAll(); html+="<ul>"; inUl=true; } html += "<li>"+inline(ol[1])+"</li>"; continue; }
+    if(!l.trim()){ closeAll(); continue; }
+    closeAll(); html += "<p>"+inline(l)+"</p>";
+  }
+  closeAll();
+  return html;
+}
+
+/* ---------- auto-resume a completed attempt's results ---------- */
+(async () => {
+  try{
+    const prev = JSON.parse(localStorage.getItem("bexam") || "null");
+    if(prev && prev.attemptId){
+      const res = await api({ action:"results", attempt_id: prev.attemptId }).catch(()=>null);
+      if(res && res.score){
+        renderResults(res.name || prev.name, res.score, res.study_plan);
+      }
+    }
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
