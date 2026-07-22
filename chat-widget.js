@@ -70,11 +70,11 @@
   function build() {
     var style = document.createElement("style"); style.textContent = css; document.head.appendChild(style);
     root = el('<div class="pccbot"></div>');
-    var btn = el('<button class="pccbot-btn" aria-label="Open chat with the church assistant">'
+    var btn = el('<button class="pccbot-btn" aria-label="Open Sermon Bot chat">'
       + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></button>');
     panel = el('<div class="pccbot-panel" role="dialog" aria-label="Church assistant chat"></div>');
-    panel.appendChild(el('<div class="pccbot-head"><div><h3>Providence Community Church</h3>'
-      + '<div class="sub">AI assistant</div></div>'
+    panel.appendChild(el('<div class="pccbot-head"><div><h3>Sermon Bot</h3>'
+      + '<div class="sub">Providence Community Church · AI assistant</div></div>'
       + '<button class="x" aria-label="Close chat">&times;</button></div>'));
     log = el('<div class="pccbot-log" aria-live="polite"></div>'); panel.appendChild(log);
     var foot = el('<div class="pccbot-foot"><div class="pccbot-row">'
@@ -97,7 +97,7 @@
     panel.classList.toggle("open", opened);
     if (opened) {
       if (!messages.length) {
-        addBot("Hi! I’m Providence Community Church’s automated assistant. I can answer questions about the church, point you to Pastor Chris’s sermons, or help you set up a time to connect. What can I help you with?");
+        addBot("Hi! I’m Sermon Bot, Providence Community Church’s automated (AI) assistant. Ask me about Pastor Chris’s preaching and teaching, questions about the church, or how to get in touch. What can I help you with?");
       }
       setTimeout(function () { input.focus(); }, 50);
     }

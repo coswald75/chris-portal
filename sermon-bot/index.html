@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sermon Bot — Chris Oswald</title>
+  <meta name="description" content="Sermon Bot: interact with Pastor Chris Oswald's preaching using AI. Ask about his sermons and teaching, get pointed to the right message, and go deeper." />
+  <link rel="canonical" href="https://chrisoswald.org/sermon-bot/" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2" />
+  <link rel="apple-touch-icon" href="/favicon-180.png?v=2" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/detail.css" />
+  <style>
+    .cta { display:inline-block; font-family:'Inter',sans-serif; font-size:.9rem; font-weight:600;
+      letter-spacing:.02em; background:#075c2e; color:#fff; border:none; border-radius:10px;
+      padding:14px 24px; cursor:pointer; margin-top:.5rem; }
+    .cta:hover { background:#1c1c1a; color:#fff; }
+    .hint { font-family:'Inter',sans-serif; font-size:.85rem; color:var(--muted); margin-top:12px; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="/">&larr; Chris Oswald</a>
+    <header class="page-head">
+      <h1>Sermon Bot</h1>
+      <p class="subtitle">Interact with Pastor Chris' preaching using AI.</p>
+    </header>
+    <div class="prose">
+      <p>Thirty years of sermons is a lot to dig through. Sermon Bot lets you just ask. Wondering what I've taught about anxiety, marriage, suffering, money, prayer, or forgiveness? Ask in plain words and it'll draw from my actual preaching, point you to the specific sermons, and give you the links to go listen or read.</p>
+      <p>It can also answer everyday questions about Providence Community Church — service times, location, what to expect on a Sunday — and help you get in touch. It's an AI assistant, so it sticks to what the church and my sermons actually say, and it hands you off to a real person whenever that's the better next step.</p>
+    </div>
+    <p class="visit">
+      <button class="cta" id="start-bot">Start a conversation</button>
+    </p>
+    <p class="hint">Or tap the green chat button in the bottom-right corner anytime.</p>
+    <footer class="page-foot"><a href="/">&larr; Back to all projects</a></footer>
+  </main>
+  <script src="/chat-widget.js" defer></script>
+  <script>
+    document.getElementById('start-bot').addEventListener('click', function () {
+      var b = document.querySelector('.pccbot-btn');
+      var panel = document.querySelector('.pccbot-panel');
+      if (b && panel && !panel.classList.contains('open')) b.click();
+    });
+  </script>
+</body>
+</html>
