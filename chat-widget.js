@@ -9,10 +9,12 @@
   window.__pccBotLoaded = true;
 
   var API = "https://twbunmbzyqcqzgffdrib.supabase.co/functions/v1/chat";
+  var FEEDBACK_API = "https://twbunmbzyqcqzgffdrib.supabase.co/functions/v1/record-feedback";
   var CONTACT = "info@kcprovidence.org";
   var sessionId = (crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now()) + Math.random();
   var messages = [];         // running conversation, in memory only
   var opened = false, busy = false;
+  var botReplies = 0, feedbackDone = false;   // feedback is offered once, after some substance
 
   var css = ""
     + ".pccbot,.pccbot *{box-sizing:border-box}"
@@ -51,6 +53,15 @@
     + ".pccbot-send{background:#075c2e;border:none;color:#fff;width:38px;height:38px;border-radius:10px;cursor:pointer;flex:none}"
     + ".pccbot-send:disabled{opacity:.5;cursor:default}"
     + ".pccbot-note{font-size:10.5px;color:#8a8676;text-align:center;margin-top:7px;line-height:1.4}"
+    + ".pccbot-fb{align-self:stretch;background:#fff;border:1px solid #e6e3db;border-radius:14px;padding:13px 14px}"
+    + ".pccbot-fb p{margin:0 0 9px;font-size:13px;line-height:1.5;color:#1c1c1a}"
+    + ".pccbot-fb textarea{width:100%;resize:none;border:1px solid #d8d5cd;border-radius:9px;padding:8px 10px;font:inherit;font-size:13px;height:56px;outline:none}"
+    + ".pccbot-fb textarea:focus{border-color:#075c2e}"
+    + ".pccbot-fb .fbrow{display:flex;gap:8px;align-items:center;margin-top:8px}"
+    + ".pccbot-fb .fbsend{background:#075c2e;border:none;color:#fff;font:inherit;font-size:12.5px;font-weight:600;padding:7px 14px;border-radius:8px;cursor:pointer}"
+    + ".pccbot-fb .fbsend:disabled{opacity:.5;cursor:default}"
+    + ".pccbot-fb .fbskip{background:none;border:none;color:#8a8676;font:inherit;font-size:12px;cursor:pointer;text-decoration:underline}"
+    + ".pccbot-fb.done{color:#4a4a44;font-size:13px;line-height:1.5}"
     + "@media (prefers-reduced-motion: reduce){.pccbot-btn,.pccbot-typing span{transition:none;animation:none}}";
 
   function el(html) { var d = document.createElement("div"); d.innerHTML = html.trim(); return d.firstChild; }
@@ -115,6 +126,35 @@
     else if (!on && t) { t.remove(); }
   }
 
+  // ProvBot is always learning — invite feedback once, after some conversation.
+  function offerFeedback() {
+    if (feedbackDone) return;
+    feedbackDone = true;
+    var card = el('<div class="pccbot-fb">'
+      + '<p><strong>ProvBot is always learning.</strong> Was there anything I could have done to help you more? Your feedback helps us improve.</p>'
+      + '<textarea placeholder="Share a thought (optional)…" aria-label="Feedback for ProvBot"></textarea>'
+      + '<div class="fbrow"><button class="fbsend" type="button">Send feedback</button>'
+      + '<button class="fbskip" type="button">No thanks</button></div></div>');
+    var ta = card.querySelector("textarea");
+    var sendFb = card.querySelector(".fbsend");
+    var skip = card.querySelector(".fbskip");
+    skip.addEventListener("click", function () { card.remove(); });
+    sendFb.addEventListener("click", function () {
+      var val = ta.value.trim();
+      if (!val) { ta.focus(); return; }
+      sendFb.disabled = true;
+      fetch(FEEDBACK_API, {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ session_id: sessionId, feedback: val, path: (location && location.pathname) || "" })
+      }).catch(function () {}).then(function () {
+        card.className = "pccbot-fb done";
+        card.textContent = "Thank you — that helps us make ProvBot better.";
+        log.scrollTop = log.scrollHeight;
+      });
+    });
+    log.appendChild(card); log.scrollTop = log.scrollHeight;
+  }
+
   function send() {
     var text = input.value.trim();
     if (!text || busy) return;
@@ -132,6 +172,8 @@
       var reply = (j && j.reply) ? j.reply : ("Sorry, I’m having trouble right now. Please email the church at " + CONTACT + ".");
       addBot(reply);
       messages.push({ role: "assistant", content: reply });
+      botReplies++;
+      if (botReplies >= 2) setTimeout(offerFeedback, 700);
     }).catch(function () {
       typing(false);
       addBot("Sorry, I couldn’t reach the assistant. Please email the church at " + CONTACT + " and we’ll help you directly.");
