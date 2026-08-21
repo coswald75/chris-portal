@@ -1,117 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>What is not stoicheia &mdash; Stoicheia Wiki</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="wiki.css">
-</head>
-<body>
-
-<header class="topbar">
-  <span class="menu-glyph" aria-hidden="true">&#9776;</span>
-  <a class="brand" href="index.html">
-    <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M 19.07 12.84 L 19.09 12.8 L 19.1 12.75 L 19.1 12.7 L 19.11 12.65 L 19.11 12.6 L 19.11 12.55 L 19.1 12.49 L 19.09 12.44 L 19.08 12.38 L 19.07 12.33 L 19.05 12.27 L 19.03 12.22 L 19.0 12.16 L 18.97 12.11 L 18.94 12.06 L 18.9 12.01 L 18.86 11.96 L 18.81 11.91 L 18.76 11.86 L 18.71 11.82 L 18.65 11.78 L 18.6 11.74 L 18.53 11.7 L 18.47 11.67 L 18.4 11.64 L 18.33 11.62 L 18.25 11.6 L 18.17 11.58 L 18.09 11.57 L 18.01 11.56 L 17.93 11.55 L 17.84 11.56 L 17.76 11.56 L 17.67 11.58 L 17.58 11.59 L 17.49 11.62 L 17.4 11.65 L 17.31 11.68 L 17.23 11.72 L 17.14 11.77 L 17.06 11.83 L 16.97 11.89 L 16.89 11.95 L 16.81 12.02 L 16.74 12.1 L 16.67 12.18 L 16.6 12.27 L 16.53 12.37 L 16.48 12.47 L 16.42 12.58 L 16.37 12.69 L 16.33 12.8 L 16.3 12.92 L 16.27 13.05 L 16.25 13.18 L 16.23 13.31 L 16.22 13.44 L 16.23 13.58 L 16.24 13.72 L 16.25 13.86 L 16.28 14.0 L 16.32 14.15 L 16.36 14.29 L 16.42 14.43 L 16.49 14.57 L 16.56 14.72 L 16.65 14.85 L 16.74 14.99 L 16.85 15.12 L 16.96 15.25 L 17.08 15.37 L 17.22 15.49 L 17.36 15.6 L 17.51 15.7 L 17.67 15.8 L 17.84 15.89 L 18.02 15.97 L 18.21 16.04 L 18.4 16.1 L 18.6 16.15 L 18.81 16.18 L 19.02 16.21 L 19.24 16.22 L 19.46 16.22 L 19.68 16.21 L 19.91 16.18 L 20.14 16.14 L 20.38 16.08 L 20.61 16.01 L 20.84 15.92 L 21.07 15.82 L 21.3 15.7 L 21.52 15.57 L 21.74 15.42 L 21.96 15.25 L 22.16 15.07 L 22.36 14.87 L 22.56 14.65 L 22.74 14.43 L 22.91 14.18 L 23.07 13.92 L 23.21 13.65 L 23.34 13.37 L 23.46 13.07 L 23.56 12.76 L 23.64 12.43 L 23.7 12.1 L 23.75 11.76 L 23.77 11.41 L 23.78 11.05 L 23.76 10.69 L 23.72 10.32 L 23.65 9.95 L 23.57 9.57 L 23.46 9.2 L 23.32 8.82 L 23.16 8.45 L 22.97 8.08 L 22.76 7.72 L 22.52 7.36 L 22.25 7.01 L 21.96 6.67 L 21.65 6.35 L 21.3 6.03 L 20.94 5.74 L 20.55 5.46 L 20.13 5.2 L 19.7 4.96 L 19.24 4.74 L 18.76 4.55 L 18.26 4.38 L 17.74 4.25 L 17.21 4.14 L 16.66 4.06 L 16.09 4.01 L 15.52 4.0 L 14.93 4.02 L 14.34 4.08 L 13.73 4.18 L 13.13 4.31 L 12.52 4.49 L 11.91 4.7 L 11.31 4.96 L 10.71 5.25 L 10.12 5.59 L 9.54 5.97 L 8.97 6.39 L 8.42 6.85 L 7.89 7.36 L 7.38 7.9 L 6.9 8.49 L 6.44 9.11 L 6.01 9.77 L 5.62 10.47 L 5.26 11.21 L 4.94 11.98 L 4.67 12.78 L 4.43 13.61 L 4.25 14.47 L 4.11 15.36 L 4.03 16.27 L 4.0 17.2 L 4.03 18.14 L 4.11 19.11 L 4.26 20.08 L 4.46 21.06 L 4.73 22.04 L 5.07 23.02 L 5.47 24.0 L 5.93 24.97 L 6.47 25.93 L 7.07 26.87 L 7.74 27.79 L 8.47 28.69 L 9.28 29.56 L 10.15 30.39 L 11.08 31.18 L 12.08 31.93 L 13.14 32.63 L 14.26 33.27 L 15.44 33.86 L 16.68 34.39 L 17.97 34.85 L 19.31 35.24 L 20.69 35.55 L 22.12 35.78 L 23.58 35.94 L 25.08 36.0" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="19.07" cy="12.84" r="1.5" fill="currentColor"/></svg>
-    <span class="wordmark">Commonplace<small>Religious Dysfunctions</small></span>
-  </a>
-  <form class="searchbox" role="search" onsubmit="return false;">
-    <input type="search" placeholder="Search the wiki" aria-label="Search the wiki">
-    <button type="submit">Search</button>
-  </form>
-  <div class="topbar-right">
-    <a href="all-pages.html">All pages</a>
-    <a href="index.html#build">How this is built</a>
-  </div>
-</header>
-
-<div class="frame">
-  <aside class="rail"><nav><h3>Contents</h3><ul class="toc"><li><a href="#list">Not stoicheia</a></li><li><a href="#test">A usable test</a></li></ul><h3>Navigate</h3><ul><li><a href="index.html">Main page</a></li><li><a href="all-pages.html">All pages</a></li><li><a href="stoicheia.html">Stoicheia</a></li><li><strong>The boundary</strong></li></ul><h3>Hubs</h3><ul><li><a href="stoicheia.html">Stoicheia</a></li><li><a href="law-of-performance.html">Law of Performance</a></li><li><a href="christus-victor.html">Christus Victor</a></li><li><a href="hermit-crab.html">Hermit crab</a></li><li><a href="shells.html">Scaffolding &amp; permanent</a></li><li><a href="accusation.html">Accusation</a></li><li><a href="transmission.html">Transmission</a></li></ul></nav></aside>
-  <main class="content-wrap">
-    <div class="page-head">
-      <h1 class="page-title">What is not stoicheia</h1>
-      <div class="tabs">
-        <a href="#" class="current">Article</a>
-        <a href="#">Talk</a>
-        <span class="right">
-          <a href="#" class="current">Read</a>
-          <a href="#">Edit</a>
-          <a href="#">Notes</a>
-          <a href="#">History</a>
-        </span>
-      </div>
-    </div>
-    <div class="content">
-<div class="ribbon"><span class="nodetype ">Boundary</span> This page exists so the limit has an address instead of living in footnotes.</div>
-<p>The stoicheia frame is totalising by nature. It wants to explain everything, and it is good enough at explaining
-things that it usually can &mdash; which is the danger. A framework that accounts for every case has stopped making
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>What is not stoicheia &mdash; Commonplace</title><meta name="description" content="What is not stoicheia — a page in Chris Oswald&#x27;s commonplace wiki."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="wiki.css"></head><body><header class="topbar"><span class="menu-glyph" aria-hidden="true">&#9776;</span><a class="brand" href="index.html"><svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M 19.07 12.84 L 19.09 12.8 L 19.1 12.75 L 19.1 12.7 L 19.11 12.65 L 19.11 12.6 L 19.11 12.55 L 19.1 12.49 L 19.09 12.44 L 19.08 12.38 L 19.07 12.33 L 19.05 12.27 L 19.03 12.22 L 19.0 12.16 L 18.97 12.11 L 18.94 12.06 L 18.9 12.01 L 18.86 11.96 L 18.81 11.91 L 18.76 11.86 L 18.71 11.82 L 18.65 11.78 L 18.6 11.74 L 18.53 11.7 L 18.47 11.67 L 18.4 11.64 L 18.33 11.62 L 18.25 11.6 L 18.17 11.58 L 18.09 11.57 L 18.01 11.56 L 17.93 11.55 L 17.84 11.56 L 17.76 11.56 L 17.67 11.58 L 17.58 11.59 L 17.49 11.62 L 17.4 11.65 L 17.31 11.68 L 17.23 11.72 L 17.14 11.77 L 17.06 11.83 L 16.97 11.89 L 16.89 11.95 L 16.81 12.02 L 16.74 12.1 L 16.67 12.18 L 16.6 12.27 L 16.53 12.37 L 16.48 12.47 L 16.42 12.58 L 16.37 12.69 L 16.33 12.8 L 16.3 12.92 L 16.27 13.05 L 16.25 13.18 L 16.23 13.31 L 16.22 13.44 L 16.23 13.58 L 16.24 13.72 L 16.25 13.86 L 16.28 14.0 L 16.32 14.15 L 16.36 14.29 L 16.42 14.43 L 16.49 14.57 L 16.56 14.72 L 16.65 14.85 L 16.74 14.99 L 16.85 15.12 L 16.96 15.25 L 17.08 15.37 L 17.22 15.49 L 17.36 15.6 L 17.51 15.7 L 17.67 15.8 L 17.84 15.89 L 18.02 15.97 L 18.21 16.04 L 18.4 16.1 L 18.6 16.15 L 18.81 16.18 L 19.02 16.21 L 19.24 16.22 L 19.46 16.22 L 19.68 16.21 L 19.91 16.18 L 20.14 16.14 L 20.38 16.08 L 20.61 16.01 L 20.84 15.92 L 21.07 15.82 L 21.3 15.7 L 21.52 15.57 L 21.74 15.42 L 21.96 15.25 L 22.16 15.07 L 22.36 14.87 L 22.56 14.65 L 22.74 14.43 L 22.91 14.18 L 23.07 13.92 L 23.21 13.65 L 23.34 13.37 L 23.46 13.07 L 23.56 12.76 L 23.64 12.43 L 23.7 12.1 L 23.75 11.76 L 23.77 11.41 L 23.78 11.05 L 23.76 10.69 L 23.72 10.32 L 23.65 9.95 L 23.57 9.57 L 23.46 9.2 L 23.32 8.82 L 23.16 8.45 L 22.97 8.08 L 22.76 7.72 L 22.52 7.36 L 22.25 7.01 L 21.96 6.67 L 21.65 6.35 L 21.3 6.03 L 20.94 5.74 L 20.55 5.46 L 20.13 5.2 L 19.7 4.96 L 19.24 4.74 L 18.76 4.55 L 18.26 4.38 L 17.74 4.25 L 17.21 4.14 L 16.66 4.06 L 16.09 4.01 L 15.52 4.0 L 14.93 4.02 L 14.34 4.08 L 13.73 4.18 L 13.13 4.31 L 12.52 4.49 L 11.91 4.7 L 11.31 4.96 L 10.71 5.25 L 10.12 5.59 L 9.54 5.97 L 8.97 6.39 L 8.42 6.85 L 7.89 7.36 L 7.38 7.9 L 6.9 8.49 L 6.44 9.11 L 6.01 9.77 L 5.62 10.47 L 5.26 11.21 L 4.94 11.98 L 4.67 12.78 L 4.43 13.61 L 4.25 14.47 L 4.11 15.36 L 4.03 16.27 L 4.0 17.2 L 4.03 18.14 L 4.11 19.11 L 4.26 20.08 L 4.46 21.06 L 4.73 22.04 L 5.07 23.02 L 5.47 24.0 L 5.93 24.97 L 6.47 25.93 L 7.07 26.87 L 7.74 27.79 L 8.47 28.69 L 9.28 29.56 L 10.15 30.39 L 11.08 31.18 L 12.08 31.93 L 13.14 32.63 L 14.26 33.27 L 15.44 33.86 L 16.68 34.39 L 17.97 34.85 L 19.31 35.24 L 20.69 35.55 L 22.12 35.78 L 23.58 35.94 L 25.08 36.0" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="19.07" cy="12.84" r="1.5" fill="currentColor"/></svg><span class="wordmark">Commonplace<small>Religious Dysfunctions</small></span></a><form class="searchbox" role="search" onsubmit="return false;"><input type="search" placeholder="Search the wiki" aria-label="Search the wiki"><button type="submit">Find</button></form><div class="topbar-right"><a href="all-pages.html">All pages</a><a href="index.html#build">How this is built</a></div></header><div class="frame"><aside class="rail"><nav><h3>On this page</h3><ul class="toc"><li><a href="#list">Not stoicheia</a></li><li><a href="#test">A usable test</a></li></ul><h3>Navigate</h3><ul><li><a href="index.html">Main page</a></li><li><a href="all-pages.html">All pages</a></li><li><a href="what-is-not-stoicheia.html">The boundary</a></li></ul><h3>Hubs</h3><ul><li><a href="accusation.html">Accusation</a></li><li><a href="christus-victor.html">Christus Victor</a></li><li><a href="law-of-performance.html">Law of Performance</a></li><li><a href="shells.html">Scaffolding and permanent structures</a></li><li><a href="stoicheia.html">Stoicheia</a></li><li><a href="hermit-crab.html">The hermit crab</a></li><li><a href="transmission.html">Transmission: tradition and worldliness</a></li></ul></nav></aside><main class="content-wrap"><div class="page-head"><h1 class="page-title">What is not stoicheia</h1><div class="tabs"><a href="#" class="current">Article</a><a href="#">Talk</a><span class="right"><a href="#" class="current">Read</a><a href="#">Edit</a><a href="#">Notes</a><a href="#">History</a></span></div></div><div class="content"><div class="ribbon"><span class="nodetype">Boundary</span><span>This page exists so the limit has an address instead of living in footnotes.</span></div><p>The <a href="stoicheia.html">stoicheia</a> frame is totalising by nature. It wants to explain everything, and it is good enough at explaining
+things that it usually can — which is the danger. A framework that accounts for every case has stopped making
 claims and started absorbing them.</p>
-
 <p>This page is the standing correction. Everything listed here is <em>not</em> to be explained by the stoicheia, and
 linking it to <a href="stoicheia.html">the hub</a> is an error even when it looks tidy.</p>
-
 <h2 id="list">Not stoicheia</h2>
-
 <h3>A tender conscience</h3>
 <p>On Sibbes's reading, tenderness can be a sign of good soil rather than of occupation. If
-<a href="scrupulosity.html">scrupulosity</a> can indicate health, it cannot be simply the enemy's work &mdash; and
+<a href="scrupulosity.html">scrupulosity</a> can indicate health, it cannot be simply the enemy's work — and
 saying otherwise contradicts the source the argument leans on.</p>
-
 <h3>A sick brain</h3>
-<p>Scrupulosity is frequently an OCD presentation. Compulsions are not a spiritual failure and intrusive thoughts are not
+<p><a href="scrupulosity.html">Scrupulosity</a> is frequently an OCD presentation. Compulsions are not a spiritual failure and intrusive thoughts are not
 a tenant. Treating them as such is both false and cruel, and it is the failure mode most likely to reach someone in real
 distress.</p>
-
 <h3>Ordinary grief, and most suffering</h3>
 <p>The <a href="law-of-performance.html#suffering">performance regime reads suffering as verdict</a>. The correction has
 to run all the way: not everything painful is diagnostic of anything. John 9:3 declines the question rather than
 answering it with a better cause.</p>
-
 <h3>Creation, and the structures themselves</h3>
 <p>The <a href="hermit-crab.html">crab</a> is not the shell. Marriage, money, government and conscience are good, and
-calling a structure &ldquo;a stoicheia&rdquo; as a synonym for &ldquo;bad&rdquo; collapses the distinction the whole
+calling a structure “a stoicheia” as a synonym for “bad” collapses the distinction the whole
 framework depends on.</p>
-
 <h3>Disagreement</h3>
-<p>People who differ on secondary matters are not thereby running a performance regime. The accusation
-&ldquo;that's just stoicheia&rdquo; is itself a fast way to build <a href="anti-scrupulous-wall.html" class="new">a new
+<p>People who differ on secondary matters are not thereby running a <a href="law-of-performance.html">performance regime</a>. The <a href="accusation.html">accusation</a>
+“that's just stoicheia” is itself a fast way to build <a class="new" href="anti-scrupulous-wall.html">a new
 wall</a>, since it ranks people by how free they are.</p>
-
 <h2 id="test">A usable test</h2>
-
 <p>Before linking anything here, three questions:</p>
-
 <ol>
-  <li><strong>Is there an audience?</strong> A performance regime always has one. If no one is being performed for, this
+<li><strong>Is there an audience?</strong> A performance regime always has one. If no one is being performed for, this
   is something else.</li>
-  <li><strong>Is worth being assigned?</strong> Not merely rules &mdash; rules are fine &mdash; but rules that decide
+<li><strong>Is worth being assigned?</strong> Not merely rules — rules are fine — but rules that decide
   who counts.</li>
-  <li><strong>Would naming it help this person, or only tidy the diagram?</strong> If it only tidies the diagram, do not
+<li><strong>Would naming it help this person, or only tidy the diagram?</strong> If it only tidies the diagram, do not
   say it from a pulpit.</li>
 </ol>
-
 <div class="note">
 <strong>Editorial rule.</strong> If a page cannot answer all three, it does not get a
 <span class="rel rel-instantiates">instantiates</span> link to the hub. It may still exist. It may still be related.
 It is not a case of this.
-</div>
-
-<div class="connections"><div class="cx-title">Connections</div><ul><li><span class="rel rel-guards">guards</span> <span><a href="stoicheia.html">Stoicheia</a>, <a href="hermit-crab.html">the hermit crab</a>, <a href="law-of-performance.html">Law of Performance</a></span></li><li><span class="rel rel-disputes">restrains</span> <span>Any reading in which everything is stoicheia</span></li><li><span class="rel rel-instantiates">excludes</span> <span>Tenderness; clinical illness; ordinary grief; created structure; disagreement</span></li></ul></div>
-    </div>
-  </main>
-</div>
-
-<footer class="sitefoot">
-  <div>Last edited 21 August 2026. Written and maintained by Chris. Draft status &mdash; nothing here is settled.</div>
-  <ul>
-    <li><a href="index.html">Main page</a></li>
-    <li><a href="all-pages.html">All pages</a></li>
-    <li><a href="index.html#build">Link types</a></li>
-    <li><a href="what-is-not-stoicheia.html">The boundary</a></li>
-  </ul>
-</footer>
-
-</body>
-</html>
+</div><div class="connections"><div class="cx-title">Connections</div><ul><li><span class="rel rel-guards">guards</span> <span><a href="stoicheia.html">Stoicheia</a></span></li><li><span class="rel rel-disputes">restrains</span> <span>Any reading in which everything is stoicheia</span></li><li><span class="rel rel-instantiates">excludes</span> <span>Tenderness; clinical illness; ordinary grief; created structure; disagreement</span></li></ul></div><div class="connections backlinks"><div class="cx-title">Referenced by</div><ul><li><span class="rel rel-guards">guards</span> <span><a href="hermit-crab.html">The hermit crab</a></span></li><li><span class="rel rel-guards">guards</span> <span><a href="scrupulosity.html">Scrupulosity</a></span></li><li><span class="rel rel-guards">guards</span> <span><a href="stoicheia.html">Stoicheia</a></span></li></ul></div></div></main></div><footer class="sitefoot"><span class="draft">Draft status — nothing here is settled.</span><ul><li><a href="index.html">Main page</a></li><li><a href="all-pages.html">All pages</a></li><li><a href="/">The map</a></li></ul></footer></body></html>

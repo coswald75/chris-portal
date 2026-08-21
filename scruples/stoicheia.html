@@ -1,167 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Stoicheia &mdash; Stoicheia Wiki</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="wiki.css">
-</head>
-<body>
-
-<header class="topbar">
-  <span class="menu-glyph" aria-hidden="true">&#9776;</span>
-  <a class="brand" href="index.html">
-    <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M 19.07 12.84 L 19.09 12.8 L 19.1 12.75 L 19.1 12.7 L 19.11 12.65 L 19.11 12.6 L 19.11 12.55 L 19.1 12.49 L 19.09 12.44 L 19.08 12.38 L 19.07 12.33 L 19.05 12.27 L 19.03 12.22 L 19.0 12.16 L 18.97 12.11 L 18.94 12.06 L 18.9 12.01 L 18.86 11.96 L 18.81 11.91 L 18.76 11.86 L 18.71 11.82 L 18.65 11.78 L 18.6 11.74 L 18.53 11.7 L 18.47 11.67 L 18.4 11.64 L 18.33 11.62 L 18.25 11.6 L 18.17 11.58 L 18.09 11.57 L 18.01 11.56 L 17.93 11.55 L 17.84 11.56 L 17.76 11.56 L 17.67 11.58 L 17.58 11.59 L 17.49 11.62 L 17.4 11.65 L 17.31 11.68 L 17.23 11.72 L 17.14 11.77 L 17.06 11.83 L 16.97 11.89 L 16.89 11.95 L 16.81 12.02 L 16.74 12.1 L 16.67 12.18 L 16.6 12.27 L 16.53 12.37 L 16.48 12.47 L 16.42 12.58 L 16.37 12.69 L 16.33 12.8 L 16.3 12.92 L 16.27 13.05 L 16.25 13.18 L 16.23 13.31 L 16.22 13.44 L 16.23 13.58 L 16.24 13.72 L 16.25 13.86 L 16.28 14.0 L 16.32 14.15 L 16.36 14.29 L 16.42 14.43 L 16.49 14.57 L 16.56 14.72 L 16.65 14.85 L 16.74 14.99 L 16.85 15.12 L 16.96 15.25 L 17.08 15.37 L 17.22 15.49 L 17.36 15.6 L 17.51 15.7 L 17.67 15.8 L 17.84 15.89 L 18.02 15.97 L 18.21 16.04 L 18.4 16.1 L 18.6 16.15 L 18.81 16.18 L 19.02 16.21 L 19.24 16.22 L 19.46 16.22 L 19.68 16.21 L 19.91 16.18 L 20.14 16.14 L 20.38 16.08 L 20.61 16.01 L 20.84 15.92 L 21.07 15.82 L 21.3 15.7 L 21.52 15.57 L 21.74 15.42 L 21.96 15.25 L 22.16 15.07 L 22.36 14.87 L 22.56 14.65 L 22.74 14.43 L 22.91 14.18 L 23.07 13.92 L 23.21 13.65 L 23.34 13.37 L 23.46 13.07 L 23.56 12.76 L 23.64 12.43 L 23.7 12.1 L 23.75 11.76 L 23.77 11.41 L 23.78 11.05 L 23.76 10.69 L 23.72 10.32 L 23.65 9.95 L 23.57 9.57 L 23.46 9.2 L 23.32 8.82 L 23.16 8.45 L 22.97 8.08 L 22.76 7.72 L 22.52 7.36 L 22.25 7.01 L 21.96 6.67 L 21.65 6.35 L 21.3 6.03 L 20.94 5.74 L 20.55 5.46 L 20.13 5.2 L 19.7 4.96 L 19.24 4.74 L 18.76 4.55 L 18.26 4.38 L 17.74 4.25 L 17.21 4.14 L 16.66 4.06 L 16.09 4.01 L 15.52 4.0 L 14.93 4.02 L 14.34 4.08 L 13.73 4.18 L 13.13 4.31 L 12.52 4.49 L 11.91 4.7 L 11.31 4.96 L 10.71 5.25 L 10.12 5.59 L 9.54 5.97 L 8.97 6.39 L 8.42 6.85 L 7.89 7.36 L 7.38 7.9 L 6.9 8.49 L 6.44 9.11 L 6.01 9.77 L 5.62 10.47 L 5.26 11.21 L 4.94 11.98 L 4.67 12.78 L 4.43 13.61 L 4.25 14.47 L 4.11 15.36 L 4.03 16.27 L 4.0 17.2 L 4.03 18.14 L 4.11 19.11 L 4.26 20.08 L 4.46 21.06 L 4.73 22.04 L 5.07 23.02 L 5.47 24.0 L 5.93 24.97 L 6.47 25.93 L 7.07 26.87 L 7.74 27.79 L 8.47 28.69 L 9.28 29.56 L 10.15 30.39 L 11.08 31.18 L 12.08 31.93 L 13.14 32.63 L 14.26 33.27 L 15.44 33.86 L 16.68 34.39 L 17.97 34.85 L 19.31 35.24 L 20.69 35.55 L 22.12 35.78 L 23.58 35.94 L 25.08 36.0" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="19.07" cy="12.84" r="1.5" fill="currentColor"/></svg>
-    <span class="wordmark">Commonplace<small>Religious Dysfunctions</small></span>
-  </a>
-  <form class="searchbox" role="search" onsubmit="return false;">
-    <input type="search" placeholder="Search the wiki" aria-label="Search the wiki">
-    <button type="submit">Search</button>
-  </form>
-  <div class="topbar-right">
-    <a href="all-pages.html">All pages</a>
-    <a href="index.html#build">How this is built</a>
-  </div>
-</header>
-
-<div class="frame">
-  <aside class="rail"><nav><h3>Contents</h3><ul class="toc"><li><a href="#term">The term</a></li><li><a href="#dispute">Principles or powers</a></li><li><a href="#scope">Scope</a></li><li><a href="#christ">What Christ did</a></li></ul><h3>Navigate</h3><ul><li><a href="index.html">Main page</a></li><li><a href="all-pages.html">All pages</a></li><li><strong>Stoicheia</strong></li><li><a href="what-is-not-stoicheia.html">The boundary</a></li></ul><h3>Hubs</h3><ul><li><strong>Stoicheia</strong></li><li><a href="law-of-performance.html">Law of Performance</a></li><li><a href="christus-victor.html">Christus Victor</a></li><li><a href="hermit-crab.html">Hermit crab</a></li><li><a href="shells.html">Scaffolding &amp; permanent</a></li><li><a href="accusation.html">Accusation</a></li><li><a href="transmission.html">Transmission</a></li></ul></nav></aside>
-  <main class="content-wrap">
-    <div class="page-head">
-      <h1 class="page-title">Stoicheia</h1>
-      <div class="tabs">
-        <a href="#" class="current">Article</a>
-        <a href="#">Talk</a>
-        <span class="right">
-          <a href="#" class="current">Read</a>
-          <a href="#">Edit</a>
-          <a href="#">Notes</a>
-          <a href="#">History</a>
-        </span>
-      </div>
-    </div>
-    <div class="content">
-<div class="ribbon"><span class="nodetype hub">Hub</span> The master node. Nine pages depend on this one; read <a href='what-is-not-stoicheia.html'>the boundary</a> beside it.</div>
-<div class="infobox">
-  <div class="ib-title">Stoicheia</div>
-  <div class="ib-sub"><span class="gk">ta stoicheia tou kosmou</span></div>
-  <dl>
-    <dt>Ordinary sense</dt>
-    <dd>Rudiments; the ABCs; a row of letters; the basic series from which a thing is composed.</dd>
-    <dt>Paul's uses</dt>
-    <dd>Gal 4:3, 4:9; Col 2:8, 2:20. Compare Heb 5:12 (elementary teaching).</dd>
-    <dt>Reading taken here</dt>
-    <dd>A regulatory regime, personally exploited. Neither bare abstraction nor simply a demon.</dd>
-    <dt>Working definition</dt>
-    <dd>The elementary principles by which the world assigns worth on the basis of performance.</dd>
-    <dt>Christ's relation to it</dt>
-    <dd>Not abolition. Accomplishment to excess (Matt 3:15; Gal 4:4).</dd>
-  </dl>
-</div>
-
-<p class="tagline">From the wiki &mdash; the argument in progress.</p>
-
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Stoicheia &mdash; Commonplace</title><meta name="description" content="Stoicheia — a page in Chris Oswald&#x27;s commonplace wiki."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="wiki.css"></head><body><header class="topbar"><span class="menu-glyph" aria-hidden="true">&#9776;</span><a class="brand" href="index.html"><svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M 19.07 12.84 L 19.09 12.8 L 19.1 12.75 L 19.1 12.7 L 19.11 12.65 L 19.11 12.6 L 19.11 12.55 L 19.1 12.49 L 19.09 12.44 L 19.08 12.38 L 19.07 12.33 L 19.05 12.27 L 19.03 12.22 L 19.0 12.16 L 18.97 12.11 L 18.94 12.06 L 18.9 12.01 L 18.86 11.96 L 18.81 11.91 L 18.76 11.86 L 18.71 11.82 L 18.65 11.78 L 18.6 11.74 L 18.53 11.7 L 18.47 11.67 L 18.4 11.64 L 18.33 11.62 L 18.25 11.6 L 18.17 11.58 L 18.09 11.57 L 18.01 11.56 L 17.93 11.55 L 17.84 11.56 L 17.76 11.56 L 17.67 11.58 L 17.58 11.59 L 17.49 11.62 L 17.4 11.65 L 17.31 11.68 L 17.23 11.72 L 17.14 11.77 L 17.06 11.83 L 16.97 11.89 L 16.89 11.95 L 16.81 12.02 L 16.74 12.1 L 16.67 12.18 L 16.6 12.27 L 16.53 12.37 L 16.48 12.47 L 16.42 12.58 L 16.37 12.69 L 16.33 12.8 L 16.3 12.92 L 16.27 13.05 L 16.25 13.18 L 16.23 13.31 L 16.22 13.44 L 16.23 13.58 L 16.24 13.72 L 16.25 13.86 L 16.28 14.0 L 16.32 14.15 L 16.36 14.29 L 16.42 14.43 L 16.49 14.57 L 16.56 14.72 L 16.65 14.85 L 16.74 14.99 L 16.85 15.12 L 16.96 15.25 L 17.08 15.37 L 17.22 15.49 L 17.36 15.6 L 17.51 15.7 L 17.67 15.8 L 17.84 15.89 L 18.02 15.97 L 18.21 16.04 L 18.4 16.1 L 18.6 16.15 L 18.81 16.18 L 19.02 16.21 L 19.24 16.22 L 19.46 16.22 L 19.68 16.21 L 19.91 16.18 L 20.14 16.14 L 20.38 16.08 L 20.61 16.01 L 20.84 15.92 L 21.07 15.82 L 21.3 15.7 L 21.52 15.57 L 21.74 15.42 L 21.96 15.25 L 22.16 15.07 L 22.36 14.87 L 22.56 14.65 L 22.74 14.43 L 22.91 14.18 L 23.07 13.92 L 23.21 13.65 L 23.34 13.37 L 23.46 13.07 L 23.56 12.76 L 23.64 12.43 L 23.7 12.1 L 23.75 11.76 L 23.77 11.41 L 23.78 11.05 L 23.76 10.69 L 23.72 10.32 L 23.65 9.95 L 23.57 9.57 L 23.46 9.2 L 23.32 8.82 L 23.16 8.45 L 22.97 8.08 L 22.76 7.72 L 22.52 7.36 L 22.25 7.01 L 21.96 6.67 L 21.65 6.35 L 21.3 6.03 L 20.94 5.74 L 20.55 5.46 L 20.13 5.2 L 19.7 4.96 L 19.24 4.74 L 18.76 4.55 L 18.26 4.38 L 17.74 4.25 L 17.21 4.14 L 16.66 4.06 L 16.09 4.01 L 15.52 4.0 L 14.93 4.02 L 14.34 4.08 L 13.73 4.18 L 13.13 4.31 L 12.52 4.49 L 11.91 4.7 L 11.31 4.96 L 10.71 5.25 L 10.12 5.59 L 9.54 5.97 L 8.97 6.39 L 8.42 6.85 L 7.89 7.36 L 7.38 7.9 L 6.9 8.49 L 6.44 9.11 L 6.01 9.77 L 5.62 10.47 L 5.26 11.21 L 4.94 11.98 L 4.67 12.78 L 4.43 13.61 L 4.25 14.47 L 4.11 15.36 L 4.03 16.27 L 4.0 17.2 L 4.03 18.14 L 4.11 19.11 L 4.26 20.08 L 4.46 21.06 L 4.73 22.04 L 5.07 23.02 L 5.47 24.0 L 5.93 24.97 L 6.47 25.93 L 7.07 26.87 L 7.74 27.79 L 8.47 28.69 L 9.28 29.56 L 10.15 30.39 L 11.08 31.18 L 12.08 31.93 L 13.14 32.63 L 14.26 33.27 L 15.44 33.86 L 16.68 34.39 L 17.97 34.85 L 19.31 35.24 L 20.69 35.55 L 22.12 35.78 L 23.58 35.94 L 25.08 36.0" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="19.07" cy="12.84" r="1.5" fill="currentColor"/></svg><span class="wordmark">Commonplace<small>Religious Dysfunctions</small></span></a><form class="searchbox" role="search" onsubmit="return false;"><input type="search" placeholder="Search the wiki" aria-label="Search the wiki"><button type="submit">Find</button></form><div class="topbar-right"><a href="all-pages.html">All pages</a><a href="index.html#build">How this is built</a></div></header><div class="frame"><aside class="rail"><nav><h3>On this page</h3><ul class="toc"><li><a href="#term">The term</a></li><li><a href="#dispute">Principles or powers</a></li><li><a href="#scope">Scope</a></li><li><a href="#christ">What Christ did</a></li></ul><h3>Navigate</h3><ul><li><a href="index.html">Main page</a></li><li><a href="all-pages.html">All pages</a></li><li><a href="what-is-not-stoicheia.html">The boundary</a></li></ul><h3>Hubs</h3><ul><li><a href="accusation.html">Accusation</a></li><li><a href="christus-victor.html">Christus Victor</a></li><li><a href="law-of-performance.html">Law of Performance</a></li><li><a href="shells.html">Scaffolding and permanent structures</a></li><li><a href="stoicheia.html">Stoicheia</a></li><li><a href="hermit-crab.html">The hermit crab</a></li><li><a href="transmission.html">Transmission: tradition and worldliness</a></li></ul></nav></aside><main class="content-wrap"><div class="page-head"><h1 class="page-title">Stoicheia</h1><div class="tabs"><a href="#" class="current">Article</a><a href="#">Talk</a><span class="right"><a href="#" class="current">Read</a><a href="#">Edit</a><a href="#">Notes</a><a href="#">History</a></span></div></div><div class="content"><div class="ribbon"><span class="nodetype">Hub</span><span>The master node. Nine pages depend on this one; read <a href="what-is-not-stoicheia.html">the boundary</a> beside it.</span></div><div class="infobox"><div class="ib-title">Stoicheia</div><div class="ib-sub">ta stoicheia tou kosmou</div><dl><dt>Ordinary sense</dt><dd>Rudiments; the ABCs; a row of letters; the basic series from which a thing is composed.</dd><dt>Paul's uses</dt><dd>Gal 4:3, 4:9; Col 2:8, 2:20. Compare Heb 5:12 (elementary teaching).</dd><dt>Reading taken here</dt><dd>A regulatory regime, personally exploited. Neither bare abstraction nor simply a demon.</dd><dt>Working definition</dt><dd>The elementary principles by which the world assigns worth on the basis of performance.</dd><dt>Christ's relation to it</dt><dd>Not abolition. Accomplishment to excess (Matt 3:15; Gal 4:4).</dd></dl></div><p class="tagline">From the wiki — the argument in progress.</p>
 <p>The <strong>stoicheia</strong> are the elementary principles by which the world sorts people according to
 performance. Paul uses the term four times, twice in Galatians and twice in Colossians, and in both letters it
 does the same job: it names what a person is enslaved to before Christ and what a person is being pulled back
 toward afterward.</p>
-
 <p>The reading taken across this wiki is that the term is deliberately capacious. It covers the Jewish ceremonial
 calendar and Greek philosophy and pagan cult, and it covers karma, honour and shame, might-makes-right, the market,
 and ideology, because all of these run the same operating system: <a href="law-of-performance.html">do this, and you
 will be counted worthy</a>. Paul's argument in Colossians 2 does not work if <span class="gk">stoicheia</span> means
-only the Mosaic shadow, because the Colossian error was a hybrid &mdash; festivals and new moons in one breath,
+only the Mosaic shadow, because the Colossian error was a hybrid — festivals and new moons in one breath,
 asceticism and angel-worship in the next.</p>
-
 <h2 id="term">The term</h2>
-
 <p>In ordinary Greek the word means rudiments: the letters of the alphabet in order, the elements of a compound, the
 first things you learn. Hebrews 5:12 uses it exactly this way, of the elementary teaching a congregation should have
-outgrown. That register matters. It is not a word for evil. It is a word for <em>basic</em> &mdash; and the argument
+outgrown. That register matters. It is not a word for evil. It is a word for <em>basic</em> — and the argument
 of both Galatians and Colossians is that returning to the basic, after the substance has arrived, is the failure.</p>
-
-<p>This is also why <a href="kings-cubit.html" class="new">the King's cubit</a> is the right illustration and not
+<p>This is also why <a class="new" href="kings-cubit.html">the King's cubit</a> is the right illustration and not
 merely a serviceable one. A measuring standard is exactly this register: rudimentary, indispensable, and catastrophic
 when a drifted rod sets itself up as the standard.</p>
-
 <h2 id="dispute">Principles or powers</h2>
-
 <p>Whether Paul means impersonal principles or personal spirits is a live dispute, and this wiki does not resolve it
 so much as decline the alternative.</p>
-
 <table class="wt">
-  <thead><tr><th>Reading</th><th>Held by</th><th>Strength</th><th>Cost</th></tr></thead>
-  <tbody>
-    <tr><td>Principles / regulations</td>
-      <td>Calvin; Ridderbos; Horton</td>
-      <td>Fits the ordinary lexical range; fits Heb 5:12; avoids importing a cosmology Paul does not state</td>
-      <td>Strains v. 15, where the rulers are disarmed and paraded &mdash; you cannot parade an abstraction</td></tr>
-    <tr><td>Personal spirits</td>
-      <td>Much modern scholarship</td>
-      <td>Fits the bracketing of v. 15 and Gal 4:8's &ldquo;beings that by nature are not gods&rdquo;</td>
-      <td>Strains the plain sense of vv. 21&ndash;22, which are rules, not entities</td></tr>
-    <tr><td>Regime plus occupant <em>(taken here)</em></td>
-      <td>&mdash;</td>
-      <td>Both halves of the chapter stand; explains why Paul can move from cosmic to dietary without a seam</td>
-      <td>Requires the <a href="hermit-crab.html">hermit crab</a> to do real work, not just illustrate</td></tr>
-  </tbody>
+<thead><tr><th>Reading</th><th>Held by</th><th>Strength</th><th>Cost</th></tr></thead>
+<tbody>
+<tr><td>Principles / regulations</td>
+<td>Calvin; Ridderbos; Horton</td>
+<td>Fits the ordinary lexical range; fits Heb 5:12; avoids importing a cosmology Paul does not state</td>
+<td>Strains v. 15, where the rulers are disarmed and paraded — you cannot parade an abstraction</td></tr>
+<tr><td>Personal spirits</td>
+<td>Much modern scholarship</td>
+<td>Fits the bracketing of v. 15 and Gal 4:8's “beings that by nature are not gods”</td>
+<td>Strains the plain sense of vv. 21–22, which are rules, not entities</td></tr>
+<tr><td>Regime plus occupant <em>(taken here)</em></td>
+<td>—</td>
+<td>Both halves of the chapter stand; explains why Paul can move from cosmic to dietary without a seam</td>
+<td>Requires the <a href="hermit-crab.html">hermit crab</a> to do real work, not just illustrate</td></tr>
+</tbody>
 </table>
-
 <p>The third position is not a compromise. It is a claim: the principles are real and God-made, and the powers are
 real and have moved into them. Paul can speak of one and mean both because in the world he is describing they are
 not separable.</p>
-
 <h2 id="scope">Scope</h2>
-
 <p>Each of the following is treated on this wiki as a case of the same thing rather than an analogy to it.</p>
-
 <ul>
-  <li><a href="ceremonial-law.html" class="new">The ceremonial law</a> &mdash; the only one of these that was
+<li><a class="new" href="ceremonial-law.html">The ceremonial law</a> — the only one of these that was
   God-given, and so the only one that is <a href="shells.html">demolished rather than contested</a>.</li>
-  <li><a href="greek-philosophy.html" class="new">Greek philosophy</a>, <a href="pagan-cult.html" class="new">pagan
-  cult</a>, <a href="karma.html" class="new">karma</a>, <a href="honour-shame.html" class="new">honour and
-  shame</a>, <a href="might-makes-right.html" class="new">might makes right</a>.</li>
-  <li><a href="the-market.html" class="new">The market</a>, <a href="ideology.html" class="new">ideology</a>,
-  <a href="wellness-culture.html" class="new">wellness culture</a>, <a href="taste.html" class="new">taste</a>.</li>
-  <li><a href="transmission.html">Tradition and worldliness</a> &mdash; not further items in the list, but the two
+<li><a class="new" href="greek-philosophy.html">Greek philosophy</a>, <a class="new" href="pagan-cult.html">pagan
+  cult</a>, <a class="new" href="karma.html">karma</a>, <a class="new" href="honour-shame.html">honour and
+  shame</a>, <a class="new" href="might-makes-right.html">might makes right</a>.</li>
+<li><a class="new" href="the-market.html">The market</a>, <a class="new" href="ideology.html">ideology</a>,
+  <a class="new" href="wellness-culture.html">wellness culture</a>, <a class="new" href="taste.html">taste</a>.</li>
+<li><a href="transmission.html">Tradition and worldliness</a> — not further items in the list, but the two
   channels by which any of the above arrive.</li>
 </ul>
-
 <div class="caution">
 <strong>The totalising risk.</strong> This frame wants to explain everything, and a wiki in which every page links
 here is a wiki arguing that everything is stoicheia. That is the same too-clean diagnosis the framework exists to
 resist, only with better Greek. See <a href="what-is-not-stoicheia.html">What is not stoicheia</a>, which is a node
 and not a caveat.
 </div>
-
 <h2 id="christ">What Christ did</h2>
-
 <p>The claim throughout is that Christ did not abolish the demand. He met it, and met it to excess, so that the
 regime's own logic now runs in favour of everyone in him. Born under the law (Gal 4:4) is entry into the shell.
 Fulfilling all righteousness (Matt 3:15) is the proof of ownership. The
 <a href="colossians-2-8-15.html">cancelling of the record of debt</a> is the withdrawal of the powers' standing to
 prosecute, which is why v. 14 and v. 15 are one sentence and not two.</p>
-
 <p>The pastoral end of this is the whole payload: the question <em>have I done enough</em> is answered not by
-lowering the bar but by pointing at someone who cleared it on your behalf and in your name.</p>
-
-<div class="connections"><div class="cx-title">Connections</div><ul><li><span class="rel rel-instantiates">instantiated by</span> <span><a href="karma.html" class="new">Karma</a>, <a href="honour-shame.html" class="new">honour/shame</a>, <a href="the-market.html" class="new">the market</a>, <a href="ideology.html" class="new">ideology</a>, <a href="ceremonial-law.html" class="new">ceremonial law</a></span></li><li><span class="rel rel-inhabits">inhabited by</span> <span><a href="hermit-crab.html">Powers, as occupants of God-made structure</a></span></li><li><span class="rel rel-fulfils">fulfilled by</span> <span><a href="christus-victor.html">Christ, to excess</a></span></li><li><span class="rel rel-transmits">arrives by</span> <span><a href="transmission.html">Tradition and worldliness</a></span></li><li><span class="rel rel-guards">guarded by</span> <span><a href="what-is-not-stoicheia.html">What is not stoicheia</a></span></li><li><span class="rel rel-disputes">disputed by</span> <span><a href="all-pages.html">The Reformed principles-only reading</a></span></li><li><span class="rel rel-illustrates">illustrated by</span> <span><a href="kings-cubit.html" class="new">The King&rsquo;s cubit</a>, <a href="hermit-crab.html">the hermit crab</a></span></li></ul></div>
-    </div>
-  </main>
-</div>
-
-<footer class="sitefoot">
-  <div>Last edited 21 August 2026. Written and maintained by Chris. Draft status &mdash; nothing here is settled.</div>
-  <ul>
-    <li><a href="index.html">Main page</a></li>
-    <li><a href="all-pages.html">All pages</a></li>
-    <li><a href="index.html#build">Link types</a></li>
-    <li><a href="what-is-not-stoicheia.html">The boundary</a></li>
-  </ul>
-</footer>
-
-</body>
-</html>
+lowering the bar but by pointing at someone who cleared it on your behalf and in your name.</p><div class="connections"><div class="cx-title">Connections</div><ul><li><span class="rel rel-instantiates">instantiated by</span> <span><a href="karma.html">Karma</a></span></li><li><span class="rel rel-inhabits">inhabited by</span> <span><a href="hermit-crab.html">Powers, as occupants of God-made structure</a></span></li><li><span class="rel rel-fulfils">fulfilled by</span> <span><a href="christus-victor.html">Christ, to excess</a></span></li><li><span class="rel rel-transmits">arrives by</span> <span><a href="transmission.html">Tradition and worldliness</a></span></li><li><span class="rel rel-guards">guarded by</span> <span><a href="what-is-not-stoicheia.html">What is not stoicheia</a></span></li><li><span class="rel rel-disputes">disputed by</span> <span><a href="all-pages.html">The Reformed principles-only reading</a></span></li><li><span class="rel rel-illustrates">illustrated by</span> <span><a href="kings-cubit.html">The King’s cubit</a></span></li></ul></div><div class="connections backlinks"><div class="cx-title">Referenced by</div><ul><li><span class="rel rel-fulfils">answers</span> <span><a href="christus-victor.html">Christus Victor</a></span></li><li><span class="rel rel-instantiates">instantiated by</span> <span><a href="colossians-2-8-15.html">Colossians 2:8–15</a></span></li><li><span class="rel rel-inhabits">the structure occupied by</span> <span><a href="hermit-crab.html">The hermit crab</a></span></li><li><span class="rel rel-instantiates">instantiated by</span> <span><a href="law-of-performance.html">Law of Performance</a></span></li><li><span class="rel rel-instantiates">instantiated by</span> <span><a href="shells.html">Scaffolding and permanent structures</a></span></li><li><span class="rel rel-transmits">transmitted by</span> <span><a href="transmission.html">Transmission: tradition and worldliness</a></span></li><li><span class="rel rel-guards">guards</span> <span><a href="what-is-not-stoicheia.html">What is not stoicheia</a></span></li></ul></div></div></main></div><footer class="sitefoot"><span class="draft">Draft status — nothing here is settled.</span><ul><li><a href="index.html">Main page</a></li><li><a href="all-pages.html">All pages</a></li><li><a href="/">The map</a></li></ul></footer></body></html>
