@@ -212,11 +212,3 @@ strong{font-weight:700}
   border-bottom:2px solid var(--field);padding:6px 12px;font-size:1rem}
 .content table td{border-bottom:1px solid var(--n300);padding:9px 12px;vertical-align:top;line-height:1.45}
 .content table td:first-child{font-weight:700}
-
-/* --- md-wiki additions --- */
-a.wl{border-bottom:1px solid color-mix(in srgb,var(--field) 40%,transparent)}
-.stub{color:var(--n500);border-bottom:1px dotted var(--n500);cursor:help}
-.fromhall{background:var(--field-tint);border-left:4px solid var(--field);border-radius:0 8px 8px 0;
-  padding:12px 16px;margin:1.6em 0;font-style:normal;color:var(--ink)}
-.fromhall p{margin:0 0 .5em}.fromhall p:last-child{margin-bottom:0}
-.fromhall strong:first-child{font-family:var(--hand);color:var(--field);font-weight:400}
