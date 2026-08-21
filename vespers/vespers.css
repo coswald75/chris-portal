@@ -1,0 +1,46 @@
+/* Vespers — nocturne section of the Commonplace */
+:root{--bg:#f3f2f2;--paper:#f8f4f4;--ink:#201e1d;--n700:#605d5d;--n600:#7d7979;--n500:#9b9797;--n300:#d7d3d3;
+  --field:#1f5a63;--field-700:#123d43;--field-900:#0e3036;--field-tint:#e6f1f1;
+  --divider:color-mix(in srgb,#201e1d 15%,transparent);
+  --hand:'Architects Daughter','Comic Sans MS',cursive;--serif:'Source Serif 4',Georgia,serif}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.72;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:var(--field);text-decoration:none}a:hover{color:var(--field-700);text-decoration:underline;text-underline-offset:2px}
+a.todo{color:var(--n500);text-decoration:none;cursor:default;pointer-events:none}
+.topbar{display:flex;align-items:center;gap:14px;padding:12px 26px;border-bottom:1px solid var(--divider)}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink)}.brand:hover{text-decoration:none}
+.brand .mark{width:30px;height:30px;flex:none;color:var(--field)}
+.wordmark{font-family:var(--hand);font-size:1.2rem;line-height:1;color:var(--field-900);display:flex;flex-direction:column;gap:2px}
+.wordmark small{font-family:var(--serif);font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;color:var(--n600)}
+.topbar-right{margin-left:auto;display:flex;gap:16px;font-family:var(--hand);font-size:1.02rem}
+.reading{max-width:680px;margin:0 auto;padding:6vh 26px 12vh}
+.eyebrow{font-family:var(--hand);font-size:1.1rem;color:var(--field);margin:0 0 2px}
+h1.title{font-family:var(--serif);font-weight:700;font-size:clamp(2.6rem,7vw,4rem);line-height:1.02;letter-spacing:-.02em;color:var(--field-900);margin:0;display:inline-block}
+h1.title::after{content:"";display:block;height:10px;margin-top:6px;background:var(--field);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='9' viewBox='0 0 300 9' preserveAspectRatio='none'%3E%3Cpath d='M2,6 C60,2 110,8 160,4 C210,1 260,7 298,3' stroke='black' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat;-webkit-mask-size:100% 100%;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='9' viewBox='0 0 300 9' preserveAspectRatio='none'%3E%3Cpath d='M2,6 C60,2 110,8 160,4 C210,1 260,7 298,3' stroke='black' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat;mask-size:100% 100%}
+.meta{font-family:var(--hand);color:var(--n600);font-size:1.02rem;margin:.6rem 0 0}
+.meta a{color:var(--field)}
+.body{margin-top:2.2rem}.body p{margin:0 0 1.15em}
+.body>p:first-of-type::first-letter{font-family:var(--serif);font-weight:700;float:left;font-size:3.4em;line-height:.72;padding:.05em .1em 0 0;color:var(--field)}
+details.sources{margin-top:3rem;border-top:2px solid var(--divider);padding-top:1rem}
+details.sources summary{font-family:var(--hand);font-size:1.15rem;color:var(--field);cursor:pointer}
+details.sources .src{font-size:.9rem;color:var(--n700);line-height:1.55;margin-top:.8rem}
+details.sources .src ul{padding-left:1.2rem}
+.episodenav{margin-top:3.2rem;padding-top:1.4rem;border-top:1px solid var(--divider);display:flex;justify-content:space-between;gap:16px;font-family:var(--hand);font-size:1.05rem}
+.episodenav a{color:var(--field)}
+/* index */
+.wrap{max-width:820px;margin:0 auto;padding:6vh 26px 12vh}
+.lede{font-size:1.2rem;line-height:1.55;color:var(--field-900);margin:1.6rem 0 0}
+.intro{color:var(--n700);margin:.9rem 0 0;max-width:60ch}
+.walk{margin-top:2.6rem}
+.walk h2{font-family:var(--serif);font-weight:700;color:var(--field-900);font-size:1.35rem;border-bottom:1px solid var(--divider);padding-bottom:.3em;margin:2em 0 1em;display:flex;align-items:center;gap:.5rem}
+.walk h2::before{content:"";width:0;height:0;border-left:9px solid var(--field);border-top:6px solid transparent;border-bottom:6px solid transparent}
+.ideas{display:flex;flex-wrap:wrap;gap:8px 14px;line-height:1.5}
+.ideas a{font-family:var(--serif);font-size:1.02rem}
+.ideas .num{font-family:var(--hand);color:var(--n500);font-size:.85rem;margin-right:.15em}
+.built{font-weight:600}
+.foot{margin-top:4rem;padding-top:1.3rem;border-top:1px solid var(--divider);font-family:var(--hand);color:var(--n600)}
+.foot a{color:var(--field)}
+@media(max-width:520px){body{font-size:17px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
