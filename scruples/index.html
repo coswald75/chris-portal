@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Main page &mdash; Stoicheia Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="wiki.css">
+</head>
+<body>
+
+<header class="topbar">
+  <span class="menu-glyph" aria-hidden="true">&#9776;</span>
+  <a class="brand" href="index.html">
+    <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M 19.07 12.84 L 19.09 12.8 L 19.1 12.75 L 19.1 12.7 L 19.11 12.65 L 19.11 12.6 L 19.11 12.55 L 19.1 12.49 L 19.09 12.44 L 19.08 12.38 L 19.07 12.33 L 19.05 12.27 L 19.03 12.22 L 19.0 12.16 L 18.97 12.11 L 18.94 12.06 L 18.9 12.01 L 18.86 11.96 L 18.81 11.91 L 18.76 11.86 L 18.71 11.82 L 18.65 11.78 L 18.6 11.74 L 18.53 11.7 L 18.47 11.67 L 18.4 11.64 L 18.33 11.62 L 18.25 11.6 L 18.17 11.58 L 18.09 11.57 L 18.01 11.56 L 17.93 11.55 L 17.84 11.56 L 17.76 11.56 L 17.67 11.58 L 17.58 11.59 L 17.49 11.62 L 17.4 11.65 L 17.31 11.68 L 17.23 11.72 L 17.14 11.77 L 17.06 11.83 L 16.97 11.89 L 16.89 11.95 L 16.81 12.02 L 16.74 12.1 L 16.67 12.18 L 16.6 12.27 L 16.53 12.37 L 16.48 12.47 L 16.42 12.58 L 16.37 12.69 L 16.33 12.8 L 16.3 12.92 L 16.27 13.05 L 16.25 13.18 L 16.23 13.31 L 16.22 13.44 L 16.23 13.58 L 16.24 13.72 L 16.25 13.86 L 16.28 14.0 L 16.32 14.15 L 16.36 14.29 L 16.42 14.43 L 16.49 14.57 L 16.56 14.72 L 16.65 14.85 L 16.74 14.99 L 16.85 15.12 L 16.96 15.25 L 17.08 15.37 L 17.22 15.49 L 17.36 15.6 L 17.51 15.7 L 17.67 15.8 L 17.84 15.89 L 18.02 15.97 L 18.21 16.04 L 18.4 16.1 L 18.6 16.15 L 18.81 16.18 L 19.02 16.21 L 19.24 16.22 L 19.46 16.22 L 19.68 16.21 L 19.91 16.18 L 20.14 16.14 L 20.38 16.08 L 20.61 16.01 L 20.84 15.92 L 21.07 15.82 L 21.3 15.7 L 21.52 15.57 L 21.74 15.42 L 21.96 15.25 L 22.16 15.07 L 22.36 14.87 L 22.56 14.65 L 22.74 14.43 L 22.91 14.18 L 23.07 13.92 L 23.21 13.65 L 23.34 13.37 L 23.46 13.07 L 23.56 12.76 L 23.64 12.43 L 23.7 12.1 L 23.75 11.76 L 23.77 11.41 L 23.78 11.05 L 23.76 10.69 L 23.72 10.32 L 23.65 9.95 L 23.57 9.57 L 23.46 9.2 L 23.32 8.82 L 23.16 8.45 L 22.97 8.08 L 22.76 7.72 L 22.52 7.36 L 22.25 7.01 L 21.96 6.67 L 21.65 6.35 L 21.3 6.03 L 20.94 5.74 L 20.55 5.46 L 20.13 5.2 L 19.7 4.96 L 19.24 4.74 L 18.76 4.55 L 18.26 4.38 L 17.74 4.25 L 17.21 4.14 L 16.66 4.06 L 16.09 4.01 L 15.52 4.0 L 14.93 4.02 L 14.34 4.08 L 13.73 4.18 L 13.13 4.31 L 12.52 4.49 L 11.91 4.7 L 11.31 4.96 L 10.71 5.25 L 10.12 5.59 L 9.54 5.97 L 8.97 6.39 L 8.42 6.85 L 7.89 7.36 L 7.38 7.9 L 6.9 8.49 L 6.44 9.11 L 6.01 9.77 L 5.62 10.47 L 5.26 11.21 L 4.94 11.98 L 4.67 12.78 L 4.43 13.61 L 4.25 14.47 L 4.11 15.36 L 4.03 16.27 L 4.0 17.2 L 4.03 18.14 L 4.11 19.11 L 4.26 20.08 L 4.46 21.06 L 4.73 22.04 L 5.07 23.02 L 5.47 24.0 L 5.93 24.97 L 6.47 25.93 L 7.07 26.87 L 7.74 27.79 L 8.47 28.69 L 9.28 29.56 L 10.15 30.39 L 11.08 31.18 L 12.08 31.93 L 13.14 32.63 L 14.26 33.27 L 15.44 33.86 L 16.68 34.39 L 17.97 34.85 L 19.31 35.24 L 20.69 35.55 L 22.12 35.78 L 23.58 35.94 L 25.08 36.0" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="19.07" cy="12.84" r="1.5" fill="currentColor"/></svg>
+    <span class="wordmark">Commonplace<small>Religious Dysfunctions</small></span>
+  </a>
+  <form class="searchbox" role="search" onsubmit="return false;">
+    <input type="search" placeholder="Search the wiki" aria-label="Search the wiki">
+    <button type="submit">Search</button>
+  </form>
+  <div class="topbar-right">
+    <a href="all-pages.html">All pages</a>
+    <a href="index.html#build">How this is built</a>
+  </div>
+</header>
+
+<div class="frame wide">
+
+  <main class="content-wrap">
+    <div class="page-head">
+      <h1 class="page-title">Main page</h1>
+      <div class="tabs">
+        <a href="#" class="current">Article</a>
+        <a href="#">Talk</a>
+        <span class="right">
+          <a href="#" class="current">Read</a>
+          <a href="#">Edit</a>
+          <a href="#">Notes</a>
+          <a href="#">History</a>
+        </span>
+      </div>
+    </div>
+    <div class="content">
+
+<div class="banner">
+  <div>
+    <h1>Stoicheia</h1>
+    <p>A working wiki on the elemental principles, the powers that inhabit them, and what Christ did about it.</p>
+  </div>
+  <div class="quicklinks">
+    <a href="all-pages.html">All pages</a>
+    <a href="#build">How this is built</a>
+    <a href="stoicheia.html">Start at the hub</a>
+    <a href="what-is-not-stoicheia.html">Read the boundary first</a>
+    <a href="colossians-2-8-15.html">The governing text</a>
+    <a href="#layers">Other layers of the project</a>
+  </div>
+</div>
+
+<div class="portal-grid">
+  <div>
+
+    <section class="portal">
+      <h2>Article of the day</h2>
+      <p><strong><a href="hermit-crab.html">The hermit crab</a></strong> is the governing image for how spiritual powers
+      relate to created structures. A hermit crab cannot make a shell. It finds one, moves in, and wears it. The claim
+      is that demons work the same way: they are not creators but occupants, and every structure they hold was made
+      good by God before it was taken.</p>
+      <p>This does two things at once. It explains why the occupied structure still looks trustworthy &mdash; the shell
+      is genuinely well made &mdash; and it explains why the answer is eviction rather than demolition. Jesus'
+      teaching about the swept and empty house (Matt&nbsp;12:43&ndash;45) and the Gerasene demoniac's plea not to be
+      sent out of the country (Mark&nbsp;5:10) both read as accounts of tenancy rather than of creation.</p>
+      <p>The image also sorts the shells into two kinds, which turns out to be the load-bearing distinction in the
+      whole framework: <a href="shells.html">scaffolding that Christ has already taken down, and permanent structures
+      that will be occupied by somebody</a>.</p>
+      <p class="more"><a href="hermit-crab.html">Read on</a> &middot; <a href="all-pages.html">Other articles</a></p>
+    </section>
+
+    <section class="portal">
+      <h2>In the workshop</h2>
+      <ul>
+        <li><strong>Open question.</strong> Does <a href="scrupulosity.html">scrupulosity</a> belong inside the
+        stoicheia frame or beside it? Current answer: three of five headwaters plug in, two do not, and
+        <a href="what-is-not-stoicheia.html">the two that don't are the most important thing in the file</a>.</li>
+        <li><strong>New handle.</strong> &ldquo;An appearance requires an audience&rdquo; may replace
+        <a href="law-of-performance.html">Law of Performance</a> as the primary phrasing. It is derived from
+        Col&nbsp;2:23 rather than imposed on it.</li>
+        <li><strong>Unclosed loop.</strong> The identification of cultural scruples with the stoicheia was made in
+        passing in an atonement-models draft in December 2025 and never returned to.</li>
+        <li><strong>Needs a page.</strong> <span class="rel rel-transmits">transmits</span> is doing too much work.
+        Tradition and worldliness may need separating from their parent.</li>
+        <li><strong>Unresolved.</strong> Whether the Reformed &ldquo;principles, not powers&rdquo; reading
+        (<a href="all-pages.html">Calvin, Ridderbos, Horton</a>) is a genuine rival or a false alternative.</li>
+      </ul>
+      <p class="more">Working notes &middot; last swept 21 August 2026</p>
+    </section>
+
+    <section class="portal">
+      <h2>Did you know</h2>
+      <ul>
+        <li>&hellip;that <a href="transmission.html">tradition and worldliness</a> are not analogies for the
+        stoicheia but Paul's own two named vectors for them, stacked in adjacent clauses in Col&nbsp;2:8?</li>
+        <li>&hellip;that <span class="gk">stoicheia</span> in ordinary Greek meant something closer to the ABCs &mdash;
+        a row of letters, a basic series &mdash; which is why <a href="kings-cubit.html" class="new">the King's
+        cubit</a> is a better illustration than it first appears?</li>
+        <li>&hellip;that <span class="gk">thriamebeu&#333;</span> in Col&nbsp;2:15 is the Roman triumph procession, so
+        that the <a href="accusation.html">audience you were performing for</a> is marched through the streets as the
+        spectacle?</li>
+        <li>&hellip;that the disciples' question in John&nbsp;9:2 and the parenting fear that every outcome traces
+        back to a rule the parent broke are <a href="suffering-as-verdict.html" class="new">the same algorithm</a>,
+        aimed outward and then inward?</li>
+      </ul>
+      <p class="more"><a href="all-pages.html">Archive</a></p>
+    </section>
+
+  </div>
+  <div>
+
+    <section class="portal">
+      <h2>About this wiki</h2>
+      <p>This is a working file, not a finished position. It exists to hold one argument &mdash; that Paul's
+      <span class="gk">stoicheia tou kosmou</span> names a universal performance regime, that spiritual powers occupy
+      God-made structures rather than building their own, and that Christ's victory was juridical before it was
+      forceful &mdash; and to show where that argument touches everything else.</p>
+      <p>Pages are short on purpose. The value is in the links, not the essays. Every claim that has a home elsewhere
+      should be a link to that home rather than a paragraph repeated here.</p>
+      <div class="counts">
+        <div><div class="n">12</div><div class="lbl">pages written</div></div>
+        <div><div class="n">68</div><div class="lbl">pages planned</div></div>
+        <div><div class="n">7</div><div class="lbl">link types</div></div>
+      </div>
+      <p class="more"><a href="all-pages.html">See the full page list</a></p>
+    </section>
+
+    <section class="portal" id="build">
+      <h2>How this is built</h2>
+      <p>Ordinary wikis have one kind of link. This one has seven, because the whole point is to show
+      <em>how</em> two ideas touch, not just that they do. Every link in an article body carries a type:</p>
+      <ul style="list-style:none;padding-left:0">
+        <li><span class="rel rel-instantiates">instantiates</span> &mdash; a particular case of a general thing</li>
+        <li><span class="rel rel-inhabits">inhabits</span> &mdash; occupies a structure it did not make</li>
+        <li><span class="rel rel-fulfils">fulfils</span> &mdash; satisfies and so ends a demand</li>
+        <li><span class="rel rel-guards">guards against</span> &mdash; limits or corrects another page</li>
+        <li><span class="rel rel-illustrates">illustrates</span> &mdash; carries an idea in an image</li>
+        <li><span class="rel rel-disputes">disputes</span> &mdash; holds a genuinely rival reading</li>
+        <li><span class="rel rel-transmits">transmits</span> &mdash; how the thing arrives in a person</li>
+      </ul>
+      <p>The rule that keeps this honest: a page may not link to <a href="stoicheia.html">Stoicheia</a> merely because
+      it is nearby. If the relation cannot be typed, it is not a link.</p>
+    </section>
+
+    <section class="portal">
+      <h2>Where this was preached</h2>
+      <ul>
+        <li><strong>Oct 2025</strong> &mdash; 1&nbsp;John 2:18&ndash;29. Antichrist as ethos rather than individual;
+        <span class="gk">anti</span> as &ldquo;in replacement of&rdquo;; parasite, not predator. The tapeworm is born.</li>
+        <li><strong>Dec 2025</strong> &mdash; Colossians 2, <em>Demonic Tapeworms</em>. The stoicheia explained to the
+        room; alternating Parasitic Promise / Christ Is More Than Enough.</li>
+        <li><strong>Dec 2025</strong> &mdash; <em>What Kind of Preaching Pleases God?</em> Socialization as
+        &ldquo;rules that shouldn't be&rdquo;: stoicheia aimed at taste.</li>
+        <li><strong>Jan 2026</strong> &mdash; <em>From Consumerism to Covenant.</em> Preference as the first danger to
+        church unity; new boundary markers on the old foundation.</li>
+        <li><strong>Aug 30 2026</strong> &mdash; Ecclesiastes. Eat your bread with joy.</li>
+        <li><strong>Sep 6 2026</strong> &mdash; <a href="scrupulosity.html">Scrupulosity</a>. Five streams, the King's
+        cubit, and a verdict that has already been announced.</li>
+      </ul>
+    </section>
+
+    <section class="portal">
+      <h2>Text of the day</h2>
+      <p>Colossians 2:8 sets three prepositional phrases side by side: according to human tradition, according to the
+      elemental principles of the world, and not according to Christ. Read as a list rather than as a rhetorical pile,
+      it names the two channels and the one alternative.</p>
+      <p class="more"><a href="colossians-2-8-15.html">Colossians 2:8&ndash;15</a> &middot;
+      <a href="transmission.html">Transmission</a></p>
+    </section>
+
+  </div>
+</div>
+
+<section class="layers" id="layers">
+  <h2>Other layers of this project</h2>
+  <div class="layer-grid">
+    <div><div class="lg-name"><a href="all-pages.html">Concepts</a></div>
+      <div class="lg-desc">This wiki. The argument and its joints.</div></div>
+    <div><div class="lg-name"><a href="#" class="new">Corpus</a></div>
+      <div class="lg-desc">Preached manuscripts, searchable.</div></div>
+    <div><div class="lg-name"><a href="#" class="new">Commonplace</a></div>
+      <div class="lg-desc">Quotations and reference material.</div></div>
+    <div><div class="lg-name"><a href="#" class="new">Lexicon</a></div>
+      <div class="lg-desc">Greek and Hebrew terms, with usage ranges.</div></div>
+    <div><div class="lg-name"><a href="#" class="new">Texts</a></div>
+      <div class="lg-desc">Passage pages, with every sermon that touches them.</div></div>
+    <div><div class="lg-name"><a href="#" class="new">Illustrations</a></div>
+      <div class="lg-desc">Images, tested and untested, with where they were used.</div></div>
+    <div><div class="lg-name"><a href="#" class="new">Interlocutors</a></div>
+      <div class="lg-desc">Who is being argued with, and about what.</div></div>
+    <div><div class="lg-name"><a href="#" class="new">Calendar</a></div>
+      <div class="lg-desc">Series planning; what a congregation already knows.</div></div>
+  </div>
+</section>
+
+    </div>
+  </main>
+</div>
+
+<footer class="sitefoot">
+  <div>Last edited 21 August 2026. Written and maintained by Chris. Draft status &mdash; nothing here is settled.</div>
+  <ul>
+    <li><a href="index.html">Main page</a></li>
+    <li><a href="all-pages.html">All pages</a></li>
+    <li><a href="index.html#build">Link types</a></li>
+    <li><a href="what-is-not-stoicheia.html">The boundary</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
