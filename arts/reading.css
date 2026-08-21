@@ -1,6 +1,6 @@
-/* Vespers — nocturne section of the Commonplace */
+/* Arts & Letters — the Great Ideas reading pages (Commonplace) */
 :root{--bg:#f3f2f2;--paper:#f8f4f4;--ink:#201e1d;--n700:#605d5d;--n600:#7d7979;--n500:#9b9797;--n300:#d7d3d3;
-  --field:#1f5a63;--field-700:#123d43;--field-900:#0e3036;--field-tint:#e6f1f1;
+  --field:#6d4a7a;--field-700:#513760;--field-900:#422c4c;--field-tint:#f1ecf5;
   --divider:color-mix(in srgb,#201e1d 15%,transparent);
   --hand:'Architects Daughter','Comic Sans MS',cursive;--serif:'Source Serif 4',Georgia,serif}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
