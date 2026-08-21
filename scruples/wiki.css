@@ -176,3 +176,39 @@ strong{font-weight:700}
   a{color:var(--ink);text-decoration:none}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ============================================================
+   Extended content components — for long resource/essay pages
+   (blockquotes, patron subheads, callouts, sources, section nums)
+   ============================================================ */
+.secnum{font-family:var(--hand);color:var(--field);font-size:1.02rem;margin:2.2em 0 0}
+.secnum + h2{margin-top:.2em}
+.content h3{font-family:var(--serif);font-weight:700;font-size:1.16rem;color:var(--field-900);
+  margin:1.8em 0 .5em;line-height:1.32}
+.content h3 .patron{display:block;font-family:var(--hand);font-weight:400;font-size:1rem;color:var(--field);margin-top:.15rem}
+.content blockquote{margin:1.4em 0;padding:.2rem 0 .2rem 1.3rem;border-left:3px solid var(--field);
+  font-style:italic;color:#3d3a35}
+.content blockquote p{margin:0 0 .4rem}
+.content blockquote p:last-child{margin-bottom:0}
+.attr{font-style:normal;font-size:.92rem;color:var(--n600)}
+.content ol{margin:0 0 1.2rem;padding-left:1.4rem}
+.content ol>li{margin:.4em 0}
+.callout{background:var(--field-tint);border-left:4px solid var(--field);border-radius:0 8px 8px 0;
+  padding:14px 18px;margin:1.7em 0}
+.callout.warn{background:#f8f0e0;border-left-color:var(--amber)}
+.callout .label{font-family:var(--hand);font-size:1.05rem;color:var(--field);margin-bottom:.5rem}
+.callout.warn .label{color:var(--amber)}
+.callout p:last-child{margin-bottom:0}
+.divider{text-align:center;color:var(--field);letter-spacing:.6em;margin:2.6rem 0;user-select:none}
+.lede{font-style:italic;color:var(--field-900)}
+.sources{font-size:.93rem;color:var(--n600);border-top:2px solid var(--divider);margin-top:3rem;padding-top:1.4rem}
+.sources h2{border:none;font-size:1.12rem;margin:0 0 .6em;color:var(--field-900)}
+.sources h2::before{display:none}
+.sources ul{list-style:none;padding-left:0;margin:0}
+.sources li{margin-bottom:.45rem;padding-left:1rem;text-indent:-1rem}
+/* bare tables inside content mirror .wt */
+.content table{border-collapse:collapse;width:100%;margin:1.4em 0;font-size:.94rem}
+.content table th{font-family:var(--hand);font-weight:400;text-align:left;color:var(--field-700);
+  border-bottom:2px solid var(--field);padding:6px 12px;font-size:1rem}
+.content table td{border-bottom:1px solid var(--n300);padding:9px 12px;vertical-align:top;line-height:1.45}
+.content table td:first-child{font-weight:700}
