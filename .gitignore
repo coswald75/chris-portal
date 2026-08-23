@@ -2,3 +2,6 @@
 .DS_Store
 .wrangler/
 node_modules/
+# never commit env/venv/tokens
+office-voice-inbox/.venv/
+office-voice-inbox/**/__pycache__/
