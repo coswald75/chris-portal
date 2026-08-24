@@ -32,3 +32,18 @@ h1.title::after{content:"";display:block;height:9px;margin-top:6px;background:va
 .idx a{font-family:var(--serif);font-weight:600;font-size:1.08rem}.idx .n{font-family:var(--hand);color:var(--n500);margin-right:.4em}
 .foot{margin-top:3.5rem;padding-top:1.3rem;border-top:1px solid var(--divider);font-family:var(--hand);color:var(--n600)}
 @media(max-width:520px){body{font-size:17px}}
+
+/* Isaiah study diagrams — the design-system accent ramp remapped onto the
+   politics iron-blue field, so the imported figures read as native plates. */
+.izfig{--color-bg:var(--paper);--color-surface:#eae9e9;--color-text:var(--ink);
+  --color-neutral-700:var(--n700);
+  --color-accent:#3c6b7a;--color-accent-100:#e9f1f3;--color-accent-200:#d0e0e4;
+  --color-accent-300:#a9c6cd;--color-accent-400:#7ba3ae;--color-accent-500:#55818f;
+  --color-accent-600:#33606f;--color-accent-700:#2b5060;--color-accent-800:#23414b;
+  --color-accent-900:#17323a;--color-accent-2:#a8472c;
+  --font-heading:var(--serif);--font-body:var(--serif);
+  margin:2.4em 0;padding:12px 12px 4px;background:var(--paper);
+  border:1px solid var(--n300);border-radius:10px;overflow:hidden}
+.izfig+.izfig{margin-top:1.6em}
+.izfig svg[role="img"]{display:block;width:100%;height:auto}
+@media(max-width:520px){.izfig{padding:6px 6px 2px;margin:1.8em 0}}
