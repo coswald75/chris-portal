@@ -45,3 +45,8 @@ a:hover{color:var(--field-700);text-decoration:underline;text-underline-offset:2
 
 @media(max-width:520px){body{font-size:16px}.locus{padding:6vh 22px 9vh}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* home button — the wave mark links to the Commonplace map */
+.brand-mark{display:flex;align-items:center;padding:3px;margin:-3px;border-radius:7px;color:var(--ink)}
+.brand-mark:hover{background:color-mix(in srgb,var(--field,#3c6b7a) 13%,transparent);text-decoration:none}
+.topbar .mark{width:30px;height:30px;flex:none;display:block}

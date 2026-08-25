@@ -214,3 +214,8 @@ strong{font-weight:700}
 .content table td:first-child{font-weight:700}
 
 a.xlink{border-bottom:1px solid color-mix(in srgb,var(--field) 35%,transparent)}
+
+/* home button — the wave mark links to the Commonplace map */
+.brand-mark{display:flex;align-items:center;padding:3px;margin:-3px;border-radius:7px;color:var(--ink)}
+.brand-mark:hover{background:color-mix(in srgb,var(--field,#3c6b7a) 13%,transparent);text-decoration:none}
+.topbar .mark{width:30px;height:30px;flex:none;display:block}

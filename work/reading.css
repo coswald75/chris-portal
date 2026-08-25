@@ -25,3 +25,8 @@ h1.title::after{content:"";display:block;height:9px;margin-top:6px;background:va
 .foot{margin-top:3.5rem;padding-top:1.3rem;border-top:1px solid var(--divider);font-family:var(--hand);color:var(--n600)}
 .esv{max-width:680px;margin:0 auto;padding:0 26px 40px;font-size:.72rem;color:var(--n500)}
 @media(max-width:520px){body{font-size:17px}}
+
+/* home button — the wave mark links to the Commonplace map */
+.brand-mark{display:flex;align-items:center;padding:3px;margin:-3px;border-radius:7px;color:var(--ink)}
+.brand-mark:hover{background:color-mix(in srgb,var(--field,#3c6b7a) 13%,transparent);text-decoration:none}
+.topbar .mark{width:30px;height:30px;flex:none;display:block}
