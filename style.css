@@ -178,12 +178,16 @@ a:focus-visible {
 }
 
 .essay h2 {
-  margin: 2.5em 0 0.55em;
+  margin: 2.8em 0 0.5em;
   color: var(--ink);
-  font-size: clamp(1.35rem, 1.05rem + 1.4vw, 1.95rem);
+  font-size: clamp(1.7rem, 1.15rem + 2.3vw, 2.55rem);
   font-weight: 700;
-  line-height: 1.18;
-  letter-spacing: -0.025em;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.essay h2:first-of-type {
+  margin-top: 0;
 }
 
 .essay p,
