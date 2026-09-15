@@ -218,11 +218,6 @@ a:focus-visible {
   font-weight: 700;
 }
 
-.punch {
-  color: var(--ink);
-  font-weight: 700;
-}
-
 .essay-end {
   margin-top: 3.2rem;
 }
