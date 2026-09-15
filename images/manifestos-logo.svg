@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 720" role="img" aria-labelledby="logoTitle">
+  <title id="logoTitle">Manifestos</title>
+  <rect width="1600" height="720" fill="#c43c34"/>
+  <g fill="#fff" transform="translate(188 248)">
+    <g stroke="#fff" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M48 196 L48 28 L196 196 L344 28"/>
+    </g>
+    <circle cx="48" cy="196" r="20"/>
+    <circle cx="48" cy="28" r="20"/>
+    <circle cx="196" cy="196" r="20"/>
+    <circle cx="344" cy="28" r="20"/>
+    <text x="372" y="186" font-family="Inter, Helvetica, Arial, sans-serif" font-size="168" font-weight="700" letter-spacing="-4">anifestos</text>
+  </g>
+</svg>

@@ -3,7 +3,7 @@
 # Usage: ./deploy.sh
 #
 # Workflow:
-#   1. Edit index.html / style.css / images in this directory
+#   1. Edit index.html / style.css / manifesto pages / images in this directory
 #   2. git add + git commit
 #   3. ./deploy.sh
 #
