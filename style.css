@@ -209,6 +209,11 @@ a:focus-visible {
   font-weight: 500;
 }
 
+.essay strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
 .punch {
   color: var(--ink);
   font-weight: 700;
