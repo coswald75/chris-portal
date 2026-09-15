@@ -177,22 +177,13 @@ a:focus-visible {
   font-variant-numeric: tabular-nums;
 }
 
-.essay h2,
-.essay h3 {
-  color: var(--ink);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-}
-
 .essay h2 {
-  margin: 2.4em 0 0.55em;
-  font-size: 1.28em;
-}
-
-.essay h3 {
-  margin: 1.8em 0 0.45em;
-  font-size: 1.08em;
+  margin: 2.5em 0 0.55em;
+  color: var(--ink);
+  font-size: clamp(1.35rem, 1.05rem + 1.4vw, 1.95rem);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
 }
 
 .essay p,
